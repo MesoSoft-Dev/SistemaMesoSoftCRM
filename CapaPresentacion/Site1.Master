@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="CapaPresentacion.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>CRM principal</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+     <style>
+     .sidebar {
+         background-color: #343A48;
+         min-height: 100vh;
+     }
+     .sidebar .nav-link {
+         color: white;
+     }
+     .sidebar .nav-link:hover {
+         background-color: #495057;
+         
+     }
+ </style>
+</head>
+<body>
+      
+
+    <div class="d-flex">
+    <nav class="sidebar d-1 d-md-block col-md-3 col-lg-2 p-3">
+        <header class="pb-4 text-white h5">La Gran Francia</header>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="panelDeControl.aspx" >Panel de trabajo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="conversaciones.aspx">Conversaciones</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="calendario.aspx">Calendario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contactos.aspx">Contactos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="oportunidades.aspx">Oportunidades</a>
+            </li>
+        </ul>
+        <div class="border-bottom border-white"></div>
+    </nav>
+</div>
+
+    <main>
+
+    </main>
+              
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src="Scripts/jquery-3.7.0.min.js"></script>   
+<script src="Scripts/bootstrap.min.js"></script>
+    
+</body>
+</html>

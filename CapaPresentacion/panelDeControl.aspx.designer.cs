@@ -11,7 +11,7 @@ namespace CapaPresentacion
 {
 
 
-    public partial class Contact
+    public partial class panelDeControl
     {
     }
 }
