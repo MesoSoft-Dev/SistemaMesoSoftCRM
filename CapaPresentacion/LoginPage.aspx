@@ -5,12 +5,40 @@
 <html>
 <head runat="server">
     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="../Assets/css/styles.css" />
+  
+
+    <style>
+       .banner {
+           /*background-color: var(--banner-color, #343A48); */
+            top: 0;
+            width: 100%;
+            }
+    </style>
 </head>
 <body>
+
+  <div class="container-fluid position-fixed banner">
+    <div class="row justify-content-between pb-3 pt-3 bg-primary align-items-center">
+        <div class="col text-white">
+            <h1>MesoSoft CRM <i class="bi bi-bar-chart-fill"></i></h1>
+        </div>
+        <div class="col-auto">
+            <img src="Assets/Mesosoft.png" alt="logo" width="75" height="75" class="img-fluid">
+        </div>
+    </div>
+</div>
+    
     <form id="form1" runat="server">
+        
+     
+
+
+        
         <div class="container">
             <div class="login-box">
                 <!-- Sección de inicio de sesión -->
