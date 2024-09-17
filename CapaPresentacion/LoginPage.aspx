@@ -5,12 +5,13 @@
 <html>
 <head runat="server">
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="Content/bootstrap.min.css" rel="stylesheet">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="../Assets/css/styles.css" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" class="w-100" runat="server">
         <div class="container">
             <div class="login-box">
                 <!-- Sección de inicio de sesión -->
@@ -33,7 +34,9 @@
                     <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Contraseña Actual" />
                     <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Nueva Contraseña" />
                     <asp:TextBox ID="txtConfirmNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirmar Nueva Contraseña" />
-                    <asp:Button ID="btnChangePassword" runat="server" CssClass="btn btn-primary" Text="Aceptar" />
+                    <div class="d-flex justify-content-center">
+                    <asp:Button ID="btnChangePassword" runat="server" Class="btn btn-primary w-100" Text="Aceptar" />
+                    </div>
                     <br />
                     <a href="javascript:void(0);" onclick="showLogin()">Regresar a Iniciar Sesión</a>
                 </div>
@@ -41,11 +44,13 @@
                 <!-- Sección de recordar contraseña -->
                 <div id="forgotPasswordSection" class="hidden">
                     <h3>Recordar Contraseña</h3>
-                    <asp:TextBox ID="txtForgotUsername" runat="server" CssClass="form-control" Placeholder="Usuario" />
-                    <asp:TextBox ID="txtForgotEmail" runat="server" CssClass="form-control" Placeholder="Email" />
-                    <asp:TextBox ID="txtForgotName" runat="server" CssClass="form-control" Placeholder="Nombre" />
-                    <asp:TextBox ID="txtForgotDni" runat="server" CssClass="form-control" Placeholder="DNI" />
-                    <asp:Button ID="btnForgotPassword" runat="server" CssClass="btn btn-primary" Text="Aceptar" />
+                    <asp:TextBox ID="txtForgotUsername" runat="server" Class="form-control" Placeholder="Ingresar Empresa" />
+                     <asp:TextBox ID="txtForgotEmail" runat="server" Class="form-control" Placeholder="Ingresar Usuario" />
+                     <asp:TextBox ID="txtForgotName" runat="server" Class="form-control" Placeholder="Ingresar Contraseña" /> 
+                    <div class="d-flex justify-content-center mt-1 mb-1">
+                     <asp:Button ID="btnForgotPassword" runat="server" Class="btn btn-primary w-100" Text="Aceptar" />
+                    </div>
+                    <asp:TextBox ID="txtForgotDni" runat="server" Class="form-control mt-2" Placeholder="Correo Electronico para enviar Contraseña" />
                     <br />
                     <a href="javascript:void(0);" onclick="showLogin()">Regresar a Iniciar Sesión</a>
                 </div>

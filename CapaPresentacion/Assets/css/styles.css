@@ -20,6 +20,7 @@
     box-sizing: border-box; /* Asegura que el padding y los bordes estén incluidos en el tamaño total */
 }
 
+
 .login-box {
     background-color: #fff;
     padding: 20px;
