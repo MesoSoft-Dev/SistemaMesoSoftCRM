@@ -5,6 +5,7 @@
 <html>
 <head runat="server">
     <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="../Assets/css/styles.css" />
 </head>
@@ -21,8 +22,8 @@
                         <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" Text="Iniciar Sesión" />
                     </div>
                     <div class="options">
-                        <a href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
-                        <a href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
+                        <a class="pt-1" href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
+                        <a class="pt-1" href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
                     </div>
                 </div>
 
