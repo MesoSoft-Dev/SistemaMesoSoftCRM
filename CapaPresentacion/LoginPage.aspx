@@ -1,33 +1,41 @@
-﻿<%@ Page Title="Login" Language="C#"  AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="CapaPresentacion._Default" %>
+﻿    <%@ Page Title="Login" Language="C#"  AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="CapaPresentacion._Default" %>
 
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="../Assets/css/styles.css" />
-</head>
+  </head>
 <body>
+
     <form id="form1" runat="server">
+      
         <div class="container">
-            <div class="login-box">
+            <div class="login-box pt-0 px-0 rounded-0 ">
                 <!-- Sección de inicio de sesión -->
-                <div id="loginSection">
+                  <div class="row align-content-center pb-4">
+                        <img src="Assets/bannerCRM.png" alt="logo" class="img-fluid"/>
+                   </div>
+            <div id="loginSection" class="px-4 ">
                     <h2>Iniciar Sesión</h2>
-                    <div class="login-form">
+                   <div class="login-form ">
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Email" />
                         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Contraseña" />
                         <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" Text="Iniciar Sesión" />
                     </div>
                     <div class="options">
-                        <a href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
-                        <a href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
+                        <a class="pt-1" href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
+                        <a class="pt-1" href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
                     </div>
                 </div>
 
                 <!-- Sección de cambiar contraseña -->
-                <div id="changePasswordSection" class="hidden">
+                <div id="changePasswordSection" class="hidden px-4 rounded-0">
                     <h3>Cambiar Contraseña</h3>
                     <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Contraseña Actual" />
                     <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Nueva Contraseña" />
@@ -38,7 +46,7 @@
                 </div>
 
                 <!-- Sección de recordar contraseña -->
-                <div id="forgotPasswordSection" class="hidden">
+                <div id="forgotPasswordSection" class="hidden px-4 rounded-0">
                     <h3>Recordar Contraseña</h3>
                     <asp:TextBox ID="txtForgotUsername" runat="server" CssClass="form-control" Placeholder="Usuario" />
                     <asp:TextBox ID="txtForgotEmail" runat="server" CssClass="form-control" Placeholder="Email" />
