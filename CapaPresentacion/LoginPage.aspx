@@ -9,27 +9,47 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="../Assets/css/styles.css" />
-  </head>
-<body>
+    <style>
+        .incBoton{
+            background-color: #d7b676;
+            
+        }
+        .incBoton:hover{
+            background-color: #d7b676;
+        }
+        .fondo{
+           /* background-image: url(Assets/fondoLaGranFrancia.png);*/
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
 
-    <form id="form1" class="w-100" runat="server">
+        }
+    </style>
+    
+        
+
+  </head>
+<body class="fondo">
+
+    <form id="form1" class="w-100 " runat="server">
       
         <div class="container">
-            <div class="login-box pt-0 px-0 rounded-0 ">
+            <div class="login-box bg-opacity-75 bg-white pt-0 px-0 rounded-0 ">
                 <!-- Sección de inicio de sesión -->
                   <div class="row align-content-center pb-4">
-                        <img src="Assets/bannerCRM.png" alt="logo" class="img-fluid"/>
+                        <img src="Assets/img/granFranciaBannerLogin.png" alt="logo" class="img-fluid"/>
                    </div>
             <div id="loginSection" class="px-4 ">
                     <h2>Iniciar Sesión</h2>
                    <div class="login-form ">
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Email" />
                         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Contraseña" />
-                        <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-primary" Text="Iniciar Sesión" />
+                        <asp:Button ID="btnLogin" runat="server" CssClass="btn incBoton" Text="Iniciar Sesión" />
                     </div>
                     <div class="options">
-                        <a class="pt-1" href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
-                        <a class="pt-1" href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
+                        <a class="pt-1 text-dark " href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
+                        <a class="pt-1 text-dark " href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
                     </div>
                 </div>
 
@@ -40,7 +60,7 @@
                     <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Nueva Contraseña" />
                     <asp:TextBox ID="txtConfirmNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirmar Nueva Contraseña" />
                     <div class="d-flex justify-content-center">
-                    <asp:Button ID="btnChangePassword" runat="server" Class="btn btn-primary w-100" Text="Aceptar" />
+                    <asp:Button ID="btnChangePassword" runat="server" Class="btn incBoton  w-100" Text="Aceptar" />
                     </div>
                     <br />
                     <a href="javascript:void(0);" onclick="showLogin()">Regresar a Iniciar Sesión</a>
@@ -53,7 +73,7 @@
                      <asp:TextBox ID="txtForgotEmail" runat="server" Class="form-control" Placeholder="Ingresar Usuario" />
                      <asp:TextBox ID="txtForgotName" runat="server" Class="form-control" Placeholder="Ingresar Contraseña" /> 
                     <div class="d-flex justify-content-center mt-1 mb-1">
-                     <asp:Button ID="btnForgotPassword" runat="server" Class="btn btn-primary w-100" Text="Aceptar" />
+                     <asp:Button ID="btnForgotPassword" runat="server" Class="btn incBoton w-100" Text="Aceptar" />
                     </div>
                     <asp:TextBox ID="txtForgotDni" runat="server" Class="form-control mt-2" Placeholder="Correo Electronico para enviar Contraseña" />
                     <br />

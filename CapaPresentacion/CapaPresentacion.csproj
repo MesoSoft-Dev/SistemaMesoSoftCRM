@@ -100,8 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\img\granFranciaBannerLogin.png" />
     <Content Include="Assets\js\script.js" />
-    <Content Include="Assets\Mesosoft.jpg" />
     <Content Include="calendario.aspx" />
     <Content Include="contactos.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
