@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\img\granFranciaBannerLogin.png" />
+    <Content Include="Assets\img\granFranciaBannerSiteMaster.png" />
     <Content Include="Assets\js\script.js" />
     <Content Include="calendario.aspx" />
     <Content Include="contactos.aspx" />
