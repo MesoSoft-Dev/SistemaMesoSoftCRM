@@ -18,13 +18,12 @@
             background-color: #d7b676;
         }
         .fondo{
-           /* background-image: url(Assets/fondoLaGranFrancia.png);*/
-            height: 100vh;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-
+            background-image: linear-gradient(0deg, rgba(221, 212, 206, 0.6), rgba(221, 212, 206, 0.6)), url(Assets/img/fondoGranFrancia.png);
+           background-size: cover;
+           background-repeat: no-repeat;
+             background-position: center center;
         }
+
     </style>
     
         
@@ -35,7 +34,7 @@
     <form id="form1" class="w-100 " runat="server">
       
         <div class="container">
-            <div class="login-box bg-opacity-75 bg-white pt-0 px-0 rounded-0 ">
+            <div class="login-box bg-opacity-50 bg-white pt-0 px-0 rounded-0 ">
                 <!-- Sección de inicio de sesión -->
                   <div class="row align-content-center pb-4">
                         <img src="Assets/img/granFranciaBannerLogin.png" alt="logo" class="img-fluid"/>
