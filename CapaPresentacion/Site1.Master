@@ -13,36 +13,40 @@
     </asp:ContentPlaceHolder>
      <style>
      .sidebar {
-         background-color: #343A48;
+         background-color: #d7b676;
          min-height: 100vh;
      }
      .sidebar .nav-link {
-            color: white;
-            font-size: 14px;
+            color: black;
+            font-size: 15px;
 
         }
      .sidebar .nav-link:hover {
-         background-color: #495057;
+         background-color: #d7b676;
      }
       .offcanvas.offcanvas-start {
             width: 250px;
+
+
         }
-      header{
+       header{
           text-align: center;
       }
-         
 </style>
 </head>
 <body>
-<div class="container-fluid">
-        <div class="row flex-nowrap">
-            <div class=" sidebar col-auto min-vh-100 d-flex flex-column justify-content-between">
-                <div class="sidebar p-2">
-                    <a class="d-flex text-decoration-none mt-1 align-items-center text-white">
-                <header class="fs-4 text-white h5 d-none d-sm-inline">La Gran Francia</header>
+<div class="container-fluid px-0 overflow-hidden"> 
+    <div class="row g-0"> 
+        <img src="#" alt="logo" class="img-fluid w-100 h-50" />
+    </div>
+    <div class="row flex-nowrap"><div class=" sidebar col-auto min-vh-100 d-flex flex-column justify-content-between">
+     <div class="sidebar p-2">
+         <a class="d-flex text-decoration-none mt-1 align-items-center text-dark">
+     <header class="fs-4 h5 d-none d-sm-inline">La Gran Francia</header>
                 </a>
 
                 <ul class="nav nav-pills flex-column mt-4">
+                    <div class="border-bottom border-dark"></div>
                     <li class="nav-item py-2 py-sm-0">
                         <a class="nav-link" href="panelDeControl.aspx">
                             <i class="bi bi-grid"></i>
@@ -74,15 +78,17 @@
                         </a>
                     </li>
                 </ul>
-                    <div class="border-bottom border-white"></div>
- </div>
-               
-          </div>
-            <main class="main-content col p-3">
-    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-</main>
+                
+            </div>
         </div>
+        <main class="main-content col p-3">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
     </div>
+</div>
+
+       
+    
     <form id="form1" runat="server">
       
     </form>
