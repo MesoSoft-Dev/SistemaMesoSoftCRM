@@ -8,75 +8,88 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" type="text/css" href="../Assets/css/styles.css" />
-    <style>
-        .incBoton{
-            background-color: #d7b676;
-            
-        }
-        .incBoton:hover{
-            background-color: #d7b676;
-        }
-        .fondo{
-            background-image: linear-gradient(0deg, rgba(221, 212, 206, 0.6), rgba(221, 212, 206, 0.6)), url(Assets/img/fondoGranFrancia.png);
-           background-size: cover;
-           background-repeat: no-repeat;
-             background-position: center center;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="Assets/css/styles.css" />
     
-        
+    <style>
+        .fondo {
+    background-image: linear-gradient(0deg, rgba(221, 212, 206, 0.6), rgba(221, 212, 206, 0.6)), url(Assets/img/fondoGranFrancia.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+    </style>
 
   </head>
 <body class="fondo">
 
     <form id="form1" class="w-100 " runat="server">
       
-        <div class="container">
-            <div class="login-box bg-opacity-50 bg-white pt-0 px-0 rounded-0 ">
+        <div class="container ">
+            <div class="login-box bg-opacity-50 bg-white p-0 rounded-0 align-content-center justify-content-center">
                 <!-- Sección de inicio de sesión -->
-                  <div class="row align-content-center pb-4">
+                  <div class="row align-content-center ">
                         <img src="Assets/img/granFranciaBannerLogin.png" alt="logo" class="img-fluid"/>
                    </div>
             <div id="loginSection" class="px-4 ">
-                    <h2>Iniciar Sesión</h2>
-                   <div class="login-form ">
-                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Email" />
-                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Contraseña" />
+                    
+                   <div class="login-form align-content-center justify-content-center">
+                        <p class="py-0 my-0 fw-bold">Empresa</p>
+                        <asp:TextBox ID="txtEmpresa" runat="server" CssClass="form-control" Placeholder="Ingresar Empresa" />
+                        <p class="py-0 my-0 fw-bold">Usuario</p>
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Ingresar Email" />
+                        <p class="py-0 my-0 fw-bold">Contraseña</p>
+                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Ingresar Contraseña" />
                         <asp:Button ID="btnLogin" runat="server" CssClass="btn incBoton" Text="Iniciar Sesión" />
                     </div>
-                    <div class="options">
-                        <a class="pt-1 text-dark " href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
-                        <a class="pt-1 text-dark " href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
+                    <div class="options fw-bold">
+                        <a class="pt-1 text-black " href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
+                        <a class="pt-1 text-black " href="javascript:void(0);" onclick="showForgotPassword()">Recordar Contraseña</a>
                     </div>
                 </div>
 
                 <!-- Sección de cambiar contraseña -->
-                <div id="changePasswordSection" class="hidden px-4 rounded-0">
-                    <h3>Cambiar Contraseña</h3>
-                    <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Contraseña Actual" />
-                    <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Nueva Contraseña" />
+                <div id="changePasswordSection" class="hidden px-4 pt-0 mt-0 pb-3 rounded-0 change-password">
+                    
+                    <p class="py-0 my-0 fw-bold">Empresa</p>
+                    <asp:TextBox ID="txtCurrentCompany" runat="server" CssClass="form-control " TextMode="Password" Placeholder="Ingresa Empresa" />
+                    <p class="py-0 my-0 fw-bold">Usuario</p>
+                    <asp:TextBox ID="txtCurrentUser" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Ingresa Usuario" />
+                    <p class="py-0 my-0 fw-bold">Contraseña Actual</p>
+                    <asp:TextBox ID="txtCurrentPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Ingresa Contraseña Actual" />
+                    <p class="py-0 my-0 fw-bold">Nueva Contraseña</p>
+                    <asp:TextBox ID="txtNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Ingresa Nueva Contraseña" />
+                    <p class="py-0 my-0 fw-bold">Confirmar Contraseña</p>
                     <asp:TextBox ID="txtConfirmNewPassword" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirmar Nueva Contraseña" />
-                    <div class="d-flex justify-content-center">
-                    <asp:Button ID="btnChangePassword" runat="server" Class="btn incBoton  w-100" Text="Aceptar" />
+                    <div class="d-flex justify-content-center ">
+                    <asp:Button ID="btnChangePassword" runat="server" Class=" mbtn incBoton  w-100" Text="Cambiar" />
                     </div>
                     <br />
-                    <a href="javascript:void(0);" onclick="showLogin()">Regresar a Iniciar Sesión</a>
+                    <a href="javascript:void(0);" onclick="showLogin() " class="text-black fw-bold" >Regresar a Iniciar Sesión</a>
                 </div>
 
                 <!-- Sección de recordar contraseña -->
-                <div id="forgotPasswordSection" class="hidden px-4 rounded-0">
-                    <h3>Recordar Contraseña</h3>
+                <div id="forgotPasswordSection" class="remember-password hidden px-4 pt-3 rounded-0">
+                    <p class="py-0 my-0 fw-bold">Empresa</p>
                     <asp:TextBox ID="txtForgotUsername" runat="server" Class="form-control" Placeholder="Ingresar Empresa" />
+                    <p class="py-0 my-0 fw-bold">Usuario</p>
                      <asp:TextBox ID="txtForgotEmail" runat="server" Class="form-control" Placeholder="Ingresar Usuario" />
+                     <p class="py-0 my-0 fw-bold">Contraseña</p>
                      <asp:TextBox ID="txtForgotName" runat="server" Class="form-control" Placeholder="Ingresar Contraseña" /> 
                     <div class="d-flex justify-content-center mt-1 mb-1">
-                     <asp:Button ID="btnForgotPassword" runat="server" Class="btn incBoton w-100" Text="Aceptar" />
+                     <asp:Button ID="btnForgotPassword" runat="server" Class="btn incBoton w-100" Text="Recordar" />
                     </div>
-                    <asp:TextBox ID="txtForgotDni" runat="server" Class="form-control mt-2" Placeholder="Correo Electronico para enviar Contraseña" />
+                    <div class="pt-2 d-flex align-items-center mb-5">
+                    <p class="mb-0 fw-bold">Correo Electrónico:</p>
+                     <asp:TextBox ID="txtForgotDni" runat="server" Class="form-control ms-2" Placeholder="Ingresar Correo Electrónico" />
+                     </div>
+                    
                     <br />
-                    <a href="javascript:void(0);" onclick="showLogin()">Regresar a Iniciar Sesión</a>
+                    <div class="d-flex ">
+                        <a href="javascript:void(0);" onclick="showLogin()" class="text-black fw-bold">Regresar a Iniciar Sesión</a>
+                        </div>
+                    
                 </div>
             </div>
         </div>
