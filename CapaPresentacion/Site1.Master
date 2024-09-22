@@ -44,31 +44,31 @@
      <div class="sidebar p-2">
                 <ul class="nav nav-pills flex-column mt-4">         
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="panelDeControl.aspx">
+                        <a class="nav-link fw-bold" href="panelDeControl.aspx">
                             <i class="bi bi-grid"></i>
                             <span class="d-none d-sm-inline">Panel de trabajo</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="conversaciones.aspx">
+                        <a class="nav-link fw-bold" href="conversaciones.aspx">
                             <i class="bi bi-chat"></i>
                             <span class="d-none d-sm-inline">Conversaciones</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="calendario.aspx">
+                        <a class="nav-link fw-bold" href="calendario.aspx">
                             <i class="bi bi-calendar4"></i>
                             <span class="d-none d-sm-inline">Calendario</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="contactos.aspx">
+                        <a class="nav-link fw-bold" href="contactos.aspx">
                             <i class="bi bi-person-lines-fill"></i>
                             <span class="d-none d-sm-inline">Contactos</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="oportunidades.aspx">
+                        <a class="nav-link fw-bold" href="oportunidades.aspx">
                             <i class="bi bi-briefcase"></i>
                             <span class="d-none d-sm-inline">Oportunidades</span>
                         </a>
