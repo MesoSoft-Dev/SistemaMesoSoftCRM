@@ -13,9 +13,10 @@
     </asp:ContentPlaceHolder>
      <style>
      .sidebar {
-         background-color: #d7b676;
-         min-height: 100vh;
+         background: linear-gradient(to left, #e4cb6e, #f0dd9d);
+         min-height: 100vh;          
      }
+     
      .sidebar .nav-link {
             color: black;
             font-size: 15px;
@@ -37,47 +38,43 @@
 <body>
 <div class="container-fluid px-0 overflow-hidden"> 
     <div class="row g-0"> 
-        <img src="#" alt="logo" class="img-fluid w-100 h-50" />
+        <img src="Assets/img/granFranciaBannerSiteMaster.png" alt="logo" class="img-fluid w-100 h-25" />
     </div>
     <div class="row flex-nowrap"><div class=" sidebar col-auto min-vh-100 d-flex flex-column justify-content-between">
      <div class="sidebar p-2">
-         <a class="d-flex text-decoration-none mt-1 align-items-center text-dark">
-     <header class="fs-4 h5 d-none d-sm-inline">La Gran Francia</header>
-                </a>
-
-                <ul class="nav nav-pills flex-column mt-4">
-                    <div class="border-bottom border-dark"></div>
+                <ul class="nav nav-pills flex-column mt-4">         
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="panelDeControl.aspx">
+                        <a class="nav-link fw-bold" href="panelDeControl.aspx">
                             <i class="bi bi-grid"></i>
                             <span class="d-none d-sm-inline">Panel de trabajo</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="conversaciones.aspx">
+                        <a class="nav-link fw-bold" href="conversaciones.aspx">
                             <i class="bi bi-chat"></i>
                             <span class="d-none d-sm-inline">Conversaciones</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="calendario.aspx">
+                        <a class="nav-link fw-bold" href="calendario.aspx">
                             <i class="bi bi-calendar4"></i>
                             <span class="d-none d-sm-inline">Calendario</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="contactos.aspx">
+                        <a class="nav-link fw-bold" href="contactos.aspx">
                             <i class="bi bi-person-lines-fill"></i>
                             <span class="d-none d-sm-inline">Contactos</span>
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link" href="oportunidades.aspx">
+                        <a class="nav-link fw-bold" href="oportunidades.aspx">
                             <i class="bi bi-briefcase"></i>
                             <span class="d-none d-sm-inline">Oportunidades</span>
                         </a>
-                    </li>
+                    </li>     
                 </ul>
+         <div class="border-bottom border-dark"></div>
                 
             </div>
         </div>
