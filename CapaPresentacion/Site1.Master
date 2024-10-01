@@ -13,7 +13,7 @@
     </asp:ContentPlaceHolder>
      <style>
      .sidebar {
-         background: linear-gradient(to left, #e4cb6e, #f0dd9d);
+         background: linear-gradient(to left, #efda9d, #f0dd9d);
          min-height: 100vh;          
      }
      
@@ -32,13 +32,16 @@
         }
        header{
           text-align: center;
-      }
+       }
+    .cabezera{
+        height: 100px;
+    }
 </style>
 </head>
 <body>
 <div class="container-fluid px-0 overflow-hidden"> 
     <div class="row g-0"> 
-        <img src="Assets/img/granFranciaBannerSiteMaster.png" alt="logo" class="img-fluid w-100 h-25" />
+        <img src="Assets/img/granFranciaBannerSiteMaster.png" alt="logo" class="cabezera img-fluid"/>
     </div>
     <div class="row flex-nowrap"><div class=" sidebar col-auto min-vh-100 d-flex flex-column justify-content-between">
      <div class="sidebar p-2">
