@@ -1,4 +1,4 @@
-﻿    <%@ Page Title="Login" Language="C#"  AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="CapaPresentacion._Default" %>
+﻿    <%@ Page Title="Login" Language="C#"  AutoEventWireup="true" CodeBehind="LoginPage.aspx.cs" Inherits="CapaPresentacion._Default" ClientIDMode="Static" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" type="text/css" href="Assets/css/styles.css" />
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
+   
     <style>
         .fondo {
     background-image: linear-gradient(0deg, rgba(221, 212, 206, 0.6), rgba(221, 212, 206, 0.6)), url(Assets/img/fondoGranFrancia.png);
@@ -44,7 +46,7 @@
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Ingresar Email" />
                         <p class="py-0 my-0 fw-bold">Contraseña</p>
                         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control mb-4" TextMode="Password" Placeholder="Ingresar Contraseña" />
-                        <asp:Button ID="btnLogin" runat="server" CssClass="btn incBoton" Text="Iniciar Sesión" />
+                        <asp:Button ID="btnLogin" runat="server" CssClass="btn incBoton" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
                     </div>
                     <div class="options fw-bold mt-4">
                         <a class="pt-1 text-black " href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
@@ -79,7 +81,7 @@
 </div>
 
                 <!-- Sección de recordar contraseña -->
-                <div id="forgotPasswordSection" class="hidden ">
+                <div id="forgotPasswordSection" runat="server" class="hidden ">
                 <div  class="remember-password px-4 mt-0 pt-0 rounded-0">
                     <p class="py-0 my-0 fw-bold">Empresa</p>
                     <asp:TextBox ID="txtForgotUsername" runat="server" Class="form-control" Placeholder="Ingresar Empresa" />
@@ -105,6 +107,7 @@
             </div>
         </div>
         <script src="../Assets/js/script.js"></script>
+        <script src="Assets/js/recordar.js"></script>
     </form>
 </body>
 </html>

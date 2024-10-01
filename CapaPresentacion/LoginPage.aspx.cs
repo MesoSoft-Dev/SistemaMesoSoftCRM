@@ -13,5 +13,32 @@ namespace CapaPresentacion
         {
 
         }
-    }
+
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string empresa = txtEmpresa.Text;
+            string usuario = txtEmail.Text;
+            string contraseña = txtPassword.Text;
+
+            string passEmpresa = "lagranfrancia";
+            string passUsuario = "lagranfrancia@gmail.com";
+            string passContraseña = "12345";
+
+
+
+            if (empresa == passEmpresa && usuario == passUsuario && contraseña == passContraseña)
+            {
+                Response.Write("<script>alert('Usuario Correcto')</script>");
+                Response.Redirect("panelDeControl.aspx");
+
+            }
+            else
+            {
+                Response.Write("<script>alert('Usuario Incorrecto')</script>");
+            }
+
+        }
+         
+       
+    } 
 }
