@@ -14,6 +14,14 @@ namespace CapaLogicaNegocio
         {
             int resultadoConsulta = consultaDatos.ValidaExistenciaEmpresa(nombreEmpresa);
             return resultadoConsulta;
+
         }
+        public int ValidaCampoUsuario(String nombreUsuario)
+        {
+            int resultadoConsulta = consultaDatos.ValidaExistenciaUsuario(nombreUsuario);
+            return resultadoConsulta; 
+        }
+
+
     }
 }

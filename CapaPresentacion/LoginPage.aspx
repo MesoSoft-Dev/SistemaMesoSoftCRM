@@ -44,7 +44,7 @@
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Placeholder="Ingresar Email" />
                         <p class="py-0 my-0 fw-bold">Contraseña</p>
                         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control mb-4" TextMode="Password" Placeholder="Ingresar Contraseña" />
-                        <asp:Button ID="btnLogin" runat="server" CssClass="btn incBoton" Text="Iniciar Sesión" />
+                        <asp:Button ID="btnLogin" runat="server" CssClass="btn incBoton" Text="Iniciar Sesión" OnClick="btnLogin_Click" />
                     </div>
                     <div class="options fw-bold mt-4">
                         <a class="pt-1 text-black " href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>

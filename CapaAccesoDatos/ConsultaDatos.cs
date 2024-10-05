@@ -26,5 +26,18 @@ namespace CapaAccesoDatos
             return 1; // PASA TODAS LAS VALIDACIONES ES DECIR, ESTÁ ACTIVA Y EXISTE LA EMPRESA
         }
 
-    }
+        public int ValidaExistenciaUsuario(string nombreUsuario)
+        {
+           Object existeUsuario = Varios.Nz(Varios.Dlookup(SqlConnectionString, "Usuario", "e_tblUsuarios", "Usuario='" + nombreUsuario + "'"), "Null");
+            if (existeUsuario == null) { return 0; }
+            else
+            {
+                Object activaUsuario = Varios.Nz(Varios.Dlookup(SqlConnectionString, "Activo", "e_tblUsuarios", "Usuario='" + nombreUsuario + "'"), "Null");
+                if (activaUsuario == null) { return 2; }
+            }
+
+            return 1; 
+        }
+
+   
 }
