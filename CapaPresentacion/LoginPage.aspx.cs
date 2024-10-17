@@ -11,11 +11,14 @@ namespace CapaPresentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string nombreEmpresa = txtEmpresa.Text;
+            string nombreUsuario = txtEmail.Text;
 
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+
 
         }
     }

@@ -78,31 +78,36 @@
     </div>
 </div>
 
-                <!-- Sección de recordar contraseña -->
-                <div id="forgotPasswordSection" class="hidden ">
-                <div  class="remember-password px-4 mt-0 pt-0 rounded-0">
-                    <p class="py-0 my-0 fw-bold">Empresa</p>
-                    <asp:TextBox ID="txtForgotUsername" runat="server" Class="form-control" Placeholder="Ingresar Empresa" />
-                    <p class="py-0 my-0 fw-bold">Usuario</p>
-                     <asp:TextBox ID="txtForgotEmail" runat="server" Class="form-control" Placeholder="Ingresar Usuario" />
-                     <p class="py-0 my-0 fw-bold">Contraseña</p>
-                     <asp:TextBox ID="txtForgotName" runat="server" Class="form-control " Placeholder="Ingresar Contraseña" /> 
-                    <div class="d-flex justify-content-center mt-1 mb-1">
-                     <asp:Button ID="btnForgotPassword" runat="server" Class="btn incBoton w-100 my-3" Text="Recordar" />
-                    </div>
-                    <div class="pt-2 d-flex align-items-center mb-5">
-                    <p class="mb-0 fw-bold">Correo Electrónico:</p>
-                     <asp:TextBox ID="txtForgotDni" runat="server" Class="form-control ms-2" Placeholder="Ingresar Correo Electrónico" />
-                     </div>
-                  
-                    </div>
-                     <div class="d-flex justify-content-between p-1 m-1">
-      <a class="text-black fw-bold " href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
-     <a href="javascript:void(0);" onclick="showLogin()" class="text-black fw-bold">Regresar a Iniciar Sesión</a>
-     </div>
+<!-- Sección de recordar contraseña -->
+            
+<div id="forgotPasswordSection" class="hidden">
+    <div class="remember-password px-4 mt-0 pt-0 rounded-0">
+        <p class="py-0 my-0 fw-bold">Empresa</p>
+        <asp:TextBox ID="txtForgotUsername" runat="server" Class="form-control" Placeholder="Ingresar Empresa" />
+        <p class="py-0 my-0 fw-bold">Usuario</p>
+        <asp:TextBox ID="txtForgotEmail" runat="server" Class="form-control" Placeholder="Ingresar Usuario" />
+        <p class="py-0 my-0 fw-bold">Contraseña</p>
+        <asp:TextBox ID="txtForgotName" runat="server" Class="form-control" Placeholder="Ingresar Contraseña" />
+        <div class="d-flex justify-content-center mt-1 mb-1">
+            <asp:Button ID="btnForgotPassword" runat="server" Class="btn incBoton w-100 my-3" Text="Recordar" />
+        </div>
+
+        <div class="pt-2 d-flex align-items-center mb-5 flex-column flex-sm-row">
+            <p class="mb-0 fw-bold">Correo Electrónico:</p>
+            <asp:TextBox ID="txtForgotDni" runat="server" Class="form-control ms-2 mt-2 mt-sm-0" Placeholder="Ingresar Correo Electrónico" />
+        </div>
+    </div>
+    
+    <div class="d-flex justify-content-between p-1 m-1">
+    <a class="text-black fw-bold ms-2 ms-sm-0" href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
+    <a href="javascript:void(0);" onclick="showLogin()" class="text-black fw-bold">Regresar a Iniciar Sesión</a>
+</div>
+</div>
+
+
                     
                 </div>
-            </div>
+          
         </div>
         <script src="../Assets/js/script.js"></script>
     </form>
