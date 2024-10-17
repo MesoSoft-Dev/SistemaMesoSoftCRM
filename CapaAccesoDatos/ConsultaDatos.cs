@@ -8,14 +8,14 @@ using MSDLLS;
 
 namespace CapaAccesoDatos
 {
-    public class ConsultaDatos
+   public class ConsultaDatos
     {
         //Lee la cadena de conexion del webconfig ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
 
-        private string SqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
-        public int ValidaExistenciaEmpresa(string nombreEmpresa) 
+     /*   private string SqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
+        public int ValidaExistenciaEmpresa(string nombreEmpresa)
         {
-            Object existeEmpresa = Varios.Nz(Varios.Dlookup(SqlConnectionString, "Empresa", "e_tblEmpresas", "Empresa='" + nombreEmpresa +"'"), "Null");
+            Object existeEmpresa = Varios.Nz(Varios.Dlookup(SqlConnectionString, "Empresa", "e_tblEmpresas", "Empresa='" + nombreEmpresa + "'"), "Null");
             if (existeEmpresa == null) { return 0; }
             else
             {
@@ -28,7 +28,7 @@ namespace CapaAccesoDatos
 
         public int ValidaExistenciaUsuario(string nombreUsuario)
         {
-           Object existeUsuario = Varios.Nz(Varios.Dlookup(SqlConnectionString, "Usuario", "e_tblUsuarios", "Usuario='" + nombreUsuario + "'"), "Null");
+            Object existeUsuario = Varios.Nz(Varios.Dlookup(SqlConnectionString, "Usuario", "e_tblUsuarios", "Usuario='" + nombreUsuario + "'"), "Null");
             if (existeUsuario == null) { return 0; }
             else
             {
@@ -36,8 +36,9 @@ namespace CapaAccesoDatos
                 if (activaUsuario == null) { return 2; }
             }
 
-            return 1; 
+            return 1;
         }
+      */
 
-   
+    }
 }
