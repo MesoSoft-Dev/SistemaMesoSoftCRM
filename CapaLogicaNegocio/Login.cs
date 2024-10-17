@@ -9,19 +9,19 @@ namespace CapaLogicaNegocio
 {
     public class Login
     {
-           private ConsultaDatos consultaDatos = new ConsultaDatos();
+        private ConsultaDatos consultaDatos = new ConsultaDatos();
         public int ValidaCampoEmpresa(String nombreEmpresa)
-          {
-              int resultadoConsulta = consultaDatos.ValidaExistenciaEmpresa(nombreEmpresa);
-              return resultadoConsulta;
+        {
+            int resultadoConsulta = consultaDatos.ValidaExistenciaEmpresa(nombreEmpresa);
+            return resultadoConsulta;
 
-          }
-          public int ValidaCampoUsuario(String nombreUsuario)
-          {
-              int resultadoConsulta = consultaDatos.ValidaExistenciaUsuario(nombreUsuario);
-              return resultadoConsulta; 
-          }
+        }
+        public int ValidaCampoUsuario(String nombreUsuario)
+        {
+            int resultadoConsulta = consultaDatos.ValidaExistenciaUsuario(nombreUsuario);
+            return resultadoConsulta; 
+        }
 
-          
+
     }
 }
