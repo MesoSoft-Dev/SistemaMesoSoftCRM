@@ -71,7 +71,7 @@
                         </a>
                     </li>
                     <li class="nav-item py-2 py-sm-0">
-                        <a class="nav-link fw-bold" href="oportunidades.aspx">
+                        <a class="nav-link fw-bold" href="kanban.aspx">
                             <i class="bi bi-briefcase"></i>
                             <span class="d-none d-sm-inline">Oportunidades</span>
                         </a>
