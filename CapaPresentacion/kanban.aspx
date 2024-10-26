@@ -25,7 +25,7 @@
       <div class="row mx-auto"> 
         <div class="col-md status border shadow mb-3 me-3" id="no_status">
           <h2 class="">No iniciado</h2>
-          <button id="add_btn" class="btn w-100 btn-agregar mt-auto " data-bs-toggle="modal" data-bs-target="#todo_form">
+          <button id="add_btn" class="btn w-100 btn-agregar mt-auto rounded-0  " data-bs-toggle="modal" data-bs-target="#todo_form">
             + Agregar
           </button>
         </div>
