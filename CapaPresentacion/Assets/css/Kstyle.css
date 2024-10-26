@@ -14,6 +14,8 @@ body {
   display: flex;
 }
 
+
+
 .status {
   background-color: #f3f3f3;
   padding: 20px 0;
@@ -39,6 +41,12 @@ body {
 
 .btn-agregar {
     color: #7367ee;
+    
+    border-bottom: 1px solid #dbdbdb;
+   
+}
+
+.btn-agregar:hover {
     
     border-bottom: 1px solid #dbdbdb;
 }
