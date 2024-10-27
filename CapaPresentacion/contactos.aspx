@@ -5,7 +5,7 @@
     <!-- Aquí va el contenido específico de esta página -->
     <h2 class="border-bottom pb-1 mb-3">Contactos</h2>
 
-    <label>Nombres</label>
+<label>Nombres</label>
 <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control"></asp:TextBox>
 
 <label>Apellidos</label>
@@ -24,17 +24,31 @@
 <label>Origien de contacto</label>
 <asp:TextBox ID="txtOrigen" runat="server" CssClass="form-control"></asp:TextBox>
 
-    <label>Sexo</label>
+<label>Sexo</label>
+<asp:DropDownList ID="ddlTipoContacto" runat="server" CssClass="form-control">
+<asp:ListItem>Interesado</asp:ListItem>
+<asp:ListItem>Cliente</asp:ListItem>
+</asp:DropDownList>
+
+<label>Sexo</label>
 <asp:DropDownList ID="ddlSexo" runat="server" CssClass="form-control">
 <asp:ListItem>Masculino</asp:ListItem>
 <asp:ListItem>Femenino</asp:ListItem>
 </asp:DropDownList>
-                      
-    <label>Tipo de comunicacion</label>
-<asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
-<asp:ListItem>Email</asp:ListItem>
-<asp:ListItem>Whatsapp</asp:ListItem>
+
+ <label>Comunicacion por Email</label>
+<asp:DropDownList ID="ddlComEmail" runat="server" CssClass="form-control">
+<asp:ListItem>Si</asp:ListItem>
+<asp:ListItem>No</asp:ListItem>
 </asp:DropDownList>
+
+<label>Comunicacion por Whatsapp</label>
+<asp:DropDownList ID="dllComWhatsapp" runat="server" CssClass="form-control">
+<asp:ListItem>Si</asp:ListItem>
+<asp:ListItem>No</asp:ListItem>
+</asp:DropDownList>
+                      
+  
                       
 
 
