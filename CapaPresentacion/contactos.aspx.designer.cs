@@ -69,6 +69,15 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.TextBox txtOrigen;
 
         /// <summary>
+        /// ddlTipoContacto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoContacto;
+
+        /// <summary>
         /// ddlSexo control.
         /// </summary>
         /// <remarks>
@@ -78,12 +87,21 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
 
         /// <summary>
-        /// DropDownList1 control.
+        /// ddlComEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlComEmail;
+
+        /// <summary>
+        /// dllComWhatsapp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dllComWhatsapp;
     }
 }
