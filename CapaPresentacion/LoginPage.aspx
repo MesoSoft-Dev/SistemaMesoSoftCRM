@@ -86,19 +86,18 @@
                         <div class="d-flex justify-content-center mt-1 mb-1">
                             <asp:Button ID="btnForgotPassword" runat="server" Class="btn incBoton w-100 my-3" Text="Recordar" OnClick="btnForgotPassword_Click" />
                         </div>  
-                        <div class="pt-2 d-flex align-items-center mb-5">
+                        <div class="pt-2 d-flex align-items-start mb-5 flex-column flex-sm-row">
                             <p class="mb-0 fw-bold">Correo Electrónico:</p>
-                            <asp:TextBox ID="txtCurrentEmailFP" runat="server" Class="form-control ms-2" Placeholder="Ingresar Correo Electrónico" />
+                            <asp:TextBox ID="txtCurrentEmailFP" runat="server" Class="form-control mt-2 mt-sm-0" Placeholder="Ingresar Correo Electrónico" />
                         </div>
                     </div>
                     <div class="d-flex justify-content-between p-1 m-1">
-                        <a class="text-black fw-bold " href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
+                        <a class="text-black fw-bold ms-2 ms-sm-0" href="javascript:void(0);" onclick="showChangePassword()">Cambiar Contraseña</a>
                         <a href="javascript:void(0);" onclick="showLogin()" class="text-black fw-bold">Regresar a Iniciar Sesión</a>
                     </div>
                 </div> <!-- Fin sección recordar contraseña -->
             </div>
         </div>
-
         <script src="../Assets/js/script.js"></script>
     </form>
 </body>

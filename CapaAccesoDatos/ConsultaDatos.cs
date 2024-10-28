@@ -12,7 +12,7 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace CapaAccesoDatos
 {
-    public class ConsultaDatos
+   public class ConsultaDatos
     {
         //Lee la cadena de conexion del webconfig ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString;
 
