@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaAccesoDatos", "CapaAcce
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaLogicaNegocio", "CapaLogicaNegocio\CapaLogicaNegocio.csproj", "{56378F13-3DFC-4B5F-AAA0-4B2178C2ABC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaModelo", "CapaModelo\CapaModelo.csproj", "{74FCC43E-D3E8-460F-BA1C-988B7255BC61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,18 @@ Global
 		{04916E4B-9C65-4F64-9FA6-4C33EDEB03EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04916E4B-9C65-4F64-9FA6-4C33EDEB03EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04916E4B-9C65-4F64-9FA6-4C33EDEB03EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77800259-222B-4457-92A8-7A8C0EB011CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77800259-222B-4457-92A8-7A8C0EB011CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77800259-222B-4457-92A8-7A8C0EB011CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77800259-222B-4457-92A8-7A8C0EB011CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56378F13-3DFC-4B5F-AAA0-4B2178C2ABC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56378F13-3DFC-4B5F-AAA0-4B2178C2ABC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56378F13-3DFC-4B5F-AAA0-4B2178C2ABC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56378F13-3DFC-4B5F-AAA0-4B2178C2ABC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FCC43E-D3E8-460F-BA1C-988B7255BC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FCC43E-D3E8-460F-BA1C-988B7255BC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FCC43E-D3E8-460F-BA1C-988B7255BC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FCC43E-D3E8-460F-BA1C-988B7255BC61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
