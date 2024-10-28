@@ -78,33 +78,6 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.RequiredFieldValidator firstValidator;
 
         /// <summary>
-        /// ddlTipoContacto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoContacto;
-
-        /// <summary>
-        /// secondValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator secondValidator;
-
-        /// <summary>
-        /// txtOrigen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOrigen;
-
-        /// <summary>
         /// ddlComEmail control.
         /// </summary>
         /// <remarks>
@@ -139,6 +112,33 @@ namespace CapaPresentacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator fourthValidator;
+
+        /// <summary>
+        /// ddlTipoContacto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoContacto;
+
+        /// <summary>
+        /// secondValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator secondValidator;
+
+        /// <summary>
+        /// txtOrigen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOrigen;
 
         /// <summary>
         /// btnRegistrar control.
