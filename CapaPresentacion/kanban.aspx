@@ -20,7 +20,6 @@
         </div>
       </div>
     </div>
-
     <div class="container mt-5 ">
       <div class="row mx-auto"> 
         <div class="col-md status border shadow mb-3 me-3" id="no_status">

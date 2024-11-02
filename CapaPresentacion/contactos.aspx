@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <form id="form1" runat="server">
     <!-- Aquí va el contenido específico de esta página -->
     <h2 class="border-bottom pb-1 mb-3">Datos Personales</h2>
 
@@ -92,7 +93,7 @@
                       
 
 
-
+</form>
 
 
 
