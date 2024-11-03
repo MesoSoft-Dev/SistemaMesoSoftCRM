@@ -2,6 +2,7 @@ const todos = document.querySelectorAll(".todo");
 const all_status = document.querySelectorAll(".status");
 let draggableTodo = null;
 
+/* Evento de arrastre */
 todos.forEach((todo) => {
     todo.addEventListener("dragstart", dragStart);
     todo.addEventListener("dragend", dragEnd);
@@ -23,6 +24,7 @@ function dragEnd() {
     console.log("dragEnd");
 }
 
+/* Eventos de las columnas para arrastrar y soltar */
 all_status.forEach((status) => {
     status.addEventListener("dragover", dragOver);
     status.addEventListener("dragenter", dragEnter);
@@ -34,18 +36,17 @@ function dragOver(e) {
     e.preventDefault();
 }
 
-function dragEnter() {
-    this.style.border = "1px dashed #ccc";
-    console.log("dragEnter");
+function dragEnter(e) {
+    e.preventDefault(); // Prevenir comportamiento predeterminado
+    // No modificar el borde en el arrastre
 }
 
-function dragLeave() {
-    this.style.border = "none";
-    console.log("dragLeave");
+function dragLeave(e) {
+    e.preventDefault(); // Prevenir comportamiento predeterminado
+    // No modificar el borde en el arrastre
 }
 
 function dragDrop() {
-    this.style.border = "none";
     this.appendChild(draggableTodo);
     console.log("dropped");
 }
@@ -86,8 +87,7 @@ todo_submit.addEventListener("click", createTodo);
 function createTodo() {
     const input_val = document.getElementById("todo_input").value;
 
-    if (input_val.trim() !== "") { 
-       
+    if (input_val.trim() !== "") {
         const todo_div = document.createElement("div");
         const txt = document.createTextNode(input_val);
 
@@ -95,19 +95,15 @@ function createTodo() {
         todo_div.classList.add("todo");
         todo_div.setAttribute("draggable", "true");
 
-        
         document.getElementById("no_status").appendChild(todo_div);
 
-     
         todo_div.addEventListener("dragstart", dragStart);
         todo_div.addEventListener("dragend", dragEnd);
 
-      
         document.getElementById("todo_input").value = "";
 
-        
         const modalElement = document.getElementById('todo_form');
-        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement); 
-        modalInstance.hide(); 
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+        modalInstance.hide();
     }
 }
