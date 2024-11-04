@@ -7,14 +7,20 @@ body {
     display: flex;
     justify-content: start;
     align-items: start;
+    margin: 0;
 }
 
 .todo-container {
     display: flex;
+    gap: 10px; 
 }
 
 .status {
-    justify-content: center;
+    width: 100%; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
     .status h2 {
@@ -25,11 +31,11 @@ body {
         font-size: 15px;
         border-radius: 10px;
         background-color: #f3f3f3;
+        width: 100%;
     }
 
-
-
 .todo {
+    width: calc(100% - 20px); 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,11 +44,10 @@ body {
     padding: 10px;
     font-weight: 500;
     border: 1px solid #808080;
+    margin-bottom: 10px;
     border-radius: 10px;
     background-color: #f3f3f3;
 }
-
-
 
 #overlay {
     position: fixed;
@@ -65,7 +70,6 @@ body {
 .borde3 {
     border: 2px solid #808080;
 }
-
 
 .borde4 {
     border: 2px solid #3a421b;
