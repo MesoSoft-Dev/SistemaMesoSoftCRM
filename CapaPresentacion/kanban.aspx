@@ -6,15 +6,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         
-        <div class="container d-flex border-bottom my-4">
-            <div><h5>Oportunidades</h5></div>
+        <div class="container d-flex border-bottom border-dark my-4">
+            <div><h5 class="fw-bold">Oportunidades</h5></div>
         </div>
 
         <div class="mx-4 mb-5 d-flex justify-content-end">
 
           
-            <button id="btnAgregarp" class="btn btn-warning fw-bold" data-bs-toggle="modal" data-bs-target="#todo_form" type="button">
-                Agregar Oportunidad
+            <button id="btnAgregarp" class="btn fondo4 rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#todo_form" type="button">
+                + Agregar Oportunidad
             </button>
         </div>
 
@@ -44,11 +44,11 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label class="form-label">Nombres</label>
-                    <input type="text" class="form-control" placeholder="Ingrese nombres del contacto">
+                  <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Nombre"></asp:TextBox>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" placeholder="Ingrese apellidos del contacto">
+                     <asp:TextBox ID="txtApellidos" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Apellido"></asp:TextBox>
                 </div>
             </div>
             <div class="row mb-3">
@@ -146,30 +146,29 @@
             <button class="btn btn-secondary">Cancelar</button>
         </div>
     </div>
-                                 <asp:Button ID="todo_submit" runat="server" Text="Agregar oportunidad" CssClass="btn btn-success btn-block" OnClientClick="createTodo(); return false;" />     
+          <asp:Button ID="todo_submit" runat="server" Text="Agregar oportunidad" CssClass="btn btn-success btn-block" OnClientClick="createTodo(); return false;" />     
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="container mt-4">
-            <div class="row"> 
-                <div class="col-md status mb-3 my-0 " id="no_status">
-                    <h2 class="borde1">Nuevo Contacto</h2>
-                    <div class="todo" draggable="true">Ejemplo Todo</div>
-
-                </div>
-                <div class="col-md status mb-3 my-0 ">
-                    <h2 class="borde2">Cliente Potencial</h2>
-                </div>
-                <div class="col-md status mb-3 my-0">
-                    <h2 class="borde3">Nueva Reservacion</h2>
-                </div>
-                <div class="col-md status mb-3 my-0 ">
-                    <h2 class="borde4">Cliente Atendido</h2>
-                </div>
-            </div>
+        <div class="container mt-4 shadow  w-100">
+    <div class="row">
+        <div class="col-md status mb-3 my-0 border-end border-dark pt-2 mb-4" id="no_status">
+            <h2 class="fondo1 mb-4">Nuevo Contacto</h2>
+            <div class="todo" draggable="true">Ejemplo Todo</div>
         </div>
+        <div class="col-md status mb-3 my-0 border-end border-start border-dark pt-2 mb-4">
+            <h2 class="fondo2 mb-4">Cliente Potencial</h2>
+        </div>
+        <div class="col-md status mb-3 my-0 border-end border-start border-dark pt-2 mb-4">
+            <h2 class="fondo3 mb-4">Nueva Reservación</h2>
+        </div>
+        <div class="col-md status mb-3 my-0 border-start border-dark pt-2">
+            <h2 class="fondo4 mb-4">Cliente Atendido</h2>
+        </div>
+    </div>
+</div>
 
         <div id="overlay" class="d-none"></div>
     </form>
