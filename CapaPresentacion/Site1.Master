@@ -29,62 +29,70 @@
         .cabezera {
             height: 100px;
         }
+
+     
+         .sidebar .nav-link.active {
+                background-color: #e2c976!important;
+                color: black !important;
+         }
+
     </style>
 </head>
 <body>
-    <div class="container-fluid px-0 overflow-hidden"> 
+             <div class="container-fluid px-0 overflow-hidden"> 
         <div class="row g-0"> 
             <img src="Assets/img/granFranciaBannerSiteMaster.png" alt="logo" class="cabezera img-fluid"/>
         </div>
         <div class="row flex-nowrap">
             <div class="sidebar col-auto min-vh-100 d-flex flex-column justify-content-between">
                 <div class="sidebar p-2">
-                    <ul class="nav nav-pills flex-column mt-4">         
-                        <li class="nav-item py-2 py-sm-0">
-                            <a class="nav-link fw-bold" href="panelDeControl.aspx">
-                                <i class="bi bi-grid"></i>
-                                <span class="d-none d-sm-inline">Panel de trabajo</span>
-                            </a>
-                        </li>
-                        <li class="nav-item py-2 py-sm-0">
-                            <a class="nav-link fw-bold" href="conversaciones.aspx">
-                                <i class="bi bi-chat"></i>
-                                <span class="d-none d-sm-inline">Conversaciones</span>
-                            </a>
-                        </li>
-                        <li class="nav-item py-2 py-sm-0">
-                            <a class="nav-link fw-bold" href="calendario.aspx">
-                                <i class="bi bi-calendar4"></i>
-                                <span class="d-none d-sm-inline">Calendario</span>
-                            </a>
-                        </li>
-                        <li class="nav-item py-2 py-sm-0">
-                            <a class="nav-link fw-bold" href="contactos.aspx">
-                                <i class="bi bi-person-lines-fill"></i>
-                                <span class="d-none d-sm-inline">Contactos</span>
-                            </a>
-                        </li>
-                        <li class="nav-item py-2 py-sm-0">
-                            <a class="nav-link fw-bold" href="kanban.aspx">
-                                <i class="bi bi-briefcase"></i>
-                                <span class="d-none d-sm-inline">Oportunidades</span>
-                            </a>
-                        </li>     
-                    </ul>
-                    <div class="border-bottom border-dark"></div>
-                </div>
-            </div>
+                    <ul class="nav nav-pills flex-column mt-4">
+    <li class="nav-item py-2 py-sm-0">
+        <a id="panelDeControl" class="nav-link fw-bold" href="panelDeControl.aspx">
+            <i class="bi bi-grid"></i>
+            <span class="d-none d-sm-inline">Panel de Control</span>
+        </a>
+    </li>
+    <li class="nav-item py-2 py-sm-0">
+        <a id="conversaciones" class="nav-link fw-bold" href="conversaciones.aspx">
+            <i class="bi bi-chat"></i>
+            <span class="d-none d-sm-inline">Conversaciones</span>
+        </a>
+    </li>
+    <li class="nav-item py-2 py-sm-0">
+        <a id="calendario" class="nav-link fw-bold" href="calendario.aspx">
+            <i class="bi bi-calendar4"></i>
+            <span class="d-none d-sm-inline">Calendario</span>
+        </a>
+    </li>
+    <li class="nav-item py-2 py-sm-0">
+        <a id="contactos" class="nav-link fw-bold" href="contactos.aspx">
+            <i class="bi bi-person-lines-fill"></i>
+            <span class="d-none d-sm-inline">Contactos</span>
+        </a>
+    </li>
+    <li class="nav-item py-2 py-sm-0">
+        <a id="kanban" class="nav-link fw-bold" href="kanban.aspx">
+            <i class="bi bi-briefcase"></i>
+            <span class="d-none d-sm-inline">Oportunidades</span>
+        </a>
+    </li>
+</ul>
+      <div class="border-bottom border-dark"></div>
+   </div>
+</div>
 
-            <!-- Mueve el formulario para que envuelva el contenido dinámico -->
+   
             
-                <main class="main-content col p-3">
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
-                </main>
+ <main class="main-content col p-3">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+</main>
             
-        </div>
-    </div>
+   </div>
+ </div>
 
     <script src="Scripts/jquery-3.7.0.min.js"></script>   
     <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Assets/js/script.js"></script>
 </body>
 </html>
