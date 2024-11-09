@@ -44,12 +44,11 @@ body {
     color: #000000;
     font-size: 15px;
     padding: 11px;
-     text-align: center;
+    text-align: center;
     font-weight: 500;
     margin-bottom: 10px;
     border-radius: 10px;
     background-color: #faf1d6;
-   
 }
 
 #overlay {
@@ -76,4 +75,21 @@ body {
 
 .fondo4 {
     background-color: #e9d07f;
+}
+
+
+
+.bordeSidebarm {
+    border-left: 3px solid #753637;
+    border-radius: 0;
+}
+
+
+.SidebarmElemento {
+    background: none !important;
+    border: none !important;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: bold !important;
 }

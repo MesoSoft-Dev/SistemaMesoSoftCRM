@@ -5,6 +5,7 @@ let draggableTodo = null;
 todos.forEach((todo) => {
     todo.addEventListener("dragstart", dragStart);
     todo.addEventListener("dragend", dragEnd);
+    todo.addEventListener("click", openModal); 
 });
 
 function dragStart() {
@@ -30,7 +31,7 @@ function dragOver(e) {
     e.preventDefault();
 }
 
-// Cambia el fondo del "todo" al color de fondo del h2 del contenedor "status"
+
 function dragDrop() {
     this.appendChild(draggableTodo);
 
@@ -39,9 +40,11 @@ function dragDrop() {
     draggableTodo.style.backgroundColor = headerColor;
 }
 
+// Función para crear un nueva oportunidad
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("todo_submit").addEventListener("click", createTodo);
 });
+
 
 function createTodo() {
     const nombre = document.getElementById("txtNombres").value;
@@ -49,24 +52,49 @@ function createTodo() {
     const input_val = `${nombre} ${apellido}`.trim();
 
     if (input_val !== "") {
-        const todo_div = document.createElement("div");
-        todo_div.textContent = input_val;
-        todo_div.classList.add("todo");
-        todo_div.setAttribute("draggable", "true");
+        const todo_button = document.createElement("button");
+        todo_button.textContent = input_val;
+        todo_button.classList.add("todo", "border-0");
+        todo_button.setAttribute("draggable", "true");
 
-        document.getElementById("no_status").appendChild(todo_div);
+        document.getElementById("no_status").appendChild(todo_button);
 
-        // Asignar los eventos de arrastre al nuevo "todo"
-        todo_div.addEventListener("dragstart", dragStart);
-        todo_div.addEventListener("dragend", dragEnd);
+       
+        todo_button.addEventListener("dragstart", dragStart);
+        todo_button.addEventListener("dragend", dragEnd);
+        todo_button.addEventListener("click", openModal); 
 
-        // Limpiar los campos de entrada
+        
         document.getElementById("txtNombres").value = "";
         document.getElementById("txtApellidos").value = "";
 
-        // Cerrar el modal después de agregar la oportunidad
+       
         const modalElement = document.getElementById('todo_form');
         const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
         modalInstance.hide();
     }
+}
+
+// Funciónes del modal de edicion
+function openModal(event) {
+    event.preventDefault(); 
+
+    const todoDetails = event.currentTarget.textContent; 
+    document.getElementById("oportunidadEdit").textContent = todoDetails;
+
+ 
+    const modalElement = document.getElementById('todoModal');
+    const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+    modalInstance.show();
+}
+
+
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll(".section-content");
+    sections.forEach((section) => {
+        section.classList.add("d-none");
+    });
+
+    document.getElementById(sectionId).classList.remove("d-none");
 }

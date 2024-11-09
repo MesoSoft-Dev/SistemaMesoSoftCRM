@@ -18,6 +18,7 @@
             </button>
         </div>
 
+        <!-- Modal de creacion de oportunidades -->
         <div class="modal fade" id="todo_form" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -141,10 +142,7 @@
         </div>
 
         <!-- Buttons -->
-        <div class="mt-3 d-flex justify-content-end">
-            <button class="btn btn-custom me-2">Aceptar</button>
-            <button class="btn btn-secondary">Cancelar</button>
-        </div>
+        
     </div>
           <asp:Button ID="todo_submit" runat="server" Text="Agregar oportunidad" CssClass="btn btn-success btn-block" OnClientClick="createTodo(); return false;" />     
                     </div>
@@ -152,11 +150,59 @@
             </div>
         </div>
 
+        <!-- Fin del modal-->
+
+
+ <!-- Modal de editar oportunidad -->
+
+<div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="todoModalLabel">Oportunidad</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex">
+       
+        <div class="flex-grow-1 p-3">
+          <div id="otrasOpcionesContent" class="section-content">
+            <p>Contenido de Otras Opciones</p>
+          </div>
+          <div id="citasContent" class="section-content d-none">
+            <p>Contenido de Citas</p>
+          </div>
+          <div id="tareasContent" class="section-content d-none">
+            <p>Contenido de Tareas</p>
+          </div>
+          <div id="notasContent" class="section-content d-none">
+            <p>Contenido de Notas</p>
+          </div>
+          <p id="oportunidadEdit"></p>
+        </div>
+
+        <!-- SidebarModal  -->
+        <div class="list-group min-vh-100 bordeSidebarm flex-shrink-0 p-3" style="width: 200px;">
+          <button type="button" class="SidebarmElemento" id="otrasOpciones" onclick="showSection('otrasOpcionesContent')">Otras opciones:</button>
+          <button type="button" class="SidebarmElemento" id="citas" onclick="showSection('citasContent')">Citas  ></button>
+          <button type="button" class="SidebarmElemento" id="tareas" onclick="showSection('tareasContent')">Tareas ></button>
+          <button type="button" class="SidebarmElemento" id="notas" onclick="showSection('notasContent')">Notas ></button>
+          <div class="d-flex flex-column mt-auto">
+            <button class="btn fondo4  fw-bold my-2 ">Aceptar</button>
+            <button class="btn fw-bold ">Eliminar</button>
+          </div>
+        </div>
+          <!-- Fin del sidebarModal-->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin del modal -->
+
         <div class="container mt-4 shadow  w-100">
     <div class="row">
         <div class="col-md status mb-3 my-0 border-end border-dark pt-2 mb-4" id="no_status">
             <h2 class="fondo1 mb-4">Nuevo Contacto</h2>
-            <div class="todo" draggable="true">Ejemplo Todo</div>
+            <button class="todo border-0" draggable="true">Ejemplo Todo</button>
         </div>
         <div class="col-md status mb-3 my-0 border-end border-start border-dark pt-2 mb-4">
             <h2 class="fondo2 mb-4">Cliente Potencial</h2>
