@@ -93,3 +93,34 @@ body {
     padding-bottom: 5px;
     font-weight: bold !important;
 }
+
+
+.border-custom {
+    border: 2px solid #73302c;
+    padding: 20px;
+    margin: 10px;
+}
+
+.border-custom2 {
+    border: 2px solid #73302c;
+}
+
+.border-custom3 {
+    border: 2px solid #73302c;
+    padding: 20px;
+    margin: 0px 10px 10px 10px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-select, .form-control {
+    border-color: #73302c;
+}
+
+.btn-custom {
+    background-color: #ffc107;
+    color: #000;
+}
+
