@@ -157,7 +157,7 @@
  <!-- Modal de editar oportunidad -->
 
 <div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="todoModalLabel">Oportunidad</h5>
@@ -166,33 +166,146 @@
       <div class="modal-body d-flex">
        
         <div class="flex-grow-1 p-3">
+            <!-- Seccion de otras opciones -->
           <div id="otrasOpcionesContent" class="section-content">
-            <p>Contenido de Otras Opciones</p>
+            <div class="border-custom3 col-md-12">
+                <asp:Label ID="Label1" runat="server" CssClass="fw-bold" Text="Detalles de Contacto"></asp:Label>
+                <div class="row mb-3">
+            <div class="col-md-4">
+                <label class="form-label">Nombres</label>
+                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Ingrese nombres del contacto"></asp:TextBox>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Apellidos</label>
+                <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Ingrese apellidos del contacto"></asp:TextBox>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Género</label>
+                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control form-select w-75"> 
+                <asp:ListItem>Femenino</asp:ListItem>
+                <asp:ListItem>Masculino</asp:ListItem>
+                </asp:DropDownList>
+                </div>
+              </div>
+              <div class="row mb-3">
+            <div class="col-md-4">
+                <label class="form-label">Correo Electrónico</label>
+                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" Placeholder="Ingrese correo del contacto" TextMode="Email"></asp:TextBox>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Teléfono</label>
+                <asp:TextBox ID="TextBox7" runat="server" CssClass="form-control" Placeholder="Ingrese teléfono del contacto"></asp:TextBox>
+            </div>
+         <div class="col-md-4">
+             <label class="form-label">Tipo Contacto</label>
+             <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control form-select w-75"> 
+             <asp:ListItem>Interesado</asp:ListItem>
+             <asp:ListItem>Cliente</asp:ListItem>
+             </asp:DropDownList>
+           </div>
           </div>
+         </div>
+         <div class="border-custom col-md-12">
+          <h5 class="fw-bold">Detalles de Oportunidades</h5>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Encargado</label>
+            <asp:TextBox ID="TextBox8" runat="server" class="form-control" placeholder="Nombre encargado"></asp:TextBox>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Fecha Registro</label>
+            <asp:TextBox ID="TextBox9" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+        </div>
+        <div class="col-md-4">
+           <label class="form-label">Canal</label>
+             <asp:DropDownList ID="DropDownList3" runat="server" CssClass="form-control form-select w-75"> 
+             <asp:ListItem>Llamada</asp:ListItem>
+             <asp:ListItem>Email</asp:ListItem>
+             </asp:DropDownList>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Nombre Negocio</label>
+            <asp:TextBox ID="TextBox10" runat="server" CssClass="form-control" Placeholder="Ingrese nombre negocio"></asp:TextBox>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Valor de Oportunidad</label>
+            <asp:TextBox ID="TextBox11" runat="server" CssClass="form-control" Placeholder="Ingrese valor de oportunidad" TextMode="Number"></asp:TextBox>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Fase</label>
+            <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-control form-select w-75"> 
+            <asp:ListItem>Interesado</asp:ListItem>
+            <asp:ListItem>En Progreso</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Seguidores</label>
+            <asp:TextBox ID="TextBox12" runat="server" CssClass="form-control" Placeholder="Ingrese seguidores"></asp:TextBox>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Etiqueta</label>
+             <asp:DropDownList ID="DropDownList5" runat="server" CssClass="form-control form-select w-100"> 
+             <asp:ListItem>Etiqueta 1</asp:ListItem>
+             <asp:ListItem>Etiqueta 2</asp:ListItem>
+             </asp:DropDownList>
+        </div> 
+        <div class="col-md-4">
+            <label class="form-label">Estado</label>
+              <asp:DropDownList ID="DropDownList6" runat="server" CssClass="form-control form-select w-75"> 
+              <asp:ListItem>Abierto</asp:ListItem>
+              <asp:ListItem>Cerrado</asp:ListItem>
+              </asp:DropDownList>
+           </div>
+       </div>
+   </div>
+</div>
+            <!--Fin de otras opciones -->
+
           <div id="citasContent" class="section-content d-none">
                    <asp:Label ID="Label4" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
-                   <asp:TextBox ID="TextBox4" runat="server"  CssClass="form-control" placeholder="Escoger Fecha de Cita"></asp:TextBox>
+                   <asp:TextBox ID="fechaCita" runat="server"  CssClass="form-control" placeholder="Escoger Fecha de Cita"></asp:TextBox>
                    <div class="row">
                       <div class="col-6">   
                            <asp:Label ID="Label5" runat="server"  CssClass="fw-bold"  Text="Lugar de reunión"></asp:Label>
-                           <asp:TextBox ID="TextBox5" runat="server"  CssClass="form-control" placeholder="Ingrese Lugar de Reunión"></asp:TextBox>
+                           <asp:TextBox ID="txtLugarReunion" runat="server"  CssClass="form-control" placeholder="Ingrese Lugar de Reunión"></asp:TextBox>
                      </div>
    
                     <div class="col-6">    
                          <asp:Label ID="Label6" runat="server"  CssClass="fw-bold"  Text="Tema de reunión"></asp:Label>
-                         <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"  placeholder="Ingrese Tema de Reunión"></asp:TextBox>
+                         <asp:TextBox ID="txtTemaReunion" runat="server" CssClass="form-control"  placeholder="Ingrese Tema de Reunión"></asp:TextBox>
                     </div>
                    </div>
           </div>
           <div id="tareasContent" class="section-content d-none">
-            <div>
-               <button class="btn btn-warning w-100">+ Crear Nueva Tarea</button>
-            </div>
+            
+               <button id="crearTareaBtn" class="btn btn-warning w-100" type="button" onclick="toggleTarea()">+ Crear Nueva Tarea</button>
+               <div id="nuevaTarea" class="d-none mt-0">
+                <asp:Label ID="Label3" runat="server" CssClass="fw-bold" Text="Título:"></asp:Label>
+                <asp:TextBox ID="tituloNota" CssClass="form-control" placeholder="Ingrese Título de Tarea" runat="server"></asp:TextBox>
+                <asp:Label ID="Label7" runat="server" CssClass="fw-bold" Text="Descripción:"></asp:Label>
+                <asp:TextBox ID="txtDescripcionTarea" runat="server" TextMode="MultiLine" CssClass="form-control" Rows="5" placeholder="Ingrese Descripción de Tarea"></asp:TextBox>
+                <div class="row">
+                    <div class="col-6">
+                        <asp:Label ID="Label8" runat="server"  CssClass="fw-bold"  Text="Encargado:"></asp:Label>
+                        <asp:TextBox ID="txtNombreEncargado" runat="server" CssClass="form-control"  placeholder="Ingrese Nombre de Encargado"></asp:TextBox>
+                    </div>
+                    <div class="col-6">
+                        <asp:Label ID="Label9" runat="server"  CssClass="fw-bold"  Text="Fecha vencimiento:"></asp:Label>
+                        <asp:TextBox ID="txtFechaVencimiento" runat="server" CssClass="form-control"  placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
+                    </div>
+                </div>
+               </div>
           </div>
           <div id="notasContent" class="section-content d-none">
-            <div>
-               <button class="btn btn-warning w-100" onclick="showSection(nuevaNota)">+ Crear Nueva Nota</button>
-            </div>
+               <button id="crearNotaBtn" class="btn btn-warning w-100" type="button" onclick="toggleNota()">+ Crear Nueva Nota</button>
+               <div id="nuevaNota" class="d-none mt-0">
+               <asp:Label ID="Label2" runat="server" CssClass="fw-bold" Text="Nueva nota:"></asp:Label>
+               <asp:TextBox ID="txtDescripcionNota" runat="server" TextMode="MultiLine" CssClass="form-control" Rows="5" placeholder="Ingrese Descripción de Nota"></asp:TextBox>
+               </div>
           </div>
           <p id="oportunidadEdit"></p>
         </div>
@@ -204,8 +317,8 @@
           <button type="button" class="SidebarmElemento" id="tareas" onclick="showSection('tareasContent')">Tareas ></button>
           <button type="button" class="SidebarmElemento" id="notas" onclick="showSection('notasContent')">Notas ></button>
           <div class="d-flex flex-column mt-auto">
-            <button class="btn fondo4  fw-bold my-2 ">Aceptar</button>
-            <button class="btn fw-bold border-custom2       ">Eliminar</button>
+            <button class="btn fondo4  fw-bold my-2">Aceptar</button>
+            <button class="btn fw-bold border-custom2">Eliminar</button>
           </div>
         </div>
           <!-- Fin del sidebarModal-->
@@ -241,6 +354,9 @@
          background-color: #efda9d !important; 
          color: #000 !important;   
         }
+        .custom-height {
+    height: 100px; /* Set your desired height here */
+}
     </style>
 
      <script>
@@ -257,6 +373,18 @@
              });
          });
      }); 
+         function toggleNota() {
+             var nuevaNota = document.getElementById('nuevaNota');
+             var crearNotaBtn = document.getElementById('crearNotaBtn');
+             nuevaNota.classList.toggle('d-none');
+             crearNotaBtn.classList.add('d-none');
+         }
+         function toggleTarea() {
+             var nuevaTarea = document.getElementById('nuevaTarea');
+             var crearTareaBtn = document.getElementById('crearTareaBtn');
+             nuevaTarea.classList.toggle('d-none');
+             crearTareaBtn.classList.add('d-none');
+         }
     </script>
 
     <script src="Assets/js/Kscript.js"></script>
