@@ -170,7 +170,20 @@
             <p>Contenido de Otras Opciones</p>
           </div>
           <div id="citasContent" class="section-content d-none">
-            <p>Contenido de Citas</p>
+              <asp:Label ID="Label1" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
+              <asp:TextBox ID="TextBox1" runat="server"  CssClass="form-control" placeholder="Escoger Fecha de Cita"></asp:TextBox>
+
+              <div class="row">
+                  <div class="col-6">   
+                       <asp:Label ID="Label2" runat="server"  CssClass="fw-bold"  Text="Lugar de reunión"></asp:Label>
+                       <asp:TextBox ID="TextBox2" runat="server"  CssClass="form-control" placeholder="Ingrese Lugar de Reunión"></asp:TextBox>
+                  </div>
+                 
+                  <div class="col-6">    
+                       <asp:Label ID="Label3" runat="server"  CssClass="fw-bold"  Text="Tema de reunión"></asp:Label>
+                       <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"  placeholder="Ingrese Tema de Reunión"></asp:TextBox>
+                  </div>
+              </div>
           </div>
           <div id="tareasContent" class="section-content d-none">
             <p>Contenido de Tareas</p>
