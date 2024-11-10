@@ -183,10 +183,15 @@
           </div>
 
           <div id="tareasContent" class="section-content d-none">
-            <p>Contenido de Tareas</p>
+            <div>
+                 <button class="btn btn-warning w-100">+ Crear Nueva Tarea</button>
+            </div>
+
           </div>
           <div id="notasContent" class="section-content d-none">
-            <p>Contenido de Notas</p>
+            <div>
+                 <button class="btn btn-warning w-100" onclick="showSection(nuevaNota)">+ Crear Nueva Nota</button>
+            </div>
           </div>
           <p id="oportunidadEdit"></p>
         </div>
