@@ -167,41 +167,47 @@
        
         <div class="flex-grow-1 p-3">
           <div id="otrasOpcionesContent" class="section-content">
-            <asp:Label ID="Label4" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
-           <asp:TextBox ID="TextBox4" runat="server"  CssClass="form-control" placeholder="Escoger Fecha de Cita"></asp:TextBox>
-         <div class="row">
-             <div class="col-6">   
-                  <asp:Label ID="Label5" runat="server"  CssClass="fw-bold"  Text="Lugar de reunión"></asp:Label>
-                  <asp:TextBox ID="TextBox5" runat="server"  CssClass="form-control" placeholder="Ingrese Lugar de Reunión"></asp:TextBox>
-             </div>
-   
-            <div class="col-6">    
-                 <asp:Label ID="Label6" runat="server"  CssClass="fw-bold"  Text="Tema de reunión"></asp:Label>
-                 <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"  placeholder="Ingrese Tema de Reunión"></asp:TextBox>
-            </div>
-       </div>
+            <p>Contenido de Otras Opciones</p>
           </div>
-
+          <div id="citasContent" class="section-content d-none">
+                   <asp:Label ID="Label4" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
+                   <asp:TextBox ID="TextBox4" runat="server"  CssClass="form-control" placeholder="Escoger Fecha de Cita"></asp:TextBox>
+                   <div class="row">
+                      <div class="col-6">   
+                           <asp:Label ID="Label5" runat="server"  CssClass="fw-bold"  Text="Lugar de reunión"></asp:Label>
+                           <asp:TextBox ID="TextBox5" runat="server"  CssClass="form-control" placeholder="Ingrese Lugar de Reunión"></asp:TextBox>
+                     </div>
+   
+                    <div class="col-6">    
+                         <asp:Label ID="Label6" runat="server"  CssClass="fw-bold"  Text="Tema de reunión"></asp:Label>
+                         <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"  placeholder="Ingrese Tema de Reunión"></asp:TextBox>
+                    </div>
+                   </div>
+          </div>
           <div id="tareasContent" class="section-content d-none">
-            <p>Contenido de Tareas</p>
+            <div>
+               <button class="btn btn-warning w-100">+ Crear Nueva Tarea</button>
+            </div>
           </div>
           <div id="notasContent" class="section-content d-none">
-            <p>Contenido de Notas</p>
+            <div>
+               <button class="btn btn-warning w-100" onclick="showSection(nuevaNota)">+ Crear Nueva Nota</button>
+            </div>
           </div>
           <p id="oportunidadEdit"></p>
         </div>
 
         <!-- SidebarModal  -->
-       <div class="list-group min-vh-100 bordeSidebarm flex-shrink-0 p-3" style="width: 200px;">
-           <asp:Label ID="Label1" runat="server" CssClass="fw-bold" Text="Otras opciones:"></asp:Label>
-           <button type="button" class="SidebarmElemento list-group-item list-group-item-action" id="citas" onclick="showSection('otrasOpcionesContent')">Citas ></button>
-           <button type="button" class="SidebarmElemento list-group-item list-group-item-action" id="tareas" onclick="showSection('tareasContent')">Tareas ></button>
-           <button type="button" class="SidebarmElemento list-group-item list-group-item-action" id="notas" onclick="showSection('notasContent')">Notas ></button>
-           <div class="d-flex flex-column mt-auto">
-               <button class="btn fondo4 fw-bold my-2">Aceptar</button>
-               <button class="btn fw-bold border-custom2">Eliminar</button>
+        <div class="list-group min-vh-100 bordeSidebarm flex-shrink-0 p-3" style="width: 200px;">
+          <button type="button" class="SidebarmElemento" id="otrasOpciones" onclick="showSection('otrasOpcionesContent')">Otras opciones:</button>
+          <button type="button" class="SidebarmElemento" id="citas" onclick="showSection('citasContent')">Citas  ></button>
+          <button type="button" class="SidebarmElemento" id="tareas" onclick="showSection('tareasContent')">Tareas ></button>
+          <button type="button" class="SidebarmElemento" id="notas" onclick="showSection('notasContent')">Notas ></button>
+          <div class="d-flex flex-column mt-auto">
+            <button class="btn fondo4  fw-bold my-2 ">Aceptar</button>
+            <button class="btn fw-bold border-custom2       ">Eliminar</button>
           </div>
-       </div>
+        </div>
           <!-- Fin del sidebarModal-->
       </div>
     </div>
@@ -231,27 +237,26 @@
     </form>
 
     <style>
-     .SidebarmElemento.active {
+        .SidebarmElemento.active {
          background-color: #efda9d !important; 
          color: #000 !important;   
-     }
-
+        }
     </style>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const elementos = document.querySelectorAll('.SidebarmElemento');
+     <script>
+     document.addEventListener('DOMContentLoaded', function () {
+         const elementos = document.querySelectorAll('.SidebarmElemento');
 
-            elementos.forEach(elemento => {
-                elemento.addEventListener('click', function () {
-                    // Quitar la clase 'active' de todos los elementos
-                    elementos.forEach(e => e.classList.remove('active'));
+         elementos.forEach(elemento => {
+             elemento.addEventListener('click', function () {
+                 // Quitar la clase 'active' de todos los elementos
+                 elementos.forEach(e => e.classList.remove('active'));
 
-                    // Agregar la clase 'active' al elemento clicado
-                    this.classList.add('active');
-                });
-            });
-        }); 
+                 // Agregar la clase 'active' al elemento clicado
+                 this.classList.add('active');
+             });
+         });
+     }); 
     </script>
 
     <script src="Assets/js/Kscript.js"></script>
