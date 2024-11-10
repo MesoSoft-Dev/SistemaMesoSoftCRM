@@ -280,26 +280,39 @@
                     </div>
                    </div>
           </div>
-          <div id="tareasContent" class="section-content d-none">
-            
-               <button id="crearTareaBtn" class="btn btn-warning w-100" type="button" onclick="toggleTarea()">+ Crear Nueva Tarea</button>
-               <div id="nuevaTarea" class="d-none mt-0">
-                <asp:Label ID="Label3" runat="server" CssClass="fw-bold" Text="Título:"></asp:Label>
-                <asp:TextBox ID="tituloNota" CssClass="form-control" placeholder="Ingrese Título de Tarea" runat="server"></asp:TextBox>
-                <asp:Label ID="Label7" runat="server" CssClass="fw-bold" Text="Descripción:"></asp:Label>
-                <asp:TextBox ID="txtDescripcionTarea" runat="server" TextMode="MultiLine" CssClass="form-control" Rows="5" placeholder="Ingrese Descripción de Tarea"></asp:TextBox>
-                <div class="row">
-                    <div class="col-6">
-                        <asp:Label ID="Label8" runat="server"  CssClass="fw-bold"  Text="Encargado:"></asp:Label>
-                        <asp:TextBox ID="txtNombreEncargado" runat="server" CssClass="form-control"  placeholder="Ingrese Nombre de Encargado"></asp:TextBox>
-                    </div>
-                    <div class="col-6">
-                        <asp:Label ID="Label9" runat="server"  CssClass="fw-bold"  Text="Fecha vencimiento:"></asp:Label>
-                        <asp:TextBox ID="txtFechaVencimiento" runat="server" CssClass="form-control"  placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
-                    </div>
-                </div>
-               </div>
-          </div>
+  <div id="tareasContent" class="section-content">
+    <button id="crearTareaBtn" class="btn btn-warning w-100" type="button" onclick="mostrarFormulario()">+ Crear Nueva Tarea</button>
+    
+    <!-- Contenedor para la lista de tareas -->
+    <div id="tareasContainer" class="active mt-3">
+        <!-- Lista de tareas -->
+        <div id="listaTareas" class="mt-3 d-none"></div> 
+    </div>
+
+    <!-- Formulario para crear nueva tarea (oculto por defecto) -->
+    <div id="nuevaTarea" class="d-none mt-0">
+        <asp:Label ID="Label3" runat="server" CssClass="fw-bold" Text="Título:"></asp:Label>
+        <asp:TextBox ID="tituloNota" CssClass="form-control" placeholder="Ingrese Título de Tarea" runat="server"></asp:TextBox>
+        <asp:Label ID="Label7" runat="server" CssClass="fw-bold" Text="Descripción:"></asp:Label>
+        <asp:TextBox ID="txtDescripcionTarea" runat="server" TextMode="MultiLine" CssClass="form-control" Rows="5" placeholder="Ingrese Descripción de Tarea"></asp:TextBox>
+        <div class="row">
+            <div class="col-6">
+                <asp:Label ID="Label8" runat="server" CssClass="fw-bold" Text="Encargado:"></asp:Label>
+                <asp:TextBox ID="txtNombreEncargado" runat="server" CssClass="form-control" placeholder="Ingrese Nombre de Encargado"></asp:TextBox>
+            </div>
+            <div class="col-6">
+                <asp:Label ID="Label9" runat="server" CssClass="fw-bold" Text="Fecha vencimiento:"></asp:Label>
+                <asp:TextBox ID="txtFechaVencimiento" runat="server" CssClass="form-control" placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
+            </div>
+        </div>
+        <button class="btn fondo4 fw-bold my-2" type="button" onclick="aceptarTarea()">Aceptar</button>
+        <button class="btn fw-bold border-custom2" type="button" onclick="cancelarTarea()">Cancelar</button>
+    </div>
+</div>
+
+
+
+
           <div id="notasContent" class="section-content d-none">
                <button id="crearNotaBtn" class="btn btn-warning w-100" type="button" onclick="toggleNota()">+ Crear Nueva Nota</button>
                <div id="nuevaNota" class="d-none mt-0">
@@ -373,17 +386,102 @@
              });
          });
      }); 
-         function toggleNota() {
-             var nuevaNota = document.getElementById('nuevaNota');
-             var crearNotaBtn = document.getElementById('crearNotaBtn');
-             nuevaNota.classList.toggle('d-none');
-             crearNotaBtn.classList.add('d-none');
-         }
-         function toggleTarea() {
+         var tareas = [];  // Array para almacenar las tareas
+
+
+
+         // Función para mostrar el formulario de crear tarea y ocultar la lista
+         function mostrarFormulario() {
              var nuevaTarea = document.getElementById('nuevaTarea');
-             var crearTareaBtn = document.getElementById('crearTareaBtn');
-             nuevaTarea.classList.toggle('d-none');
-             crearTareaBtn.classList.add('d-none');
+             var listaTareas = document.getElementById('listaTareas');
+             var tareasContainer = document.getElementById('tareasContainer');
+
+             // Ocultar la lista de tareas
+             listaTareas.classList.add('d-none');
+
+             // Mostrar el formulario
+             nuevaTarea.classList.remove('d-none');
+
+             // Agregar la clase 'active' al contenedor de tareas
+             tareasContainer.classList.add('active');
+         }
+
+         // Función para aceptar la tarea
+         function aceptarTarea() {
+             var nuevaTarea = document.getElementById('nuevaTarea');
+             var listaTareas = document.getElementById('listaTareas');
+
+             // Obtener los valores de los campos
+             var titulo = document.getElementById('<%= tituloNota.ClientID %>').value;
+    var descripcion = document.getElementById('<%= txtDescripcionTarea.ClientID %>').value;
+    var encargado = document.getElementById('<%= txtNombreEncargado.ClientID %>').value;
+    var fechaVencimiento = document.getElementById('<%= txtFechaVencimiento.ClientID %>').value;
+
+    // Validación de campos
+    if (titulo && descripcion && encargado && fechaVencimiento) {
+        // Crear objeto de tarea
+        var tarea = {
+            titulo: titulo,
+            descripcion: descripcion,
+            encargado: encargado,
+            fechaVencimiento: fechaVencimiento
+        };
+
+        // Agregar la tarea al array
+        tareas.push(tarea);
+
+        // Actualizar la lista de tareas
+        actualizarListaTareas();
+
+        // Limpiar los campos
+        document.getElementById('<%= tituloNota.ClientID %>').value = '';
+        document.getElementById('<%= txtDescripcionTarea.ClientID %>').value = '';
+        document.getElementById('<%= txtNombreEncargado.ClientID %>').value = '';
+        document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
+
+        // Ocultar el formulario y mostrar la lista
+        nuevaTarea.classList.add('d-none');
+        listaTareas.classList.remove('d-none');
+    } else {
+        alert('Por favor, completa todos los campos antes de aceptar la tarea.');
+    }
+}
+
+// Función para cancelar la tarea y volver a la lista
+function cancelarTarea() {
+    var nuevaTarea = document.getElementById('nuevaTarea');
+    var listaTareas = document.getElementById('listaTareas');
+    
+    // Limpiar los campos de entrada
+    document.getElementById('<%= tituloNota.ClientID %>').value = '';
+    document.getElementById('<%= txtDescripcionTarea.ClientID %>').value = '';
+    document.getElementById('<%= txtNombreEncargado.ClientID %>').value = '';
+             document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
+
+             // Ocultar el formulario y mostrar la lista de tareas
+             nuevaTarea.classList.add('d-none');
+             listaTareas.classList.remove('d-none');
+         }
+
+         // Función para actualizar la lista de tareas en el DOM
+         function actualizarListaTareas() {
+             var listaTareas = document.getElementById('listaTareas');
+
+             // Limpiar las tareas existentes en el DOM
+             listaTareas.innerHTML = '';
+
+             // Recorrer las tareas y agregarlas al contenedor
+             tareas.forEach(function (tarea) {
+                 var nuevaDiv = document.createElement('div');
+                 nuevaDiv.className = 'tarea mb-2 p-2 border rounded bg-light';
+                 nuevaDiv.innerHTML = `
+            <h5 class="fw-bold">${tarea.titulo}</h5>
+            <p>${tarea.descripcion}</p>
+            <p><strong>Encargado:</strong> ${tarea.encargado}</p>
+            <p><strong>Fecha de Vencimiento:</strong> ${tarea.fechaVencimiento}</p>
+        `;
+                 listaTareas.appendChild(nuevaDiv);  // Aquí agregamos la tarea al contenedor de lista
+             });
          }
     </script>
 
