@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MSDLLS">
-      <HintPath>..\packages\LibraryAccessData\MSDLLS.dll</HintPath>
+      <HintPath>..\..\Nuevo NuevoNuevo MesosoftCrm\CapaAccesoDatos\bin\Debug\MSDLLS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
