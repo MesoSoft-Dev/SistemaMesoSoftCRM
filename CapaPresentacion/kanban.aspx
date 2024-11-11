@@ -395,14 +395,18 @@
              var nuevaTarea = document.getElementById('nuevaTarea');
              var listaTareas = document.getElementById('listaTareas');
              var tareasContainer = document.getElementById('tareasContainer');
+             var crearTareaBtn = document.getElementById('crearTareaBtn'); // Get the button
 
-             // Ocultar la lista de tareas
+             // Hide the task list
              listaTareas.classList.add('d-none');
 
-             // Mostrar el formulario
+             // Show the form
              nuevaTarea.classList.remove('d-none');
 
-             // Agregar la clase 'active' al contenedor de tareas
+             // Hide the button
+             crearTareaBtn.classList.add('d-none');
+
+             // Add the 'active' class to the task container
              tareasContainer.classList.add('active');
          }
 
@@ -410,16 +414,17 @@
          function aceptarTarea() {
              var nuevaTarea = document.getElementById('nuevaTarea');
              var listaTareas = document.getElementById('listaTareas');
+             var crearTareaBtn = document.getElementById('crearTareaBtn'); // Get the button
 
-             // Obtener los valores de los campos
+             // Get the values from the fields
              var titulo = document.getElementById('<%= tituloNota.ClientID %>').value;
-    var descripcion = document.getElementById('<%= txtDescripcionTarea.ClientID %>').value;
-    var encargado = document.getElementById('<%= txtNombreEncargado.ClientID %>').value;
-    var fechaVencimiento = document.getElementById('<%= txtFechaVencimiento.ClientID %>').value;
+            var descripcion = document.getElementById('<%= txtDescripcionTarea.ClientID %>').value;
+            var encargado = document.getElementById('<%= txtNombreEncargado.ClientID %>').value;
+            var fechaVencimiento = document.getElementById('<%= txtFechaVencimiento.ClientID %>').value;
 
-    // Validación de campos
+    // Validate fields
     if (titulo && descripcion && encargado && fechaVencimiento) {
-        // Crear objeto de tarea
+        // Create task object
         var tarea = {
             titulo: titulo,
             descripcion: descripcion,
@@ -427,25 +432,28 @@
             fechaVencimiento: fechaVencimiento
         };
 
-        // Agregar la tarea al array
+        // Add the task to the array
         tareas.push(tarea);
 
-        // Actualizar la lista de tareas
+        // Update the task list
         actualizarListaTareas();
 
-        // Limpiar los campos
+        // Clear the fields
         document.getElementById('<%= tituloNota.ClientID %>').value = '';
         document.getElementById('<%= txtDescripcionTarea.ClientID %>').value = '';
         document.getElementById('<%= txtNombreEncargado.ClientID %>').value = '';
-        document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
+                document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
 
-        // Ocultar el formulario y mostrar la lista
-        nuevaTarea.classList.add('d-none');
-        listaTareas.classList.remove('d-none');
-    } else {
-        alert('Por favor, completa todos los campos antes de aceptar la tarea.');
-    }
-}
+                // Hide the form and show the task list
+                nuevaTarea.classList.add('d-none');
+                listaTareas.classList.remove('d-none');
+
+                // Show the button again
+                crearTareaBtn.classList.remove('d-none');
+            } else {
+                alert('Por favor, completa todos los campos antes de aceptar la tarea.');
+            }
+        }
 
 // Función para cancelar la tarea y volver a la lista
 function cancelarTarea() {
@@ -460,7 +468,9 @@ function cancelarTarea() {
 
              // Ocultar el formulario y mostrar la lista de tareas
              nuevaTarea.classList.add('d-none');
-             listaTareas.classList.remove('d-none');
+    listaTareas.classList.remove('d-none');
+
+    crearTareaBtn.classList.remove('d-none');
          }
 
          // Función para actualizar la lista de tareas en el DOM
