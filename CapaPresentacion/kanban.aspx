@@ -305,12 +305,24 @@
 
     <!-- Formulario para crear tareas -->
     <div id="formularioTarea" class="d-none">
-        <h6 class="headerForms">Agregar Tarea</h6>
+        <h6 class="headerForms">Agregar Nueva Tarea</h6>
         <div class="mb-1">
-            <label class="fw-bold">Nueva Tarea</label>
+            <label class="fw-bold">Título</label>
+            <asp:TextBox ID="tareaTitulo" CssClass="form-control text-start" runat="server" placeholder="Ingrese Título de Tarea."></asp:TextBox>
         </div>
-        <div class="mb-3">
-            <asp:TextBox ID="tareaDescripcion" runat="server" CssClass="form-control py-5 text-start" TextMode="MultiLine" placeholder="Ingresa descripcion de tarea."></asp:TextBox>
+        <div class="mb-1">
+            <label class="fw-bold">Descripción</label>
+            <asp:TextBox ID="tareaDescripcion" runat="server" CssClass="form-control text-start" TextMode="MultiLine" placeholder="Ingrese Descripción de Tarea." Rows="5" Columns="50"></asp:TextBox>
+        </div>
+        <div class="row mb-2">
+            <div class="col-6">
+                <label class="fw-bold">Encargado:</label>
+                <asp:TextBox ID="tareasEncargado" runat="server" CssClass="form-control text-start" placeholder="Ingrese Nombre de Encargado"></asp:TextBox>
+            </div>
+            <div class="col-6">
+                <label class="fw-bold">Fecha vencimiento:</label>
+                <asp:TextBox ID="tareasFecha" runat="server" CssClass="form-control text-start"  placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
+            </div>
         </div>
 
         <div class="d-flex justify-content-end">
@@ -340,7 +352,7 @@
     <!-- Ventana de Confirmación -->
     <div id="ventanaConfirmacionTarea" class="ventanaConfirmar-content d-none mx-auto mt-5">
         <div class="ventanaConfirmar-header border-0">
-            <h4 class="ventanaConfirmar-title fw-bold w-100" id="ventanaConfirmarLabel">¡IMPORTANTE!</h4>
+            <h4 class="ventanaConfirmar-title fw-bold w-100" >¡IMPORTANTE!</h4>
         </div>
         <div class="ventanaConfirmar-body px-3 py-1">
             <p>Seguro que desea eliminar el registro</p>

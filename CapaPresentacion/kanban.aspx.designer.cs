@@ -393,6 +393,15 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.TextBox txtTemaReunion;
 
         /// <summary>
+        /// tareaTitulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tareaTitulo;
+
+        /// <summary>
         /// tareaDescripcion control.
         /// </summary>
         /// <remarks>
@@ -400,6 +409,24 @@ namespace CapaPresentacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tareaDescripcion;
+
+        /// <summary>
+        /// tareasEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tareasEncargado;
+
+        /// <summary>
+        /// tareasFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tareasFecha;
 
         /// <summary>
         /// guardarTareaBtn control.
