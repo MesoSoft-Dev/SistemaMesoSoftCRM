@@ -282,34 +282,76 @@
 <!--Formulario de crear citas final-->
 
 <!--Contenedor de tareas-->
-  <div id="tareasContent" class="section-content d-none">
-    <button id="crearTareaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormulario()">+ Crear Nueva Tarea</button>
-    
-   
-    <div id="tareasContainer" class="active mt-3">
-     
-        <div id="listaTareas" class="mt-3 d-none"></div> 
-    </div>
+  <div id="tareasContent" class="section-content d-none mx-4">
 
-    <!-- Formulario para crear nueva tarea (oculto por defecto) -->
-    <div id="nuevaTarea" class="d-none mt-0">
-        <asp:Label ID="Label3" runat="server" CssClass="fw-bold" Text="Título:"></asp:Label>
-        <asp:TextBox ID="tituloNota" CssClass="form-control" placeholder="Ingrese Título de Tarea" runat="server"></asp:TextBox>
-        <asp:Label ID="Label7" runat="server" CssClass="fw-bold" Text="Descripción:"></asp:Label>
-        <asp:TextBox ID="txtDescripcionTarea" runat="server" TextMode="MultiLine" CssClass="form-control" Rows="5" placeholder="Ingrese Descripción de Tarea"></asp:TextBox>
-        <div class="row">
-            <div class="col-6">
-                <asp:Label ID="Label8" runat="server" CssClass="fw-bold" Text="Encargado:"></asp:Label>
-                <asp:TextBox ID="txtNombreEncargado" runat="server" CssClass="form-control" placeholder="Ingrese Nombre de Encargado"></asp:TextBox>
+    <button id="crearTareaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioTarea()">+ Crear Nueva Tarea</button>
+    <div class="contenedorTareas" id="contenidoTareas">
+
+        <div class="Tarea my-3 d-flex"> 
+            <div class="flex-grow-1 p-2"> 
+                <div class="DetalleTarea">Ejemplo</div>
+                <div class="subTarea">EX</div>
+                <div class="subTarea">Ex</div>
             </div>
-            <div class="col-6">
-                <asp:Label ID="Label9" runat="server" CssClass="fw-bold" Text="Fecha vencimiento:"></asp:Label>
-                <asp:TextBox ID="txtFechaVencimiento" runat="server" CssClass="form-control" placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
+            <div class="d-flex flex-column align-items-start me-5 p-2 ">
+                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditTarea" onclick="mostrarFormularioEditTarea(); return false;">Editar</button>
+                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea()">Eliminar</button>
             </div>
         </div>
-        <button class="btn fondo4 fw-bold my-2" type="button" onclick="aceptarTarea()">Aceptar</button>
-        <button class="btn fw-bold border-custom2" type="button" onclick="cancelarTarea()">Cancelar</button>
+
     </div>
+              
+    <!-- Contenido de tareas, Final -->
+
+    <!-- Formulario para crear tareas -->
+    <div id="formularioTarea" class="d-none">
+        <h6 class="headerForms">Agregar Tarea</h6>
+        <div class="mb-1">
+            <label class="fw-bold">Nueva Tarea</label>
+        </div>
+        <div class="mb-3">
+            <asp:TextBox ID="tareaDescripcion" runat="server" CssClass="form-control py-5 text-start" TextMode="MultiLine" placeholder="Ingresa descripcion de tarea."></asp:TextBox>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <asp:Button ID="guardarTareaBtn" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Tarea" OnClientClick="guardarTarea(); return false;" />
+            <button type="button" class="btn border-custom2" onclick="ocultarFormularioTarea()">Cancelar</button>
+        </div>
+    </div>
+    <!-- Formulario para crear tareas, FINAL -->
+
+    <!-- Formulario para editar tareas -->
+    <div id="formularioEditarTarea" class="d-none">
+        <h6 class="headerForms">Editar Tarea</h6>
+
+        <div class="mb-1">
+            <label class="fw-bold">Nueva Tarea</label>
+        </div>
+        <div class="mb-3">
+            <asp:TextBox ID="editTareaDescripcion" runat="server" CssClass="form-control py-5 text-start" TextMode="MultiLine" placeholder="Ingresa descripcion de tarea."></asp:TextBox>
+        </div>
+        <div class="d-flex justify-content-end">
+            <asp:Button ID="ButtonEdit" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Tarea" />
+            <button type="button" class="btn border-custom2" onclick=" ocultarFormularioEditTarea()">Cancelar</button>
+        </div>
+    </div>
+    <!-- Formulario para editar tareas, FINAL -->
+
+    <!-- Ventana de Confirmación -->
+    <div id="ventanaConfirmacionTarea" class="ventanaConfirmar-content d-none mx-auto mt-5">
+        <div class="ventanaConfirmar-header border-0">
+            <h4 class="ventanaConfirmar-title fw-bold w-100" id="ventanaConfirmarLabel">¡IMPORTANTE!</h4>
+        </div>
+        <div class="ventanaConfirmar-body px-3 py-1">
+            <p>Seguro que desea eliminar el registro</p>
+        </div>
+        <div class="ventanaConfirmar-footer pb-1 d-flex justify-content-center">
+            <a href="#" class="btn-ventana me-5">Eliminar</a>
+            <a href="#" class="btn-ventana" onclick="cerrarVentanaTarea()">Cancelar</a>
+        </div>
+    </div>
+    <!-- Ventana de Confirmación final -->
+
 </div>
  <!-- Formulario para crear nueva tarea,Final -->
 
@@ -444,117 +486,7 @@
 }
     </style>
 
-     <script>
-         var tareas = [];  // Array para almacenar las tareas
-
-
-
-         // Función para mostrar el formulario de crear tarea y ocultar la lista
-         function mostrarFormulario() {
-             var nuevaTarea = document.getElementById('nuevaTarea');
-             var listaTareas = document.getElementById('listaTareas');
-             var tareasContainer = document.getElementById('tareasContainer');
-             var crearTareaBtn = document.getElementById('crearTareaBtn'); // Get the button
-
-             // Hide the task list
-             listaTareas.classList.add('d-none');
-
-             // Show the form
-             nuevaTarea.classList.remove('d-none');
-
-             // Hide the button
-             crearTareaBtn.classList.add('d-none');
-
-             // Add the 'active' class to the task container
-             tareasContainer.classList.add('active');
-         }
-
-         // Función para aceptar la tarea
-         function aceptarTarea() {
-             var nuevaTarea = document.getElementById('nuevaTarea');
-             var listaTareas = document.getElementById('listaTareas');
-             var crearTareaBtn = document.getElementById('crearTareaBtn'); // Get the button
-
-             // Get the values from the fields
-             var titulo = document.getElementById('<%= tituloNota.ClientID %>').value;
-    var descripcion = document.getElementById('<%= txtDescripcionTarea.ClientID %>').value;
-    var encargado = document.getElementById('<%= txtNombreEncargado.ClientID %>').value;
-    var fechaVencimiento = document.getElementById('<%= txtFechaVencimiento.ClientID %>').value;
-
-    // Validate fields
-    if (titulo && descripcion && encargado && fechaVencimiento) {
-        // Create task object
-        var tarea = {
-            titulo: titulo,
-            descripcion: descripcion,
-            encargado: encargado,
-            fechaVencimiento: fechaVencimiento
-        };
-
-        // Add the task to the array
-        tareas.push(tarea);
-
-        // Update the task list
-        actualizarListaTareas();
-
-        // Clear the fields
-        document.getElementById('<%= tituloNota.ClientID %>').value = '';
-        document.getElementById('<%= txtDescripcionTarea.ClientID %>').value = '';
-        document.getElementById('<%= txtNombreEncargado.ClientID %>').value = '';
-        document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
-
-        // Hide the form and show the task list
-        nuevaTarea.classList.add('d-none');
-        listaTareas.classList.remove('d-none');
-
-        // Show the button again
-        crearTareaBtn.classList.remove('d-none');
-    } else {
-        alert('Por favor, completa todos los campos antes de aceptar la tarea.');
-    }
-}
-
-// Función para cancelar la tarea y volver a la lista
-function cancelarTarea() {
-    var nuevaTarea = document.getElementById('nuevaTarea');
-    var listaTareas = document.getElementById('listaTareas');
-
-    // Limpiar los campos de entrada
-    document.getElementById('<%= tituloNota.ClientID %>').value = '';
-    document.getElementById('<%= txtDescripcionTarea.ClientID %>').value = '';
-    document.getElementById('<%= txtNombreEncargado.ClientID %>').value = '';
-             document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
-
-             // Ocultar el formulario y mostrar la lista de tareas
-             nuevaTarea.classList.add('d-none');
-             listaTareas.classList.remove('d-none');
-
-             crearTareaBtn.classList.remove('d-none');
-         }
-
-         // Función para actualizar la lista de tareas en el DOM
-         function actualizarListaTareas() {
-             var listaTareas = document.getElementById('listaTareas');
-
-             // Limpiar las tareas existentes en el DOM
-             listaTareas.innerHTML = '';
-
-             // Recorrer las tareas y agregarlas al contenedor
-             tareas.forEach(function (tarea) {
-                 var nuevaDiv = document.createElement('div');
-                 nuevaDiv.className = 'tarea mb-2 p-2 border rounded bg-light';
-                 nuevaDiv.innerHTML = `
-            <h5 class="fw-bold">${tarea.titulo}</h5>
-            <p>${tarea.descripcion}</p>
-            <p><strong>Encargado:</strong> ${tarea.encargado}</p>
-            <p><strong>Fecha de Vencimiento:</strong> ${tarea.fechaVencimiento}</p>
-        `;
-                 listaTareas.appendChild(nuevaDiv);  // Aquí agregamos la tarea al contenedor de lista
-             });
-         }
-         // fin crear tareas
-         
-     </script>
+    
 
     <script src="Assets/js/Kscript.js"></script>
 </asp:Content>

@@ -215,3 +215,74 @@ function cerrarVentana() {
     document.getElementById('contenidoNotas').classList.remove('d-none');
     document.getElementById("ventanaConfirmacion").classList.add("d-none");
 }
+
+// funciones de tareas 
+function mostrarFormularioTarea() {
+    document.getElementById('crearTareaBtn').classList.add('d-none');
+    document.getElementById('contenidoTareas').classList.add('d-none');
+    document.getElementById('formularioTarea').classList.remove('d-none');
+}
+
+function ocultarFormularioTarea() {
+    document.getElementById('crearTareaBtn').classList.remove('d-none');
+    document.getElementById('formularioTarea').classList.add('d-none');
+    document.getElementById('contenidoTareas').classList.remove('d-none');
+}
+
+function mostrarFormularioEditTarea() {
+    document.getElementById('crearTareaBtn').classList.add('d-none');
+    document.getElementById('contenidoTareas').classList.add('d-none');
+    document.getElementById('formularioEditarTarea').classList.remove('d-none');
+
+    console.log("TESTTT");
+}
+
+function ocultarFormularioEditTarea() {
+    document.getElementById('crearTareaBtn').classList.remove('d-none');
+    document.getElementById('contenidoTareas').classList.remove('d-none');
+    document.getElementById('formularioEditarTarea').classList.add('d-none');
+}
+
+// Crear tareas ===========================================================================
+
+function guardarTarea() {
+    const descripcionTarea = document.getElementById("tareaDescripcion").value.trim();
+
+    if (descripcionTarea !== "") {
+        const nuevaTarea = document.createElement("div");
+        nuevaTarea.classList.add("Tarea", "my-3", "d-flex");
+
+        const contenidoTarea = `
+            <div class="flex-grow-1 p-2">
+                <div class="DetalleTarea">${descripcionTarea}</div>
+                <div class="subTarea">Ejemplo de texto 1</div>
+                <div class="subTarea">Ejemplo de texto 2</div>
+            </div>
+            <div class="d-flex flex-column align-items-start me-5 p-2">
+                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditTarea" onclick="mostrarFormularioEditTarea(); return false;">Editar</button>
+                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick=" abrirVentanaTarea()">Eliminar</button>
+            </div>
+        `;
+        nuevaTarea.innerHTML = contenidoTarea;
+
+        document.getElementById("contenidoTareas").appendChild(nuevaTarea);
+
+        document.getElementById("tareaDescripcion").value = "";
+
+        ocultarFormularioTarea();
+    }
+}
+
+// Ventana de confirmación ========================================================================
+
+function abrirVentanaTarea() {
+    document.getElementById('crearTareaBtn').classList.add('d-none');
+    document.getElementById('contenidoTareas').classList.add('d-none');
+    document.getElementById("ventanaConfirmacionTarea").classList.remove("d-none");
+}
+
+function cerrarVentanaTarea() {
+    document.getElementById('crearTareaBtn').classList.remove('d-none');
+    document.getElementById('contenidoTareas').classList.remove('d-none');
+    document.getElementById("ventanaConfirmacionTarea").classList.add("d-none");
+}
