@@ -465,21 +465,39 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.TextBox txtFechaVencimiento;
 
         /// <summary>
-        /// Label2 control.
+        /// notaDescripcion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox notaDescripcion;
 
         /// <summary>
-        /// txtDescripcionNota control.
+        /// guardarNotaBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcionNota;
+        protected global::System.Web.UI.WebControls.Button guardarNotaBtn;
+
+        /// <summary>
+        /// EditnotaDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EditnotaDescripcion;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

@@ -159,14 +159,11 @@
 <div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="todoModalLabel">Oportunidad</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+    
       <div class="modal-body d-flex">
        
         <div class="flex-grow-1 p-3">
-            <!-- Seccion de otras opciones -->
+            <!-- Seccion de otras opciones, Editar oportunidad -->
           <div id="otrasOpcionesContent" class="section-content">
             <div class="border-custom3 col-md-12">
                 <asp:Label ID="Label1" runat="server" CssClass="fw-bold" Text="Detalles de Contacto"></asp:Label>
@@ -263,7 +260,9 @@
        </div>
    </div>
 </div>
-            <!--Fin de otras opciones -->
+            <!--Fin de otras opciones, editar oportunidad-->
+
+             <!--Formulario de crear citas-->
 
           <div id="citasContent" class="section-content d-none">
                    <asp:Label ID="Label4" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
@@ -280,12 +279,15 @@
                     </div>
                    </div>
           </div>
-  <div id="tareasContent" class="section-content">
-    <button id="crearTareaBtn" class="btn btn-warning w-100" type="button" onclick="mostrarFormulario()">+ Crear Nueva Tarea</button>
+<!--Formulario de crear citas final-->
+
+<!--Contenedor de tareas-->
+  <div id="tareasContent" class="section-content d-none">
+    <button id="crearTareaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormulario()">+ Crear Nueva Tarea</button>
     
-    <!-- Contenedor para la lista de tareas -->
+   
     <div id="tareasContainer" class="active mt-3">
-        <!-- Lista de tareas -->
+     
         <div id="listaTareas" class="mt-3 d-none"></div> 
     </div>
 
@@ -309,16 +311,86 @@
         <button class="btn fw-bold border-custom2" type="button" onclick="cancelarTarea()">Cancelar</button>
     </div>
 </div>
+ <!-- Formulario para crear nueva tarea,Final -->
 
 
 
 
-          <div id="notasContent" class="section-content d-none">
-               <button id="crearNotaBtn" class="btn btn-warning w-100" type="button" onclick="toggleNota()">+ Crear Nueva Nota</button>
-               <div id="nuevaNota" class="d-none mt-0">
-               <asp:Label ID="Label2" runat="server" CssClass="fw-bold" Text="Nueva nota:"></asp:Label>
-               <asp:TextBox ID="txtDescripcionNota" runat="server" TextMode="MultiLine" CssClass="form-control" Rows="5" placeholder="Ingrese Descripción de Nota"></asp:TextBox>
-               </div>
+<!-- Contenido de notas-->
+<div id="notasContent" class="section-content d-none mx-4">
+
+<button id="crearNotaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioNota()">+ Crear Nueva Nota</button>
+<div class="contenedorNotas" id="contenidoNotas">
+
+<div class="Nota my-3 d-flex"> 
+    <div class="flex-grow-1 p-2"> 
+        <div class="DetalleNota">Ejemplo</div>
+        <div class="subNota">EX</div>
+        <div class="subNota">Ex</div>
+    </div>
+    <div class="d-flex flex-column align-items-start me-5 p-2 ">
+        <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditNota" onclick="mostrarFormularioEditNota(); return false;">Editar</button>
+        <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentana()">Eliminar</button>
+    </div>
+</div>
+
+</div>
+              
+<!-- Contenido de notas,Final-->
+
+ <!-- Formulario de  crear notas -->
+         <div id="formularioNota" class="d-none">
+      <h6 class="headerForms ">Agregar Nota</h6>
+    <div class="mb-1">
+       <label class="fw-bold">Nueva Nota</label>
+    </div>
+    <div class="mb-3">
+        <asp:TextBox ID="notaDescripcion" runat="server" CssClass="form-control py-5 text-start " TextMode="MultiLine" placeholder="Ingresa descripcion de nota."></asp:TextBox>
+    </div>
+
+   
+    <div class="d-flex justify-content-end">
+        <asp:Button ID="guardarNotaBtn" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Nota" OnClientClick="guardarNota(); return false;" />
+        <button type="button" class="btn border-custom2" onclick="ocultarFormularioNota()">Cancelar</button>
+    </div>
+</div>
+ <!-- Formulario de notas,FINAL-->
+<!-- Formulario de editar Notas-->
+ <div id="formularioEditarNota" class="d-none">
+
+<h6 class="headerForms">Editar Nota</h6>
+
+    <div class="mb-1">
+       <label class="fw-bold">Nueva Nota</label>
+    </div>
+    <div class="mb-3">
+        <asp:TextBox ID="EditnotaDescripcion" runat="server" CssClass="form-control py-5 text-start " TextMode="MultiLine" placeholder="Ingresa descripcion de nota."></asp:TextBox>
+    </div>
+     <div class="d-flex justify-content-end">
+        <asp:Button ID="Button1" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Nota" />
+        <button type="button" class="btn border-custom2" onclick="ocultarFormularioEditNota()">Cancelar</button>
+    </div>
+</div>
+ <!-- formulario de editar Notas final-->
+
+ <!-- Ventana de Confirmación -->
+    <div id="ventanaConfirmacion" class="ventanaConfirmar-content d-none mx-auto mt-5">
+        <div class="ventanaConfirmar-header border-0">
+            <h4 class="ventanaConfirmar-title fw-bold w-100" id="ventanaConfirmarLabel">¡IMPORTANTE!</h4>
+        </div>
+        <div class="ventanaConfirmar-body px-3 py-1">
+            <p>Seguro que desea eliminar el registro</p>
+        </div>
+        <div class="ventanaConfirmar-footer pb-1 d-flex justify-content-center">
+            <a href="#" class="btn-ventana me-5">Eliminar</a>
+            <a href="#" class="btn-ventana" onclick="cerrarVentana()">Cancelar</a>
+        </div>
+    </div>
+<!-- Ventana de Confirmación final -->
+
+
+
+
           </div>
           <p id="oportunidadEdit"></p>
         </div>
@@ -373,19 +445,6 @@
     </style>
 
      <script>
-     document.addEventListener('DOMContentLoaded', function () {
-         const elementos = document.querySelectorAll('.SidebarmElemento');
-
-         elementos.forEach(elemento => {
-             elemento.addEventListener('click', function () {
-                 // Quitar la clase 'active' de todos los elementos
-                 elementos.forEach(e => e.classList.remove('active'));
-
-                 // Agregar la clase 'active' al elemento clicado
-                 this.classList.add('active');
-             });
-         });
-     }); 
          var tareas = [];  // Array para almacenar las tareas
 
 
@@ -418,9 +477,9 @@
 
              // Get the values from the fields
              var titulo = document.getElementById('<%= tituloNota.ClientID %>').value;
-            var descripcion = document.getElementById('<%= txtDescripcionTarea.ClientID %>').value;
-            var encargado = document.getElementById('<%= txtNombreEncargado.ClientID %>').value;
-            var fechaVencimiento = document.getElementById('<%= txtFechaVencimiento.ClientID %>').value;
+    var descripcion = document.getElementById('<%= txtDescripcionTarea.ClientID %>').value;
+    var encargado = document.getElementById('<%= txtNombreEncargado.ClientID %>').value;
+    var fechaVencimiento = document.getElementById('<%= txtFechaVencimiento.ClientID %>').value;
 
     // Validate fields
     if (titulo && descripcion && encargado && fechaVencimiento) {
@@ -442,24 +501,24 @@
         document.getElementById('<%= tituloNota.ClientID %>').value = '';
         document.getElementById('<%= txtDescripcionTarea.ClientID %>').value = '';
         document.getElementById('<%= txtNombreEncargado.ClientID %>').value = '';
-                document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
+        document.getElementById('<%= txtFechaVencimiento.ClientID %>').value = '';
 
-                // Hide the form and show the task list
-                nuevaTarea.classList.add('d-none');
-                listaTareas.classList.remove('d-none');
+        // Hide the form and show the task list
+        nuevaTarea.classList.add('d-none');
+        listaTareas.classList.remove('d-none');
 
-                // Show the button again
-                crearTareaBtn.classList.remove('d-none');
-            } else {
-                alert('Por favor, completa todos los campos antes de aceptar la tarea.');
-            }
-        }
+        // Show the button again
+        crearTareaBtn.classList.remove('d-none');
+    } else {
+        alert('Por favor, completa todos los campos antes de aceptar la tarea.');
+    }
+}
 
 // Función para cancelar la tarea y volver a la lista
 function cancelarTarea() {
     var nuevaTarea = document.getElementById('nuevaTarea');
     var listaTareas = document.getElementById('listaTareas');
-    
+
     // Limpiar los campos de entrada
     document.getElementById('<%= tituloNota.ClientID %>').value = '';
     document.getElementById('<%= txtDescripcionTarea.ClientID %>').value = '';
@@ -468,9 +527,9 @@ function cancelarTarea() {
 
              // Ocultar el formulario y mostrar la lista de tareas
              nuevaTarea.classList.add('d-none');
-    listaTareas.classList.remove('d-none');
+             listaTareas.classList.remove('d-none');
 
-    crearTareaBtn.classList.remove('d-none');
+             crearTareaBtn.classList.remove('d-none');
          }
 
          // Función para actualizar la lista de tareas en el DOM
@@ -493,7 +552,9 @@ function cancelarTarea() {
                  listaTareas.appendChild(nuevaDiv);  // Aquí agregamos la tarea al contenedor de lista
              });
          }
-    </script>
+         // fin crear tareas
+         
+     </script>
 
     <script src="Assets/js/Kscript.js"></script>
 </asp:Content>

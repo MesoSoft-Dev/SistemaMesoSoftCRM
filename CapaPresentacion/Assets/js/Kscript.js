@@ -35,7 +35,6 @@ function dragOver(e) {
 function dragDrop() {
     this.appendChild(draggableTodo);
 
-    // Obtener el color de fondo del h2 dentro de este contenedor
     const headerColor = window.getComputedStyle(this.querySelector("h2")).backgroundColor;
     draggableTodo.style.backgroundColor = headerColor;
 }
@@ -75,12 +74,12 @@ function createTodo() {
     }
 }
 
-// Funciónes del modal de edicion
+// Despliege del modal de edicion
 function openModal(event) {
     event.preventDefault(); 
 
     const todoDetails = event.currentTarget.textContent; 
-    document.getElementById("oportunidadEdit").textContent = todoDetails;
+ //   document.getElementById("oportunidadEdit").textContent = todoDetails;
 
  
     const modalElement = document.getElementById('todoModal');
@@ -97,4 +96,122 @@ function showSection(sectionId) {
     });
 
     document.getElementById(sectionId).classList.remove("d-none");
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const elementos = document.querySelectorAll('.SidebarmElemento');
+
+    elementos.forEach(elemento => {
+        elemento.addEventListener('click', function () {
+            elementos.forEach(e => e.classList.remove('active'));
+
+            this.classList.add('active');
+        });
+    });
+}); 
+
+
+
+
+// funciones de notas===========================================================================================================================
+function mostrarFormularioNota() {   
+    document.getElementById('crearNotaBtn').classList.add('d-none');
+    document.getElementById('contenidoNotas').classList.add('d-none');
+    document.getElementById('formularioNota').classList.remove('d-none');
+
+  /*  const headerFormsElements = document.querySelectorAll('.headerForms');
+    headerFormsElements.forEach(element => {
+        element.classList.add('d-none');
+    }); */
+}
+
+function ocultarFormularioNota() {
+    document.getElementById('crearNotaBtn').classList.remove('d-none');
+
+    document.getElementById('formularioNota').classList.add('d-none');
+    document.getElementById('contenidoNotas').classList.remove('d-none');
+
+  /*  const headerFormsElements = document.querySelectorAll('.headerForms');
+    headerFormsElements.forEach(element => {
+        element.classList.remove('d-none');
+    }); */
+
+}
+
+
+function mostrarFormularioEditNota() { 
+    document.getElementById('crearNotaBtn').classList.add('d-none');
+    document.getElementById('contenidoNotas').classList.add('d-none');
+    document.getElementById('formularioEditarNota').classList.remove('d-none'); 
+
+    console.log("TESTTT")
+
+   /* const headerFormsElements = document.querySelectorAll('.headerForms');
+    headerFormsElements.forEach(element => {
+        element.classList.add('d-none'); 
+    }); */
+}
+
+function ocultarFormularioEditNota() {
+    document.getElementById('crearNotaBtn').classList.remove('d-none');
+    document.getElementById('contenidoNotas').classList.remove('d-none');
+    document.getElementById('formularioEditarNota').classList.add('d-none');
+
+
+   /* const headerFormsElements = document.querySelectorAll('.headerForms');
+    headerFormsElements.forEach(element => {
+        element.classList.remove('d-none'); 
+    });*/
+
+}
+
+
+
+
+//crear notas===========================================================================
+
+function guardarNota() {
+
+    const descripcionNota = document.getElementById("notaDescripcion").value.trim();
+
+    if (descripcionNota !== "") {
+        const nuevaNota = document.createElement("div");
+        nuevaNota.classList.add("Nota", "my-3", "d-flex");
+
+        const contenidoNota = `
+            <div class="flex-grow-1 p-2">
+                <div class="DetalleNota">${descripcionNota}</div>
+                <div class="subNota">Ejemplo de texto 1</div>
+                <div class="subNota">Ejemplo de texto 2</div>
+            </div>
+            <div class="d-flex flex-column align-items-start me-5 p-2">
+                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditNota" onclick="mostrarFormularioEditNota(); return false;">Editar</button>
+                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentana()">Eliminar</button>
+            </div>
+        `;
+        nuevaNota.innerHTML = contenidoNota;
+
+        document.getElementById("contenidoNotas").appendChild(nuevaNota);
+
+        document.getElementById("notaDescripcion").value = "";
+
+        ocultarFormularioNota()
+
+      
+    }
+} 
+
+// Ventana de confirmacion=======================================================================
+
+function abrirVentana() {
+    document.getElementById('crearNotaBtn').classList.add('d-none');
+    document.getElementById('contenidoNotas').classList.add('d-none');
+    document.getElementById("ventanaConfirmacion").classList.remove("d-none");
+}
+
+function cerrarVentana() {
+    document.getElementById('crearNotaBtn').classList.remove('d-none');
+    document.getElementById('contenidoNotas').classList.remove('d-none');
+    document.getElementById("ventanaConfirmacion").classList.add("d-none");
 }

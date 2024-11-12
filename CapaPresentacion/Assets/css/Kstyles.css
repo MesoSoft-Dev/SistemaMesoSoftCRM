@@ -77,6 +77,12 @@ body {
     background-color: #e9d07f;
 }
 
+.fondo3:hover {
+
+    background-color: #eedb9b;
+}
+
+
 
 
 .bordeSidebarm {
@@ -105,6 +111,10 @@ body {
     border: 2px solid #73302c;
 }
 
+.border-custom2:hover {
+    border: 2px solid #73302c;
+}
+
 .border-custom3 {
     border: 2px solid #73302c;
     padding: 20px;
@@ -124,3 +134,62 @@ body {
     color: #000;
 }
 
+/*Notas======================================================================*/
+.Nota {
+    border: 1px solid #000000;
+    border-radius: 10px;
+   
+}
+.DetalleNota {
+    font-weight: bold !important;
+    font-size: 17px !important;
+}
+
+.subNota {
+    font-style: italic;
+    font-size: 15px
+}
+
+.headerForms {
+    border-bottom: 3px solid #73302c;
+    width: 100%;
+    padding-bottom: 4px;
+    font-weight: bold;
+    margin-bottom: 20px !important;
+}
+
+/*Ventana de confirmar=====================================================*/
+
+.ventanaConfirmar-content {
+    background-color: #f6e7b9; 
+    max-width: 300px;
+    margin: auto; 
+}
+
+.ventanaConfirmar-header h4 {
+    color: #73302c; 
+    text-align: center;
+}
+
+.ventanaConfirmar-body p {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+}
+
+.ventanaConfirmar-footer {
+    border-top: none;
+    justify-content: center;
+}
+
+.btn-ventana {
+    color: #73302c;
+    font-weight: bold;
+   
+}
+
+btn-ventana:hover {
+    color: #73302c;
+    font-weight: bold;
+}
