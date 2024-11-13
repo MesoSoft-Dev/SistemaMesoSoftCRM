@@ -438,13 +438,40 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.Button guardarTareaBtn;
 
         /// <summary>
-        /// editTareaDescripcion control.
+        /// tareaTituloEditar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox editTareaDescripcion;
+        protected global::System.Web.UI.WebControls.TextBox tareaTituloEditar;
+
+        /// <summary>
+        /// tareaDescripcionEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tareaDescripcionEditar;
+
+        /// <summary>
+        /// tareasEncargadoEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tareasEncargadoEditar;
+
+        /// <summary>
+        /// tareasFechaEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tareasFechaEditar;
 
         /// <summary>
         /// ButtonEdit control.
@@ -454,6 +481,15 @@ namespace CapaPresentacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonEdit;
+
+        /// <summary>
+        /// btnEliminarTarea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEliminarTarea;
 
         /// <summary>
         /// notaDescripcion control.
@@ -490,5 +526,14 @@ namespace CapaPresentacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// btnEliminarNota control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEliminarNota;
     }
 }

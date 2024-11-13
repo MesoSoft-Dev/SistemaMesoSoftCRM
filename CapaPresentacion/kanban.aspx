@@ -18,7 +18,7 @@
             </button>
         </div>
 
-        <!-- Modal de creacion de oportunidades -->
+<!-- Modal de creacion de oportunidades -->
         <div class="modal fade" id="todo_form" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -151,7 +151,7 @@
             </div>
         </div>
     </div>
-        <!-- Fin del modal-->
+<!-- Fin del modal-->
 
 
  <!-- Modal de editar oportunidad -->
@@ -165,6 +165,8 @@
         <div class="flex-grow-1 p-3">
             <!-- Seccion de otras opciones, Editar oportunidad -->
           <div id="otrasOpcionesContent" class="section-content">
+              <h6 class="headerForms">Editar Oportunidad</h6>
+
             <div class="border-custom3 col-md-12">
                 <asp:Label ID="Label1" runat="server" CssClass="fw-bold" Text="Detalles de Contacto"></asp:Label>
                 <div class="row mb-3">
@@ -265,6 +267,7 @@
              <!--Formulario de crear citas-->
 
           <div id="citasContent" class="section-content d-none">
+              <h6 class="headerForms" >Agregar Nueva Cita</h6>
                    <asp:Label ID="Label4" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
                    <asp:TextBox ID="fechaCita" runat="server"  CssClass="form-control" placeholder="Escoger Fecha de Cita"></asp:TextBox>
                    <div class="row">
@@ -283,7 +286,7 @@
 
 <!--Contenedor de tareas-->
   <div id="tareasContent" class="section-content d-none mx-4">
-
+    <h6 class="headerForms" id="lblAgregarTarea">Agregar Nueva Tarea</h6>
     <button id="crearTareaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioTarea()">+ Crear Nueva Tarea</button>
     <div class="contenedorTareas" id="contenidoTareas">
 
@@ -292,7 +295,7 @@
                 <div class="DetalleTarea">Ejemplo</div>
                 <div class="subTarea">EX</div>
                 <div class="subTarea">Ex</div>
-            </div>
+            </div>  
             <div class="d-flex flex-column align-items-start me-5 p-2 ">
                 <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditTarea" onclick="mostrarFormularioEditTarea(); return false;">Editar</button>
                 <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea()">Eliminar</button>
@@ -305,7 +308,6 @@
 
     <!-- Formulario para crear tareas -->
     <div id="formularioTarea" class="d-none">
-        <h6 class="headerForms">Agregar Nueva Tarea</h6>
         <div class="mb-1">
             <label class="fw-bold">Título</label>
             <asp:TextBox ID="tareaTitulo" CssClass="form-control text-start" runat="server" placeholder="Ingrese Título de Tarea."></asp:TextBox>
@@ -334,14 +336,25 @@
 
     <!-- Formulario para editar tareas -->
     <div id="formularioEditarTarea" class="d-none">
-        <h6 class="headerForms">Editar Tarea</h6>
-
-        <div class="mb-1">
-            <label class="fw-bold">Nueva Tarea</label>
-        </div>
-        <div class="mb-3">
-            <asp:TextBox ID="editTareaDescripcion" runat="server" CssClass="form-control py-5 text-start" TextMode="MultiLine" placeholder="Ingresa descripcion de tarea."></asp:TextBox>
-        </div>
+       <h6 class="headerForms">Editar Tarea</h6>
+<div class="mb-1">
+    <label class="fw-bold">Título</label>
+    <asp:TextBox ID="tareaTituloEditar" CssClass="form-control text-start" runat="server" placeholder="Ingrese Título de Tarea."></asp:TextBox>
+</div>
+<div class="mb-1">
+    <label class="fw-bold">Descripción</label>
+    <asp:TextBox ID="tareaDescripcionEditar" runat="server" CssClass="form-control text-start" TextMode="MultiLine" placeholder="Ingrese Descripción de Tarea." Rows="5" Columns="50"></asp:TextBox>
+</div>
+<div class="row mb-2">
+    <div class="col-6">
+        <label class="fw-bold">Encargado:</label>
+        <asp:TextBox ID="tareasEncargadoEditar" runat="server" CssClass="form-control text-start" placeholder="Ingrese Nombre de Encargado"></asp:TextBox>
+    </div>
+    <div class="col-6">
+        <label class="fw-bold">Fecha vencimiento:</label>
+        <asp:TextBox ID="tareasFechaEditar" runat="server" CssClass="form-control text-start"  placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
+    </div>
+</div>
         <div class="d-flex justify-content-end">
             <asp:Button ID="ButtonEdit" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Tarea" />
             <button type="button" class="btn border-custom2" onclick=" ocultarFormularioEditTarea()">Cancelar</button>
@@ -349,7 +362,7 @@
     </div>
     <!-- Formulario para editar tareas, FINAL -->
 
-    <!-- Ventana de Confirmación -->
+    <!-- Ventana de Confirmación en tareas -->
     <div id="ventanaConfirmacionTarea" class="ventanaConfirmar-content d-none mx-auto mt-5">
         <div class="ventanaConfirmar-header border-0">
             <h4 class="ventanaConfirmar-title fw-bold w-100" >¡IMPORTANTE!</h4>
@@ -358,11 +371,11 @@
             <p>Seguro que desea eliminar el registro</p>
         </div>
         <div class="ventanaConfirmar-footer pb-1 d-flex justify-content-center">
-            <a href="#" class="btn-ventana me-5">Eliminar</a>
-            <a href="#" class="btn-ventana" onclick="cerrarVentanaTarea()">Cancelar</a>
+            <asp:Button ID="btnEliminarTarea" runat="server" CssClass="btn btn-ventana me-5" Text="Eliminar" OnClientClick="eliminarTarea(); return false;" />
+            <a href="#" class=" btn btn-ventana" onclick="cerrarVentanaTarea()">Cancelar</a>
         </div>
     </div>
-    <!-- Ventana de Confirmación final -->
+    <!-- Ventana de Confirmación en tareas final -->
 
 </div>
  <!-- Formulario para crear nueva tarea,Final -->
@@ -373,6 +386,7 @@
 <!-- Contenido de notas-->
 <div id="notasContent" class="section-content d-none mx-4">
 
+<h6 class="headerForms" id="lblAgregarNota">Agregar Nueva Nota</h6>
 <button id="crearNotaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioNota()">+ Crear Nueva Nota</button>
 <div class="contenedorNotas" id="contenidoNotas">
 
@@ -382,7 +396,7 @@
         <div class="subNota">EX</div>
         <div class="subNota">Ex</div>
     </div>
-    <div class="d-flex flex-column align-items-start me-5 p-2 ">
+    <div class="d-flex flex-column align-items-start me-5 p-2 "> 
         <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditNota" onclick="mostrarFormularioEditNota(); return false;">Editar</button>
         <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentana()">Eliminar</button>
     </div>
@@ -394,7 +408,6 @@
 
  <!-- Formulario de  crear notas -->
          <div id="formularioNota" class="d-none">
-      <h6 class="headerForms ">Agregar Nota</h6>
     <div class="mb-1">
        <label class="fw-bold">Nueva Nota</label>
     </div>
@@ -411,7 +424,6 @@
  <!-- Formulario de notas,FINAL-->
 <!-- Formulario de editar Notas-->
  <div id="formularioEditarNota" class="d-none">
-
 <h6 class="headerForms">Editar Nota</h6>
 
     <div class="mb-1">
@@ -427,7 +439,7 @@
 </div>
  <!-- formulario de editar Notas final-->
 
- <!-- Ventana de Confirmación -->
+ <!-- Ventana de Confirmación en notas -->
     <div id="ventanaConfirmacion" class="ventanaConfirmar-content d-none mx-auto mt-5">
         <div class="ventanaConfirmar-header border-0">
             <h4 class="ventanaConfirmar-title fw-bold w-100" id="ventanaConfirmarLabel">¡IMPORTANTE!</h4>
@@ -436,11 +448,11 @@
             <p>Seguro que desea eliminar el registro</p>
         </div>
         <div class="ventanaConfirmar-footer pb-1 d-flex justify-content-center">
-            <a href="#" class="btn-ventana me-5">Eliminar</a>
-            <a href="#" class="btn-ventana" onclick="cerrarVentana()">Cancelar</a>
+            <asp:Button ID="btnEliminarNota" runat="server" CssClass="btn btn-ventana me-5" Text="Eliminar" OnClientClick="eliminarNota(); return false;" />
+            <a href="#" class="btn btn-ventana" onclick="cerrarVentana()">Cancelar</a>
         </div>
     </div>
-<!-- Ventana de Confirmación final -->
+<!-- Ventana de Confirmación en notas final -->
 
 
 
