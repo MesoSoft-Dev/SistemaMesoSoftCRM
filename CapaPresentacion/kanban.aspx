@@ -264,7 +264,7 @@
 </div>
             <!--Fin de otras opciones, editar oportunidad-->
 
-<!--Formulario de crear citas-->
+<!--Formulario de crear citas-->    
           <div id="citasContent" class="section-content d-none">
               <h6 class="headerForms" >Agregar Nueva Cita</h6>
                    <asp:Label ID="Label4" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
@@ -284,7 +284,7 @@
 <!--Formulario de crear citas final-->
 
 <!--Contenedor de tareas-->
-  <div id="tareasContent" class="section-content d-none mx-4">
+  <div id="tareasContent" class="section-content d-none">
     <h6 class="headerForms" id="lblAgregarTarea">Agregar Nueva Tarea</h6>
     <button id="crearTareaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioTarea()">+ Crear Nueva Tarea</button>
     <div class="contenedorTareas" id="contenidoTareas">
@@ -383,8 +383,7 @@
 
 
 <!-- Contenido de notas-->
-<div id="notasContent" class="section-content d-none mx-4">
-
+<div id="notasContent" class="section-content d-none">
 <h6 class="headerForms" id="lblAgregarNota">Agregar Nueva Nota</h6>
 <button id="crearNotaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioNota()">+ Crear Nueva Nota</button>
 <div class="contenedorNotas" id="contenidoNotas">
@@ -461,7 +460,7 @@
         </div>
 
         <!-- SidebarModal  -->
-        <div class="list-group min-vh-100 bordeSidebarm flex-shrink-0 p-3" style="width: 200px;">
+        <div class="list-group col-3 min-vh-100 bordeSidebarm flex-shrink-0">
           <button type="button" class="SidebarmElemento" id="otrasOpciones" onclick="showSection('otrasOpcionesContent')">Otras opciones:</button>
           <button type="button" class="SidebarmElemento" id="citas" onclick="showSection('citasContent')">Citas  ></button>
           <button type="button" class="SidebarmElemento" id="tareas" onclick="showSection('tareasContent')">Tareas ></button>
