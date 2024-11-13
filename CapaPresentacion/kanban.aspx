@@ -34,10 +34,10 @@
     <div class="border-custom3 col-md-10">
         <h5 class="fw-bold">Detalles de Contacto</h5>
         <div class="row mb-3">
-            <div class="col-md-7  ms-5">
+            <div class="col-sm-4 col-md-7 ms-md-5">
                 <asp:TextBox ID="txtBuscarContacto" runat="server" CssClass="form-control" Placeholder="Buscar Contacto"></asp:TextBox>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4">
                 <div class="form-check mx-auto">
                     <asp:CheckBox ID="existsCheckbox" runat="server" />
                     <label class="form-check-label" for="existsCheckbox">Existe</label>
@@ -143,7 +143,7 @@
             <asp:Button ID="btnCancelar" class="btn-close" runat="server" Text="Cancelar" data-bs-dismiss="modal" CssClass="btn btn-light me-2 fw-bold border-custom2 flex-fill" />
        </div>
          <div class="d-flex">
-             <asp:Button ID="todo_submit" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClientClick="createTodo(); return false;" />
+             <asp:Button ID="todo_submit" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClientClick="createOportunidad(); return false;" />
          </div>
          
     </div>
@@ -411,7 +411,7 @@
        <label class="fw-bold">Nueva Nota</label>
     </div>
     <div class="mb-3">
-        <asp:TextBox ID="notaDescripcion" runat="server" CssClass="form-control py-5 text-start " TextMode="MultiLine" placeholder="Ingresa descripcion de nota."></asp:TextBox>
+        <asp:TextBox ID="notaDescripcion" runat="server" CssClass="form-control text-start" TextMode="MultiLine" placeholder="Ingresa descripcion de nota." Rows="5" Columns="50"></asp:TextBox>
     </div>
 
    
