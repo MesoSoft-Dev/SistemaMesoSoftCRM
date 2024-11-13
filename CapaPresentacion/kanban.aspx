@@ -264,8 +264,7 @@
 </div>
             <!--Fin de otras opciones, editar oportunidad-->
 
-             <!--Formulario de crear citas-->
-
+<!--Formulario de crear citas-->
           <div id="citasContent" class="section-content d-none">
               <h6 class="headerForms" >Agregar Nueva Cita</h6>
                    <asp:Label ID="Label4" runat="server"  CssClass="fw-bold"  Text="Escoger fecha:"></asp:Label>
@@ -449,7 +448,7 @@
         </div>
         <div class="ventanaConfirmar-footer pb-1 d-flex justify-content-center">
             <asp:Button ID="btnEliminarNota" runat="server" CssClass="btn btn-ventana me-5" Text="Eliminar" OnClientClick="eliminarNota(); return false;" />
-            <a href="#" class="btn btn-ventana" onclick="cerrarVentana()">Cancelar</a>
+            <a href="#" class="btn btn-ventana" onclick="cerrarVentanaNota()">Cancelar</a>
         </div>
     </div>
 <!-- Ventana de Confirmación en notas final -->
