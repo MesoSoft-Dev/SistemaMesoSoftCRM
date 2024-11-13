@@ -351,3 +351,35 @@ function eliminarTarea() {
         console.error("No se encontraron los IDs necesarios para eliminar la tarea.");
     }
 }
+
+//selector de fechas en tareas=============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const tareasFechaElement = document.getElementById('tareasFecha');
+
+    if (tareasFechaElement) {
+        flatpickr(tareasFechaElement, {
+            enableTime: true, 
+            dateFormat: "Y-m-d\\TH:i", 
+            time_24hr: true 
+        });
+        
+    }
+});
+//selector de fechas en citas=============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tareasFechaElement = document.getElementById('fechaCita');
+
+    
+    if (tareasFechaElement) {
+        
+        flatpickr(tareasFechaElement, {
+            enableTime: true,
+            dateFormat: "Y-m-d\\TH:i", 
+            time_24hr: true 
+        });
+        
+    } 
+});
+
+

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="kanban.aspx.cs" Inherits="CapaPresentacion.kanban" ClientIDMode="Static" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="Assets/css/Kstyles.css"/>
 </asp:Content>
 
@@ -28,7 +30,7 @@
                 <div class="modal-body">
                         <div class="container mt-1">
    
-    <!-- Contact Details Section -->
+    <!-- Detalles de contacto -->
     <div class="border-custom3 col-md-10">
         <h5 class="fw-bold">Detalles de Contacto</h5>
         <div class="row mb-3">
@@ -78,7 +80,7 @@
         </div>
     </div>
 
-    <!-- Opportunity Details Section -->
+    <!-- Detalles de oportunidad-->
     <div class="border-custom col-md-10">
         <h5 class="fw-bold">Detalles de Oportunidades</h5>
         <div class="row mb-3">
@@ -141,7 +143,7 @@
             <asp:Button ID="btnCancelar" class="btn-close" runat="server" Text="Cancelar" data-bs-dismiss="modal" CssClass="btn btn-light me-2 fw-bold border-custom2 flex-fill" />
        </div>
          <div class="d-flex">
-             <asp:Button ID="todo_submit" runat="server" Text="Aceptar" CssClass="btn btn-custom me-2 fw-bold flex-fill" OnClientClick="createTodo(); return false;" />
+             <asp:Button ID="todo_submit" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClientClick="createTodo(); return false;" />
          </div>
          
     </div>
@@ -322,10 +324,9 @@
             </div>
             <div class="col-6">
                 <label class="fw-bold">Fecha vencimiento:</label>
-                <asp:TextBox ID="tareasFecha" runat="server" CssClass="form-control text-start"  placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
+                <asp:TextBox ID="tareasFecha" runat="server" CssClass="form-control text-start" placeholder="Escoger Fecha Vencimiento"></asp:TextBox>
             </div>
         </div>
-
         <div class="d-flex justify-content-end">
             <asp:Button ID="guardarTareaBtn" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Tarea" OnClientClick="guardarTarea(); return false;" />
             <button type="button" class="btn border-custom2" onclick="ocultarFormularioTarea()">Cancelar</button>
@@ -511,4 +512,5 @@
     
 
     <script src="Assets/js/Kscript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
 </asp:Content>
