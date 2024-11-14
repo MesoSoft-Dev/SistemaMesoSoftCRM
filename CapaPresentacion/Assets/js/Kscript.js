@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-function createTodo() {
+function createOportunidad() {
     const nombre = document.getElementById("txtNombres").value;
     const apellido = document.getElementById("txtApellidos").value;
     const input_val = `${nombre} ${apellido}`.trim();
