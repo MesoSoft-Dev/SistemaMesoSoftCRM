@@ -99,7 +99,14 @@ body {
     padding-bottom: 5px;
     font-weight: bold !important;
 }
+.SidebarmElemento.active {
+    background-color: #efda9d !important;
+    color: #000 !important;
+}
 
+.custom-height {
+    height: 100px; /* Set your desired height here */
+}
 
 .border-custom {
     border: 2px solid #73302c;
