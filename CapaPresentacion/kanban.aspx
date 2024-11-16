@@ -482,7 +482,6 @@
     <div class="row">
         <div class="col-md status mb-3 my-0 border-end border-dark pt-2 mb-4" id="no_status">
             <h2 class="fondo1 mb-4">Nuevo Contacto</h2>
-            <button class="todo border-0" draggable="true">Ejemplo Todo</button>
         </div>
         <div class="col-md status mb-3 my-0 border-end border-start border-dark pt-2 mb-4">
             <h2 class="fondo2 mb-4">Cliente Potencial</h2>
