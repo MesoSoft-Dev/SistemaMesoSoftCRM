@@ -140,7 +140,7 @@
     </div>
     <div class=" d-flex justify-content-end">
         <div class="d-flex">
-            <asp:Button ID="btnCancelar" class="btn-close" runat="server" Text="Cancelar" data-bs-dismiss="modal" CssClass="btn btn-light me-2 fw-bold border-custom2 flex-fill" />
+  <button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
        </div>
          <div class="d-flex">
              <asp:Button ID="todo_submit" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClientClick="createOportunidad(); return false;" />
@@ -291,18 +291,6 @@
     <button id="crearTareaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioTarea()">+ Crear Nueva Tarea</button>
     <div class="contenedorTareas" id="contenidoTareas">
 
-        <div class="Tarea my-3 d-flex"> 
-            <div class="flex-grow-1 p-2"> 
-                <div class="DetalleTarea">Ejemplo</div>
-                <div class="subTarea">EX</div>
-                <div class="subTarea">Ex</div>
-            </div>  
-            <div class="d-flex flex-column align-items-start me-5 p-2 ">
-                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditTarea" onclick="mostrarFormularioEditTarea(); return false;">Editar</button>
-                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea()">Eliminar</button>
-            </div>
-        </div>
-
     </div>
               
     <!-- Contenido de tareas, Final -->
@@ -388,18 +376,6 @@
 <h6 class="headerForms" id="lblAgregarNota">Agregar Nueva Nota</h6>
 <button id="crearNotaBtn" class="btn fondo3 w-100" type="button" onclick="mostrarFormularioNota()">+ Crear Nueva Nota</button>
 <div class="contenedorNotas" id="contenidoNotas">
-
-<div class="Nota my-3 d-flex"> 
-    <div class="flex-grow-1 p-2"> 
-        <div class="DetalleNota">Ejemplo</div>
-        <div class="subNota">EX</div>
-        <div class="subNota">Ex</div>
-    </div>
-    <div class="d-flex flex-column align-items-start me-5 p-2 "> 
-        <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" id="btnEditNota" onclick="mostrarFormularioEditNota(); return false;">Editar</button>
-        <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentana()">Eliminar</button>
-    </div>
-</div>
 
 </div>
               
