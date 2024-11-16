@@ -57,21 +57,32 @@ function createOportunidad() {
     const apellido = document.getElementById("txtApellidos").value;
     const input_val = `${nombre} ${apellido}`.trim();
 
+    const fechaRegistro = document.getElementById("dllfechaRegistro").value; // Ensure you use the correct ClientID
+    const selectedDate = new Date(fechaRegistro); // Convert to Date object
+    const today = new Date(); // Get today's date
+    today.setHours(0, 0, 0, 0); // Set time to midnight for comparison
+
     if (input_val !== "") {
-        const todoId = generateUniqueId(); 
-        todosData[todoId] = { notas: [], tareas: [] }; 
+        // Check if the selected date is valid and not less than today
+        if (selectedDate < today) {
+            alert("Por favor, ingrese una fecha válida que no sea anterior a hoy.");
+            return; // Exit the function if the date is invalid
+        }
+
+        const todoId = generateUniqueId();
+        todosData[todoId] = { notas: [], tareas: [] };
 
         const todo_button = document.createElement("button");
         todo_button.textContent = input_val;
         todo_button.classList.add("todo", "border-0");
         todo_button.setAttribute("draggable", "true");
-        todo_button.setAttribute("data-id", todoId); 
+        todo_button.setAttribute("data-id", todoId);
 
         document.getElementById("no_status").appendChild(todo_button);
 
         todo_button.addEventListener("dragstart", dragStart);
         todo_button.addEventListener("dragend", dragEnd);
-        todo_button.addEventListener("click", openModal); 
+        todo_button.addEventListener("click", openModal);
         document.getElementById("txtNombres").value = "";
         document.getElementById("txtApellidos").value = "";
 
@@ -152,7 +163,6 @@ function ocultarFormularioEditNota() {
 }
 
 function abrirVentanaNota(todoId, notaId) {
-    console.log("TEST INICION")
     document.getElementById('crearNotaBtn').classList.add('d-none');
     document.getElementById('contenidoNotas').classList.add('d-none');
     document.getElementById("ventanaConfirmacion").classList.remove("d-none");
@@ -161,7 +171,6 @@ function abrirVentanaNota(todoId, notaId) {
     const btnEliminarNota = document.getElementById("btnEliminarNota");
     btnEliminarNota.setAttribute("data-todo-id", todoId);
     btnEliminarNota.setAttribute("data-nota-id", notaId);
-    console.log("TEST FINAL")
 
 }
 
@@ -218,7 +227,7 @@ function guardarNota() {
 }
 //Eliminar notas============================================================================================
 function eliminarNota() {
-    console.log("TEST INICION")
+    
 
     const btnEliminarNota = document.getElementById("btnEliminarNota");
     const todoId = btnEliminarNota.getAttribute("data-todo-id");
@@ -228,9 +237,7 @@ function eliminarNota() {
         todosData[todoId].notas = todosData[todoId].notas.filter((nota) => nota.id !== notaId);
         renderNotas(todoId); 
         cerrarVentanaNota();
-    } else {
-        console.error("No se encontraron los IDs necesarios para eliminar la nota.");
-    }
+    } 
 }
 
 
@@ -347,9 +354,7 @@ function eliminarTarea() {
         todosData[todoId].tareas = todosData[todoId].tareas.filter((tarea) => tarea.id !== tareaId);
         renderTareas(todoId); 
         cerrarVentanaTarea();
-    } else {
-        console.error("No se encontraron los IDs necesarios para eliminar la tarea.");
-    }
+    } 
 }
 
 //selector de fechas en tareas=============================================
@@ -358,28 +363,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (tareasFechaElement) {
         flatpickr(tareasFechaElement, {
-            enableTime: true, 
-            dateFormat: "Y-m-d\\TH:i", 
-            time_24hr: true 
+            enableTime: true,
+            dateFormat: "Y-m-d\\TH:i",
+            time_24hr: true,
+            onChange: function (selectedDates, dateStr, instance) {
+                const selectedDate = new Date(dateStr);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0); // Establecer la hora de hoy a medianoche para la comparación
+
+                if (selectedDate < today) {
+                    alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
+                    instance.clear(); // Limpiar el campo si la fecha es inválida
+                }
+            }
         });
-        
     }
 });
 //selector de fechas en citas=============================================
 
-document.addEventListener('DOMContentLoaded', () => {
-    const tareasFechaElement = document.getElementById('fechaCita');
+    document.addEventListener('DOMContentLoaded', () => {
+        const fechaCitaElement = document.getElementById('fechaCita');
 
-    
-    if (tareasFechaElement) {
-        
-        flatpickr(tareasFechaElement, {
-            enableTime: true,
-            dateFormat: "Y-m-d\\TH:i", 
-            time_24hr: true 
-        });
-        
-    } 
-});
+        if (fechaCitaElement) {
+            flatpickr(fechaCitaElement, {
+                enableTime: true,
+                dateFormat: "Y-m-d\\TH:i",
+                time_24hr: true,
+                onChange: function (selectedDates, dateStr, instance) {
+                    const selectedDate = new Date(dateStr);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Set today's time to midnight for comparison
+
+                    if (selectedDate < today) {
+                        alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
+                        instance.clear(); // Clear the input if the date is invalid
+
+                    }
+                }
+            });
+        }
+    });
 
 
