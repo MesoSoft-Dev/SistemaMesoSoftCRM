@@ -152,7 +152,6 @@ function ocultarFormularioEditNota() {
 }
 
 function abrirVentanaNota(todoId, notaId) {
-    console.log("TEST INICION")
     document.getElementById('crearNotaBtn').classList.add('d-none');
     document.getElementById('contenidoNotas').classList.add('d-none');
     document.getElementById("ventanaConfirmacion").classList.remove("d-none");
@@ -161,7 +160,6 @@ function abrirVentanaNota(todoId, notaId) {
     const btnEliminarNota = document.getElementById("btnEliminarNota");
     btnEliminarNota.setAttribute("data-todo-id", todoId);
     btnEliminarNota.setAttribute("data-nota-id", notaId);
-    console.log("TEST FINAL")
 
 }
 
@@ -218,7 +216,7 @@ function guardarNota() {
 }
 //Eliminar notas============================================================================================
 function eliminarNota() {
-    console.log("TEST INICION")
+    
 
     const btnEliminarNota = document.getElementById("btnEliminarNota");
     const todoId = btnEliminarNota.getAttribute("data-todo-id");
@@ -228,9 +226,7 @@ function eliminarNota() {
         todosData[todoId].notas = todosData[todoId].notas.filter((nota) => nota.id !== notaId);
         renderNotas(todoId); 
         cerrarVentanaNota();
-    } else {
-        console.error("No se encontraron los IDs necesarios para eliminar la nota.");
-    }
+    } 
 }
 
 
@@ -347,9 +343,7 @@ function eliminarTarea() {
         todosData[todoId].tareas = todosData[todoId].tareas.filter((tarea) => tarea.id !== tareaId);
         renderTareas(todoId); 
         cerrarVentanaTarea();
-    } else {
-        console.error("No se encontraron los IDs necesarios para eliminar la tarea.");
-    }
+    } 
 }
 
 //selector de fechas en tareas=============================================

@@ -429,7 +429,7 @@
        <label class="fw-bold">Nueva Nota</label>
     </div>
     <div class="mb-3">
-        <asp:TextBox ID="EditnotaDescripcion" runat="server" CssClass="form-control py-5 text-start " TextMode="MultiLine" placeholder="Ingresa descripcion de nota."></asp:TextBox>
+        <asp:TextBox ID="EditnotaDescripcion" runat="server" CssClass="form-control text-start " TextMode="MultiLine" placeholder="Ingresa descripcion de nota." Rows="5" Columns="50"></asp:TextBox>
     </div>
      <div class="d-flex justify-content-end">
         <asp:Button ID="Button1" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Nota" />
