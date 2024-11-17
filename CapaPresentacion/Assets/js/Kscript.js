@@ -1,23 +1,23 @@
 ﻿//funciones de drag and drop============================================
-const todos = document.querySelectorAll(".todo");
+const oportunidades = document.querySelectorAll(".oportunidad");
 const all_status = document.querySelectorAll(".status");
-let draggableTodo = null;
+let draggableOportunidad = null;
 
-todos.forEach((todo) => {
-    todo.addEventListener("dragstart", dragStart);
-    todo.addEventListener("dragend", dragEnd);
-    todo.addEventListener("click", openModal); 
+oportunidades.forEach((oportunidad) => {
+    oportunidad.addEventListener("dragstart", dragStart);
+    oportunidad.addEventListener("dragend", dragEnd);
+    oportunidad.addEventListener("click", openModal);
 });
 
 function dragStart() {
-    draggableTodo = this;
+    draggableOportunidad = this;
     setTimeout(() => {
         this.style.display = "none";
     }, 0);
 }
 
 function dragEnd() {
-    draggableTodo = null;
+    draggableOportunidad = null;
     setTimeout(() => {
         this.style.display = "block";
     }, 0);
@@ -32,23 +32,21 @@ function dragOver(e) {
     e.preventDefault();
 }
 
-
 function dragDrop() {
-    this.appendChild(draggableTodo);
+    this.appendChild(draggableOportunidad);
 
     const headerColor = window.getComputedStyle(this.querySelector("h2")).backgroundColor;
-    draggableTodo.style.backgroundColor = headerColor;
+    draggableOportunidad.style.backgroundColor = headerColor;
 }
+
  //creacion de oportunidades====================================================================
 
-const todosData = {}; 
+const oportunidadesData = {};
 
 function generateUniqueId() {
-    return `todo_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    return `oportunidad_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("todo_submit").addEventListener("click", createTodo);
-});
+
 
 
 
@@ -119,59 +117,56 @@ function createOportunidad() {
     if (validarFormulario() == false) {
         return;
     }
-        const nombre = document.getElementById("txtNombres").value;
-        const apellido = document.getElementById("txtApellidos").value;
-        const input_val = `${nombre} ${apellido}`.trim();
 
-        const fechaRegistro = document.getElementById("dllfechaRegistro").value; // Ensure you use the correct ClientID
-        const selectedDate = new Date(fechaRegistro); // Convert to Date object
-        const today = new Date(); // Get today's date
-        today.setHours(0, 0, 0, 0); // Set time to midnight for comparison
+    const nombre = document.getElementById("txtNombres").value;
+    const apellido = document.getElementById("txtApellidos").value;
+    const input_val = `${nombre} ${apellido}`.trim();
 
-        
-            // Check if the selected date is valid and not less than today
-            if (selectedDate < today) {
-                alert("Por favor, ingrese una fecha válida que no sea anterior a hoy.");
-                return; // Exit the function if the date is invalid
-            }
+    const fechaRegistro = document.getElementById("dllfechaRegistro").value;
+    const selectedDate = new Date(fechaRegistro);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-            const todoId = generateUniqueId();
-            todosData[todoId] = { notas: [], tareas: [] };
+    if (selectedDate < today) {
+        alert("Por favor, ingrese una fecha válida que no sea anterior a hoy.");
+        return;
+    }
 
-            const todo_button = document.createElement("button");
-            todo_button.textContent = input_val;
-            todo_button.classList.add("todo", "border-0");
-            todo_button.setAttribute("draggable", "true");
-            todo_button.setAttribute("data-id", todoId);
+    const oportunidadId = generateUniqueId();
+    oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 
-            document.getElementById("no_status").appendChild(todo_button);
+    const oportunidad_button = document.createElement("button");
+    oportunidad_button.textContent = input_val;
+    oportunidad_button.classList.add("oportunidad", "border-0");
+    oportunidad_button.setAttribute("draggable", "true");
+    oportunidad_button.setAttribute("data-id", oportunidadId);
 
-            todo_button.addEventListener("dragstart", dragStart);
-            todo_button.addEventListener("dragend", dragEnd);
-            todo_button.addEventListener("click", openModal);
-            document.getElementById("txtNombres").value = "";
-            document.getElementById("txtApellidos").value = "";
+    document.getElementById("no_status").appendChild(oportunidad_button);
 
-            const modalElement = document.getElementById('todo_form');
-            const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-    modalInstance.hide();
+    oportunidad_button.addEventListener("dragstart", dragStart);
+    oportunidad_button.addEventListener("dragend", dragEnd);
+    oportunidad_button.addEventListener("click", openModal);
+
     limpiarCampos();
-        
-    }
 
+    const modalElement = document.getElementById('oportunidad_form');
+    const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+    modalInstance.hide();
+}
     // Despliege del modal de edicion, citas, tareas y notas.
-    function openModal(event) {
-        event.preventDefault();
-        const todoId = event.currentTarget.getAttribute("data-id");
-        document.getElementById('todoModal').setAttribute("data-id", todoId);
+function openModal(event) {
+    event.preventDefault();
+    const oportunidadId = event.currentTarget.getAttribute("data-id");
+    document.getElementById('oportunidadModal').setAttribute("data-id", oportunidadId);
 
-        renderNotas(todoId);
-        renderTareas(todoId);
+    renderNotas(oportunidadId);
+    renderTareas(oportunidadId);
 
-        const modalElement = document.getElementById('todoModal');
-        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-        modalInstance.show();
-    }
+    const modalElement = document.getElementById('oportunidadModal');
+    const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+    modalInstance.show();
+}
+
 
 
     function showSection(sectionId) {
@@ -196,8 +191,30 @@ function createOportunidad() {
         });
     });
 
+//funciones de citas========================================================
 
+function validarFormularioCitas() {
+    const fechaCita = document.getElementById("fechaCita").value;
+    const lugarReunion = document.getElementById("txtLugarReunion").value;
+    const temaReunion = document.getElementById("txtTemaReunion").value;
 
+    if (fechaCita.trim() === "") {
+        alert("El campo Fecha de Cita es obligatorio.");
+        return false;
+    }
+
+    if (lugarReunion.trim() === "") {
+        alert("El campo Lugar de Reunión es obligatorio.");
+        return false;
+    }
+
+    if (temaReunion.trim() === "") {
+        alert("El campo Tema de Reunión es obligatorio.");
+        return false;
+    }
+
+    return true;
+}
 
     // funciones de notas===========================================================================================================================
     function mostrarFormularioNota() {
@@ -216,7 +233,7 @@ function createOportunidad() {
     function mostrarFormularioEditNota() {
         document.getElementById('crearNotaBtn').classList.add('d-none');
         document.getElementById('contenidoNotas').classList.add('d-none');
-        document.getElementById('lblAgregarNota').classList.add('d-none'); lblAgregarNota
+        document.getElementById('lblAgregarNota').classList.add('d-none'); 
         document.getElementById('formularioEditarNota').classList.remove('d-none');
     }
 
@@ -229,17 +246,16 @@ function createOportunidad() {
 
     }
 
-    function abrirVentanaNota(todoId, notaId) {
-        document.getElementById('crearNotaBtn').classList.add('d-none');
-        document.getElementById('contenidoNotas').classList.add('d-none');
-        document.getElementById("ventanaConfirmacion").classList.remove("d-none");
-        document.getElementById("lblAgregarNota").classList.add("d-none");
+function abrirVentanaNota(oportunidadId, notaId) {
+    document.getElementById('crearNotaBtn').classList.add('d-none');
+    document.getElementById('contenidoNotas').classList.add('d-none');
+    document.getElementById("ventanaConfirmacion").classList.remove("d-none");
+    document.getElementById("lblAgregarNota").classList.add("d-none");
 
-        const btnEliminarNota = document.getElementById("btnEliminarNota");
-        btnEliminarNota.setAttribute("data-todo-id", todoId);
-        btnEliminarNota.setAttribute("data-nota-id", notaId);
-
-    }
+    const btnEliminarNota = document.getElementById("btnEliminarNota");
+    btnEliminarNota.setAttribute("data-oportunidad-id", oportunidadId);
+    btnEliminarNota.setAttribute("data-nota-id", notaId);
+}
 
     function cerrarVentanaNota() {
         document.getElementById('crearNotaBtn').classList.remove('d-none');
@@ -251,71 +267,61 @@ function createOportunidad() {
 
 
     //crear notas===========================================================================
-    let notaIdCounter = 0;
+function renderNotas(oportunidadId) {
+    const notasContainer = document.getElementById("contenidoNotas");
+    notasContainer.innerHTML = "";
 
-    function renderNotas(todoId) {
-        const notasContainer = document.getElementById("contenidoNotas");
-        notasContainer.innerHTML = "";
+    oportunidadesData[oportunidadId].notas.forEach((nota) => {
+        const notaElement = document.createElement("div");
+        notaElement.classList.add("Nota", "my-3", "d-flex");
+        notaElement.setAttribute("data-id", nota.id);
 
-        todosData[todoId].notas.forEach((nota) => {
-            const notaElement = document.createElement("div");
-            notaElement.classList.add("Nota", "my-3", "d-flex");
-            notaElement.setAttribute("data-id", nota.id);
+        const contenidoNota = `
+        <div class="flex-grow-1 p-2">
+            <div class="DetalleNota">${nota.descripcion}</div>
+            <div class="subTarea">Ejemplo fecha</div>
+            <div class="subTarea">Ejemplo encargado</div>
+        </div>
+        <div class="d-flex flex-column align-items-start me-5 p-2">
+            <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="mostrarFormularioEditNota()">Editar</button>
+            <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaNota('${oportunidadId}', '${nota.id}')">Eliminar</button>  
+        </div>
+    `;
+        notaElement.innerHTML = contenidoNota;
+        notasContainer.appendChild(notaElement);
+    });
+}
 
-            const contenidoNota = `
-            <div class="flex-grow-1 p-2">
-                <div class="DetalleNota">${nota.descripcion}</div>
-                <div class="subTarea">Ejemplo fecha</div>
-                <div class="subTarea">Ejemplo encargado</div>
-            </div>
-            <div class="d-flex flex-column align-items-start me-5 p-2">
-                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="mostrarFormularioEditNota()">Editar</button>
-                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaNota('${todoId}', '${nota.id}')">Eliminar</button>  
-            </div>
-        `;
-            notaElement.innerHTML = contenidoNota;
-            notasContainer.appendChild(notaElement);
-        });
+function guardarNota() {
+    const descripcionNota = document.getElementById("notaDescripcion").value.trim();
+    const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
+
+    if (descripcionNota !== "") {
+        const notaId = generateUniqueId();
+        oportunidadesData[oportunidadId].notas.push({ id: notaId, descripcion: descripcionNota });
+
+        document.getElementById("notaDescripcion").value = "";
+        renderNotas(oportunidadId);
+        ocultarFormularioNota();
+    } else {
+        alert("Por favor, completa todos los campos antes de guardar la nota.");
     }
-    function guardarNota() {
-        const descripcionNota = document.getElementById("notaDescripcion").value.trim();
-        const todoId = document.getElementById('todoModal').getAttribute("data-id");
+}
 
-        if (descripcionNota !== "") {
-            const notaId = generateUniqueId();
-            todosData[todoId].notas.push({ id: notaId, descripcion: descripcionNota });
+// Eliminar notas ============================================================================================
+function eliminarNota() {
+    const btnEliminarNota = document.getElementById("btnEliminarNota");
+    const oportunidadId = btnEliminarNota.getAttribute("data-oportunidad-id");
+    const notaId = btnEliminarNota.getAttribute("data-nota-id");
 
-            document.getElementById("notaDescripcion").value = "";
-            renderNotas(todoId);
-            ocultarFormularioNota();
-        } else {
-            alert("Por favor, completa todos los campos antes de guardar la nota.");
-        }
+    if (oportunidadId && notaId) {
+        oportunidadesData[oportunidadId].notas = oportunidadesData[oportunidadId].notas.filter((nota) => nota.id !== notaId);
+        renderNotas(oportunidadId);
+        cerrarVentanaNota();
     }
-    //Eliminar notas============================================================================================
-    function eliminarNota() {
-
-
-        const btnEliminarNota = document.getElementById("btnEliminarNota");
-        const todoId = btnEliminarNota.getAttribute("data-todo-id");
-        const notaId = btnEliminarNota.getAttribute("data-nota-id");
-
-        if (todoId && notaId) {
-            todosData[todoId].notas = todosData[todoId].notas.filter((nota) => nota.id !== notaId);
-            renderNotas(todoId);
-            cerrarVentanaNota();
-        }
-    }
-
-
-
-
-
-
-
-    // funciones de tareas =========================================================
-    let tareaIdCounter = 0;
-
+}
+// funciones de tareas =========================================================
+    
     function mostrarFormularioTarea() {
         document.getElementById('crearTareaBtn').classList.add('d-none');
         document.getElementById('contenidoTareas').classList.add('d-none');
@@ -349,28 +355,30 @@ function createOportunidad() {
         document.getElementById("lblAgregarTarea").classList.remove("d-none");
     }
 
-    function abrirVentanaTarea(todoId, tareaId) {
-        document.getElementById('crearTareaBtn').classList.add('d-none');
-        document.getElementById('contenidoTareas').classList.add('d-none');
-        document.getElementById("ventanaConfirmacionTarea").classList.remove("d-none");
-        document.getElementById("lblAgregarTarea").classList.add("d-none");
+function abrirVentanaTarea(oportunidadId, tareaId) {
+    document.getElementById('crearTareaBtn').classList.add('d-none');
+    document.getElementById('contenidoTareas').classList.add('d-none');
+    document.getElementById("ventanaConfirmacionTarea").classList.remove("d-none");
+    document.getElementById("lblAgregarTarea").classList.add("d-none");
 
-        const btnEliminarTarea = document.getElementById("btnEliminarTarea");
-        btnEliminarTarea.setAttribute("data-todo-id", todoId);
-        btnEliminarTarea.setAttribute("data-tarea-id", tareaId);
-    }
+    const btnEliminarTarea = document.getElementById("btnEliminarTarea");
+    btnEliminarTarea.setAttribute("data-oportunidad-id", oportunidadId);
+    btnEliminarTarea.setAttribute("data-tarea-id", tareaId);
+}
 
-    // Crear tareas ===========================================================================
-    function renderTareas(todoId) {
-        const tareasContainer = document.getElementById("contenidoTareas");
-        tareasContainer.innerHTML = "";
+// Crear tareas ===========================================================================
+let tareaIdCounter = 0;
 
-        todosData[todoId].tareas.forEach((tarea) => {
-            const tareaElement = document.createElement("div");
-            tareaElement.classList.add("Tarea", "my-3", "d-flex");
-            tareaElement.setAttribute("data-id", tarea.id);
+function renderTareas(oportunidadId) {
+    const tareasContainer = document.getElementById("contenidoTareas");
+    tareasContainer.innerHTML = "";
 
-            const contenidoTarea = `
+    oportunidadesData[oportunidadId].tareas.forEach((tarea) => {
+        const tareaElement = document.createElement("div");
+        tareaElement.classList.add("Tarea", "my-3", "d-flex");
+        tareaElement.setAttribute("data-id", tarea.id);
+
+        const contenidoTarea = `
             <div class="flex-grow-1 p-2">
                 <div class="DetalleTarea">${tarea.titulo}</div>
                 <div class="subTarea">${tarea.descripcion}</div>
@@ -378,51 +386,49 @@ function createOportunidad() {
             </div>
             <div class="d-flex flex-column align-items-start me-5 p-2">
                 <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="mostrarFormularioEditTarea()">Editar</button>
-        <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea('${todoId}', '${tarea.id}')">Eliminar</button>
+                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea('${oportunidadId}', '${tarea.id}')">Eliminar</button>
             </div>
         `;
-            tareaElement.innerHTML = contenidoTarea;
-            tareasContainer.appendChild(tareaElement);
-        });
+        tareaElement.innerHTML = contenidoTarea;
+        tareasContainer.appendChild(tareaElement);
+    });
+}
+
+function guardarTarea() {
+    const descripcionTarea = document.getElementById("tareaDescripcion").value.trim();
+    const tituloTarea = document.getElementById("tareaTitulo").value.trim();
+    const fechaTarea = document.getElementById("tareasFecha").value.trim();
+    document.getElementById("tareasEncargado").value.trim();
+    const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
+
+    if (descripcionTarea !== "" && tituloTarea !== "" && fechaTarea !== "") {
+        const tareaId = generateUniqueId();
+        oportunidadesData[oportunidadId].tareas.push({ id: tareaId, titulo: tituloTarea, descripcion: descripcionTarea, fecha: fechaTarea });
+
+        document.getElementById("tareaDescripcion").value = "";
+        document.getElementById("tareaTitulo").value = "";
+        document.getElementById("tareasFecha").value = "";
+        document.getElementById("tareasEncargado").value = "";
+
+        renderTareas(oportunidadId);
+        ocultarFormularioTarea();
+    } else {
+        alert("Por favor, completa todos los campos antes de guardar la tarea.");
     }
+}
 
-    function guardarTarea() {
-        const descripcionTarea = document.getElementById("tareaDescripcion").value.trim();
-        const tituloTarea = document.getElementById("tareaTitulo").value.trim();
-        const fechaTarea = document.getElementById("tareasFecha").value.trim();
-        document.getElementById("tareasEncargado").value.trim();
-        const todoId = document.getElementById('todoModal').getAttribute("data-id");
+// Eliminar tareas ========================================================================
+function eliminarTarea() {
+    const btnEliminarTarea = document.getElementById("btnEliminarTarea");
+    const oportunidadId = btnEliminarTarea.getAttribute("data-oportunidad-id");
+    const tareaId = btnEliminarTarea.getAttribute("data-tarea-id");
 
-        if (descripcionTarea !== "" && tituloTarea !== "" && fechaTarea !== "") {
-            const tareaId = generateUniqueId();
-            todosData[todoId].tareas.push({ id: tareaId, titulo: tituloTarea, descripcion: descripcionTarea, fecha: fechaTarea });
-
-            document.getElementById("tareaDescripcion").value = "";
-            document.getElementById("tareaTitulo").value = "";
-            document.getElementById("tareasFecha").value = "";
-            document.getElementById("tareasEncargado").value = "";
-
-            renderTareas(todoId);
-            ocultarFormularioTarea();
-        } else {
-            alert("Por favor, completa todos los campos antes de guardar la tarea.");
-        }
+    if (oportunidadId && tareaId) {
+        oportunidadesData[oportunidadId].tareas = oportunidadesData[oportunidadId].tareas.filter((tarea) => tarea.id !== tareaId);
+        renderTareas(oportunidadId);
+        cerrarVentanaTarea();
     }
-
-    // Eliminar tareas ========================================================================
-
-
-    function eliminarTarea() {
-        const btnEliminarTarea = document.getElementById("btnEliminarTarea");
-        const todoId = btnEliminarTarea.getAttribute("data-todo-id");
-        const tareaId = btnEliminarTarea.getAttribute("data-tarea-id");
-
-        if (todoId && tareaId) {
-            todosData[todoId].tareas = todosData[todoId].tareas.filter((tarea) => tarea.id !== tareaId);
-            renderTareas(todoId);
-            cerrarVentanaTarea();
-        }
-    }
+}
 
     //selector de fechas en tareas=============================================
     document.addEventListener('DOMContentLoaded', () => {
@@ -436,11 +442,11 @@ function createOportunidad() {
                 onChange: function (selectedDates, dateStr, instance) {
                     const selectedDate = new Date(dateStr);
                     const today = new Date();
-                    today.setHours(0, 0, 0, 0); // Establecer la hora de hoy a medianoche para la comparación
+                    today.setHours(0, 0, 0, 0); 
 
                     if (selectedDate < today) {
                         alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
-                        instance.clear(); // Limpiar el campo si la fecha es inválida
+                        instance.clear(); 
                     }
                 }
             });
@@ -459,11 +465,11 @@ function createOportunidad() {
                 onChange: function (selectedDates, dateStr, instance) {
                     const selectedDate = new Date(dateStr);
                     const today = new Date();
-                    today.setHours(0, 0, 0, 0); // Set today's time to midnight for comparison
+                    today.setHours(0, 0, 0, 0); 
 
                     if (selectedDate < today) {
                         alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
-                        instance.clear(); // Clear the input if the date is invalid
+                        instance.clear(); 
 
                     }
                 }

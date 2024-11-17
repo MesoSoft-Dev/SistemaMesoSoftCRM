@@ -177,13 +177,13 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.DropDownList dllEstado;
 
         /// <summary>
-        /// todo_submit control.
+        /// oportunidad_submit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button todo_submit;
+        protected global::System.Web.UI.WebControls.Button oportunidad_submit;
 
         /// <summary>
         /// Label1 control.
@@ -330,6 +330,15 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.DropDownList EditEstado;
 
         /// <summary>
+        /// btnEditarOportunidad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditarOportunidad;
+
+        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -382,6 +391,15 @@ namespace CapaPresentacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTemaReunion;
+
+        /// <summary>
+        /// btnCita control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCita;
 
         /// <summary>
         /// tareaTitulo control.

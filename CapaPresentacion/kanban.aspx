@@ -15,150 +15,150 @@
         <div class="mx-4 mb-5 d-flex justify-content-end">
 
           
-            <button id="btnAgregarp" class="btn fondo4 rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#todo_form" type="button">
-                + Agregar Oportunidad
-            </button>
-        </div>
+           <button id="btnAgregarp" class="btn fondo4 rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#oportunidad_form" type="button">
+    + Agregar Oportunidad
+</button>
+</div>
 
-<!-- Modal de creacion de oportunidades -->
-        <div class="modal fade" id="todo_form" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                     <h5 class="fw-bold">Crear Nueva Oportunidad</h5>
-                </div>
-                <div class="modal-body">
-                        <div class="container mt-1">
-   
-    <!-- Detalles de contacto -->
-    <div class="border-custom3 col-md-10">
-        <h5 class="fw-bold">Detalles de Contacto</h5>
-        <div class="row mb-3">
-            <div class="col-sm-4 col-md-7 ms-md-5">
-                <asp:TextBox ID="txtBuscarContacto" runat="server" CssClass="form-control" Placeholder="Buscar Contacto"></asp:TextBox>
+<!-- Modal de creación de oportunidades --> 
+<div class="modal fade" id="oportunidad_form" tabindex="-1" aria-labelledby="oportunidadModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="fw-bold">Crear Nueva Oportunidad</h5>
             </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="form-check mx-auto">
-                    <asp:CheckBox ID="existsCheckbox" runat="server" />
-                    <label class="form-check-label" for="existsCheckbox">Existe</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">Nombres</label>
-                <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" placeholder="Ingrese nombres del contacto"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Apellidos</label>
-                <asp:TextBox ID="txtApellidos" runat="server" CssClass="form-control" placeholder="Ingrese apellidos del contacto"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Género</label>
-                <asp:DropDownList ID="ddlGenero" runat="server" CssClass="form-control form-select w-75"> 
-                <asp:ListItem>Femenino</asp:ListItem>
-                <asp:ListItem>Masculino</asp:ListItem>
-                </asp:DropDownList>
-           </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">Correo Electrónico</label>
-                <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" Placeholder="Ingrese correo del contacto" TextMode="Email"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Teléfono</label>
-                <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" Placeholder="Ingrese teléfono del contacto"></asp:TextBox>
-            </div>
-         <div class="col-md-4">
-             <label class="form-label">Tipo Contacto</label>
-             <asp:DropDownList ID="ddlContacto" runat="server" CssClass="form-control form-select w-75"> 
-             <asp:ListItem>Interesado</asp:ListItem>
-             <asp:ListItem>Cliente</asp:ListItem>
-             </asp:DropDownList>
-         </div>
-        </div>
-    </div>
+            <div class="modal-body">
+                <div class="container mt-1">
 
-    <!-- Detalles de oportunidad-->
-    <div class="border-custom col-md-10">
-        <h5 class="fw-bold">Detalles de Oportunidades</h5>
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">Encargado</label>
-                <asp:TextBox ID="dllencargado" runat="server" class="form-control" placeholder="Nombre encargado"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Fecha Registro</label>
-                <asp:TextBox ID="dllfechaRegistro" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-               <label class="form-label">Canal</label>
-                 <asp:DropDownList ID="ddlCanal" runat="server" CssClass="form-control form-select w-75"> 
-                 <asp:ListItem>Llamada</asp:ListItem>
-                 <asp:ListItem>Email</asp:ListItem>
-                 </asp:DropDownList>
+                    <!-- Detalles de contacto -->
+                    <div class="border-custom3 col-md-10">
+                        <h5 class="fw-bold">Detalles de Contacto</h5>
+                        <div class="row mb-3">
+                            <div class="col-sm-4 col-md-7 ms-md-5">
+                                <asp:TextBox ID="txtBuscarContacto" runat="server" CssClass="form-control" Placeholder="Buscar Contacto"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="form-check mx-auto">
+                                    <asp:CheckBox ID="existsCheckbox" runat="server" />
+                                    <label class="form-check-label" for="existsCheckbox">Existe</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Nombres</label>
+                                <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" placeholder="Ingrese nombres del contacto"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Apellidos</label>
+                                <asp:TextBox ID="txtApellidos" runat="server" CssClass="form-control" placeholder="Ingrese apellidos del contacto"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Género</label>
+                                <asp:DropDownList ID="ddlGenero" runat="server" CssClass="form-control form-select w-75">
+                                    <asp:ListItem>Femenino</asp:ListItem>
+                                    <asp:ListItem>Masculino</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Correo Electrónico</label>
+                                <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" Placeholder="Ingrese correo del contacto" TextMode="Email"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Teléfono</label>
+                                <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" Placeholder="Ingrese teléfono del contacto"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Tipo Contacto</label>
+                                <asp:DropDownList ID="ddlContacto" runat="server" CssClass="form-control form-select w-75">
+                                    <asp:ListItem>Interesado</asp:ListItem>
+                                    <asp:ListItem>Cliente</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detalles de oportunidad -->
+                    <div class="border-custom col-md-10">
+                        <h5 class="fw-bold">Detalles de Oportunidades</h5>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Encargado</label>
+                                <asp:TextBox ID="dllencargado" runat="server" class="form-control" placeholder="Nombre encargado"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Fecha Registro</label>
+                                <asp:TextBox ID="dllfechaRegistro" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Canal</label>
+                                <asp:DropDownList ID="ddlCanal" runat="server" CssClass="form-control form-select w-75">
+                                    <asp:ListItem>Llamada</asp:ListItem>
+                                    <asp:ListItem>Email</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Nombre Negocio</label>
+                                <asp:TextBox ID="txtNombreNegocio" runat="server" CssClass="form-control" Placeholder="Ingrese nombre negocio"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Valor de Oportunidad</label>
+                                <asp:TextBox ID="txtValorOportunidad" runat="server" CssClass="form-control" Placeholder="Ingrese valor de oportunidad" TextMode="Number"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Fase</label>
+                                <asp:DropDownList ID="ddlFase" runat="server" CssClass="form-control form-select w-75">
+                                    <asp:ListItem>Interesado</asp:ListItem>
+                                    <asp:ListItem>En Progreso</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Seguidores</label>
+                                <asp:TextBox ID="txtSeguidores" runat="server" CssClass="form-control" Placeholder="Ingrese seguidores"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Etiqueta</label>
+                                <asp:DropDownList ID="dllEtiqueta" runat="server" CssClass="form-control form-select w-100">
+                                    <asp:ListItem>Etiqueta 1</asp:ListItem>
+                                    <asp:ListItem>Etiqueta 2</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Estado</label>
+                                <asp:DropDownList ID="dllEstado" runat="server" CssClass="form-control form-select w-75">
+                                    <asp:ListItem>Abierto</asp:ListItem>
+                                    <asp:ListItem>Cerrado</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <div class="d-flex">
+                            <button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                        <div class="d-flex">
+                            <asp:Button ID="oportunidad_submit" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClientClick="createOportunidad(); return false;" />
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">Nombre Negocio</label>
-                <asp:TextBox ID="txtNombreNegocio" runat="server" CssClass="form-control" Placeholder="Ingrese nombre negocio"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Valor de Oportunidad</label>
-                <asp:TextBox ID="txtValorOportunidad" runat="server" CssClass="form-control" Placeholder="Ingrese valor de oportunidad" TextMode="Number"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Fase</label>
-                <asp:DropDownList ID="ddlFase" runat="server" CssClass="form-control form-select w-75"> 
-                <asp:ListItem>Interesado</asp:ListItem>
-                <asp:ListItem>En Progreso</asp:ListItem>
-                </asp:DropDownList>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <label class="form-label">Seguidores</label>
-                <asp:TextBox ID="txtSeguidores" runat="server" CssClass="form-control" Placeholder="Ingrese seguidores"></asp:TextBox>
-            </div>
-            <div class="col-md-4">
-                <label class="form-label">Etiqueta</label>
-                 <asp:DropDownList ID="dllEtiqueta" runat="server" CssClass="form-control form-select w-100"> 
-                 <asp:ListItem>Etiqueta 1</asp:ListItem>
-                 <asp:ListItem>Etiqueta 2</asp:ListItem>
-                 </asp:DropDownList>
-            </div> 
-            <div class="col-md-4">
-                <label class="form-label">Estado</label>
-                  <asp:DropDownList ID="dllEstado" runat="server" CssClass="form-control form-select w-75"> 
-                  <asp:ListItem>Abierto</asp:ListItem>
-                  <asp:ListItem>Cerrado</asp:ListItem>
-                  </asp:DropDownList>
-            </div>
-        </div>
-    </div>
-    <div class=" d-flex justify-content-end">
-        <div class="d-flex">
-  <button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
-       </div>
-         <div class="d-flex">
-             <asp:Button ID="todo_submit" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClientClick="createOportunidad(); return false;" />
-         </div>
-         
     </div>
 </div>
-    
-                </div>
-            </div>
-        </div>
-    </div>
+
 <!-- Fin del modal-->
 
 
  <!-- Modal de editar oportunidad -->
 
-<div class="modal fade" id="todoModal" tabindex="-1" aria-labelledby="todoModalLabel" aria-hidden="true">
+<div class="modal fade" id="oportunidadModal" tabindex="-1" aria-labelledby="oportunidadModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
     
@@ -263,6 +263,13 @@
            </div>
        </div>
    </div>
+              <div class="d-flex justify-content-end">
+    <div class="d-flex"> 
+<asp:Button ID="btnEditarOportunidad" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClick="btnEditarOportunidad_Click" /> 
+
+    </div>
+</div>
+
 </div>
             <!--Fin de otras opciones, editar oportunidad-->
 
@@ -281,6 +288,10 @@
                          <asp:Label ID="Label6" runat="server"  CssClass="fw-bold"  Text="Tema de reunión"></asp:Label>
                          <asp:TextBox ID="txtTemaReunion" runat="server" CssClass="form-control"  placeholder="Ingrese Tema de Reunión"></asp:TextBox>
                     </div>
+                       <div class="d-flex justify-content-end"> 
+                           <asp:Button ID="btnCita" runat="server" type="button" CssClass="btn fondo3 mt-2" Text="GuardarCita" OnClientClick="validarFormularioCitas(); return false;" />
+                        </div>
+
                    </div>
           </div>
 <!--Formulario de crear citas final-->
@@ -442,10 +453,6 @@
           <button type="button" class="SidebarmElemento" id="citas" onclick="showSection('citasContent')">Citas  ></button>
           <button type="button" class="SidebarmElemento" id="tareas" onclick="showSection('tareasContent')">Tareas ></button>
           <button type="button" class="SidebarmElemento" id="notas" onclick="showSection('notasContent')">Notas ></button>
-          <div class="d-flex flex-column mt-auto">
-            <button class="btn fondo4  fw-bold my-2">Aceptar</button>
-            <button class="btn fw-bold border-custom2">Eliminar</button>
-          </div>
         </div>
           <!-- Fin del sidebarModal-->
       </div>
@@ -473,11 +480,6 @@
 
         <div id="overlay" class="d-none"></div>
     </form>
-
-   
-
-    
-
     <script src="Assets/js/Kscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.js"></script>
 </asp:Content>
