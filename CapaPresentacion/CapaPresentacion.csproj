@@ -99,8 +99,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\css\Kstyle.css" />
     <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\css\Kstyles.css" />
     <Content Include="Assets\img\granFranciaBannerLogin.png" />
     <Content Include="Assets\img\granFranciaBannerSiteMaster.png" />
     <Content Include="Assets\js\Kscript.js" />
