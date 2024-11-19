@@ -104,6 +104,7 @@
     <Content Include="Assets\css\Kstyles.css" />
     <Content Include="Assets\img\granFranciaBannerLogin.png" />
     <Content Include="Assets\img\granFranciaBannerSiteMaster.png" />
+    <Content Include="Assets\js\ContactosScript.js" />
     <Content Include="Assets\js\Kscript.js" />
     <Content Include="Assets\js\script.js" />
     <Content Include="calendario.aspx" />
