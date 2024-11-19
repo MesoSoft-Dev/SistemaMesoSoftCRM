@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="contactos.aspx.cs" Inherits="CapaPresentacion.contactos"  ClientIDMode="Static" Async="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="Assets/css/Cstyle.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
@@ -8,6 +9,27 @@
                 + Agregar Contacto
               </button>
         </div>
+        <div class="shadow p-3">
+            <!--Encabezado -->
+
+         <div class="Contacto d-flex justify-content-between align-items-centerpb-1 pt-2 px-4  border-bottom">
+             <h6>Nombres</h6>
+             <h6>Telefono/celular</h6>
+             <h6>Correo Electronico</h6>
+             <h6>Fecha de creacion</h6>
+             <h6>Ultima actividad</h6> 
+        </div>
+            <div class="borderC my-2"></div>
+<!--Datos -->
+   <div class="Contacto d-flex justify-content-between align-items-center  px-4 border-bottom">
+     <p>Joshua Vilchez</p>
+     <p>12345678</p>
+     <p>JV@gmail.com</p>
+     <p>18/11/24</p>
+     <p>18/11/24</p>
+</div>
+</div>
+
 
         <div class="modal fade" id="oportunidad_form" tabindex="-1" aria-labelledby="oportunidadModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -107,6 +129,7 @@
     
  
     <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar" OnClick="btnRegistrar_Click" />
+   
     
 </div>
                     </div>
