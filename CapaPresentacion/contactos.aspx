@@ -9,10 +9,10 @@
                 + Agregar Contacto
               </button>
         </div>
-        <div class="shadow p-3">
+        <div id="contenidoContactos" class="shadow p-3">
             <!--Encabezado -->
 
-         <div class="Contacto d-flex justify-content-between align-items-centerpb-1 pt-2 px-4  border-bottom">
+         <div class="Contacto d-flex justify-content-between align-items-centerpb-1 pt-2 px-4 w-100">
              <h6>Nombres</h6>
              <h6>Telefono/celular</h6>
              <h6>Correo Electronico</h6>
@@ -21,17 +21,13 @@
         </div>
             <div class="borderC my-2"></div>
 <!--Datos -->
-   <div class="Contacto d-flex justify-content-between align-items-center  px-4 border-bottom">
-     <p>Joshua Vilchez</p>
+   <div class="Contacto d-flex justify-content-between align-items-center w-100">
+      <p>Joshua Vilchez</p>
      <p>12345678</p>
      <p>JV@gmail.com</p>
      <p>18/11/24</p>
      <p>18/11/24</p>
-    
-</div>
-            <div id="contenidoContactos">
-
-</div>
+    </div>
 </div>
 
 
@@ -144,7 +140,7 @@
 </div>
 
 </form>
-
+ <script src="Assets/js/ContactosScript.js" type="text/javascript"></script>
 
 
 </asp:Content>
