@@ -99,6 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\Cstyle.css" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\css\Kstyles.css" />
     <Content Include="Assets\img\granFranciaBannerLogin.png" />

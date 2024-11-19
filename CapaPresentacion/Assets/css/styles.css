@@ -117,3 +117,9 @@ h2, h3 {
         width: 100%; /* Ajusta el ancho del login-box al 100% del contenedor en pantallas móviles */
     }
 }
+
+.Contacto {
+    background-color: red;
+    color: aqua;
+    border-radius: 10px;
+}
