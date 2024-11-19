@@ -165,7 +165,7 @@
                         <div class=" d-flex container">
     
  
-   <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar"  OnClientClick="crearContacto();  return false;" />
+   <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar" OnClick="btnRegistrar_Click"  OnClientClick="crearContacto();  return false;" />
    
     
 </div>

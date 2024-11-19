@@ -1,4 +1,8 @@
-﻿function validarFormulario2() {
+﻿document.addEventListener("DOMContentLoaded", function () {
+    cargarContactosDesdeArchivo(); // Llama a la función al cargar la página
+});
+
+function validarFormulario2() {
     const nombres = document.getElementById("txtNombres").value;
     const apellidos = document.getElementById("txtApellidos").value;
     const correo = document.getElementById("txtCorreo").value;
@@ -37,24 +41,27 @@
 
 let contactoCounter = 0;
 
-function crearContacto() {
-    console.log("TEST INICIO");
-
-    if (validarFormulario2() == false) {
-        return;
+async function cargarContactosDesdeArchivo() {
+    try {
+        const response = await fetch("Assets/js/contactos.json"); // Asegúrate de que la ruta sea correcta
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        }
+        const contactos = await response.json();
+        contactos.forEach(contacto => {
+            despliegueContacto(contacto);
+        });
+    } catch (error) {
+        console.error('Error:', error);
     }
+}
 
-    const nombre = document.getElementById("txtNombres").value;
-    const apellido = document.getElementById("txtApellidos").value;
-    const nombreYapellido = `${nombre} ${apellido}`.trim();
-    const correo = document.getElementById("txtCorreo").value;
-    const telefono = document.getElementById("txtTelefono").value;
-
+function despliegueContacto(contacto) {
     const contactoId = `contacto-${contactoCounter++}`;
 
     const contactoElement = document.createElement("div");
     contactoElement.classList.add("Contacto", "w-100", "d-flex", "align-items-center", "pb-2", "pt-1", "ps-2", "pe-5", "mb-3");
-    contactoElement.id = contactoId;  
+    contactoElement.id = contactoId;
 
     contactoElement.innerHTML = `
         <div class="dropdown">
@@ -68,16 +75,39 @@ function crearContacto() {
         </div>
 
         <div class="d-flex flex-grow-1 justify-content-between align-items-center ps-3">
-            <p class="col-2 mb-0">${nombreYapellido}</p>
-            <p class="col-2 mb-0">${telefono}</p>
-            <p class="col-3 mb-0">${correo}</p>
-            <p class="col-2 mb-0">${new Date().toLocaleDateString()}</p>
-            <p class="col-2 mb-0">${new Date(2024, 11, 19).toLocaleDateString()}</p>
+            <p class="col-2 mb-0">${contacto.nombre} ${contacto.apellido}</p>
+            <p class="col-2 mb-0">${contacto.telefono}</p>
+            <p class="col-3 mb-0">${contacto.correo}</p>
+            <p class="col-2 mb-0">${contacto.fechaCreacion}</p>
+            <p class="col-2 mb-0">${contacto.fechaOtro}</p>
         </div>
     `;
 
     document.getElementById("contenidoContactos").appendChild(contactoElement);
 }
 
+function crearContacto() {
+    console.log("TEST INICIO");
+
+    if (validarFormulario2() == false) {
+        return;
+    }
+
+    const nombre = document.getElementById("txtNombres").value;
+    const apellido = document.getElementById("txtApellidos").value;
+    const nombreYapellido = `${nombre} ${apellido}`.trim();
+    const correo = document.getElementById("txtCorreo").value;
+    const telefono = document.getElementById("txtTelefono").value;
+
+    const contacto = {
+        nombre: nombre,
+        apellido: apellido,
+        correo: correo,
+        telefono: telefono,
+        fechaCreacion: new Date().toLocaleDateString(),
+        fechaOtro: new Date(2024, 11, 19).toLocaleDateString()
+    };
+    despliegueContacto(contacto);
+}
 
 
