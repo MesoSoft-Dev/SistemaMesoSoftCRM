@@ -4,86 +4,80 @@
     const correo = document.getElementById("txtCorreo").value;
     const telefono = document.getElementById("txtTelefono").value;
     const fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
-    const genero = document.getElementById("ddlSexo").value;
-    const email = document.getElementById("ddlComEmail").value;
-    const whatsapp = document.getElementById("dllComWhatsapp").value;
-    const tipoContacto = document.getElementById("ddlTipoContacto").value;
     const origen = document.getElementById("txtOrigen").value;
 
     if (nombres.trim() === "") {
-        alert("Por favor, ingrese los nombres.");
+        console.log("TEST VALIDACION 11");
         return false;
     }
 
     if (apellidos.trim() === "") {
-        alert("Por favor, ingrese los apellidos.");
         return false;
     }
 
     if (correo.trim() === "") {
-        alert("Por favor, ingrese el correo electrónico.");
         return false;
     }
 
     if (telefono.trim() === "") {
-        alert("Por favor, ingrese el teléfono.");
         return false;
     }
 
     if (fechaNacimiento.trim() === "") {
-        alert("Por favor, ingrese la fecha de nacimiento.");
-        return false;
-    }
-
-    if (genero === "") {
-        alert("Por favor, seleccione el género.");
-        return false;
-    }
-
-    if (email === "") {
-        alert("Por favor, seleccione si desea recibir comunicaciones por email.");
-        return false;
-    }
-
-    if (whatsapp === "") {
-        alert("Por favor, seleccione si desea recibir comunicaciones por WhatsApp.");
-        return false;
-    }
-
-    if (tipoContacto === "") {
-        alert("Por favor, seleccione el tipo de contacto.");
         return false;
     }
 
     if (origen.trim() === "") {
-        alert("Por favor, ingrese el origen.");
         return false;
     }
     return true;
+    console.log("TEST VALIDACION");
 }
 
 
+let contactoCounter = 0;
+
 function crearContacto() {
+    console.log("TEST INICIO");
+
     if (validarFormulario2() == false) {
         return;
     }
 
     const nombre = document.getElementById("txtNombres").value;
     const apellido = document.getElementById("txtApellidos").value;
-    const input_val = `${nombre} ${apellido}`.trim();
+    const nombreYapellido = `${nombre} ${apellido}`.trim();
+    const correo = document.getElementById("txtCorreo").value;
+    const telefono = document.getElementById("txtTelefono").value;
+
+    const contactoId = `contacto-${contactoCounter++}`;
 
     const contactoElement = document.createElement("div");
-    contactoElement.classList.add("contacto", "d-flex", "justify-content-between", "align-items-center", "px-4", "border-bottom");
+    contactoElement.classList.add("Contacto", "w-100", "d-flex", "align-items-center", "pb-2", "pt-1", "ps-2", "pe-5", "mb-3");
+    contactoElement.id = contactoId;  
 
-    // Asignar el contenido al div
     contactoElement.innerHTML = `
-        <p>${input_val}</p>
+        <div class="dropdown">
+            <button class="btn m-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#EditarContactoform">Editar</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalAdvertencia">Eliminar</a></li>
+            </ul>
+        </div>
+
+        <div class="d-flex flex-grow-1 justify-content-between align-items-center ps-3">
+            <p class="col-2 mb-0">${nombreYapellido}</p>
+            <p class="col-2 mb-0">${telefono}</p>
+            <p class="col-3 mb-0">${correo}</p>
+            <p class="col-2 mb-0">${new Date().toLocaleDateString()}</p>
+            <p class="col-2 mb-0">${new Date(2024, 11, 19).toLocaleDateString()}</p>
+        </div>
     `;
 
-    // Agregar el div al contenedor de contactos
     document.getElementById("contenidoContactos").appendChild(contactoElement);
-
-    // Limpiar los campos del formulario (si es necesario)
-    limpiarCampos();
-
 }
+
+
+
