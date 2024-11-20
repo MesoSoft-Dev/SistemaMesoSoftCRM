@@ -11,31 +11,35 @@ function validarFormulario2() {
     const origen = document.getElementById("txtOrigen").value;
 
     if (nombres.trim() === "") {
-        console.log("TEST VALIDACION 11");
+        alert("Por favor, complete el campo de nombres.");
         return false;
     }
 
     if (apellidos.trim() === "") {
+        alert("Por favor, complete el campo de apellidos.");
         return false;
     }
 
     if (correo.trim() === "") {
+        alert("Por favor, complete el campo de correo.");
         return false;
     }
 
     if (telefono.trim() === "") {
+        alert("Por favor, complete el campo de teléfono.");
         return false;
     }
 
     if (fechaNacimiento.trim() === "") {
+        alert("Por favor, complete el campo de fecha de nacimiento.");
         return false;
     }
 
     if (origen.trim() === "") {
+        alert("Por favor, complete el campo de origen de contacto.");
         return false;
     }
     return true;
-    console.log("TEST VALIDACION");
 }
 
 
@@ -70,7 +74,7 @@ function despliegueContacto(contacto) {
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#EditarContactoform">Editar</a></li>
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalAdvertencia">Eliminar</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalAdvertencia" onclick="cargarEliminar(this)">Eliminar</a></li>
             </ul>
         </div>
 
@@ -87,7 +91,7 @@ function despliegueContacto(contacto) {
 }
 
 function crearContacto() {
-    console.log("TEST INICIO");
+   
 
     if (validarFormulario2() == false) {
         return;
@@ -110,4 +114,13 @@ function crearContacto() {
     despliegueContacto(contacto);
 }
 
+function cargarEliminar(elemento) {
+    const contactoElement = elemento.closest('.Contacto');
+    document.getElementById("confirmarEliminarBtn").onclick = function () {
+        eliminarContacto(contactoElement);
+    };
+}
 
+function eliminarContacto(contactoElement) {
+    contactoElement.remove();
+}

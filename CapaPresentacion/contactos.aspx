@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
          <div class="mx-4 mb-5 d-flex justify-content-end">
-              <button id="btnAgregarC" class="btn fondo4 rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#oportunidad_form" type="button">
+              <button id="btnAgregarC" class="btn fondo4 rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#crearContactoform" type="button">
                 + Agregar Contacto
               </button>
         </div>
@@ -68,7 +68,7 @@
 </div>  
 
 <!-- Modal de crear -->
-        <div class="modal fade" id="oportunidad_form" tabindex="-1" aria-labelledby="oportunidadModalLabel" aria-hidden="true">
+        <div class="modal fade" id="crearContactoform" tabindex="-1" aria-labelledby="ContactoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -165,9 +165,7 @@
                         <div class=" d-flex container">
     
  
-   <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar" OnClick="btnRegistrar_Click"  OnClientClick="crearContacto();" />
-   
-    
+<asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar"  OnClientClick="crearContacto(); return false;" />    
 </div>
                     </div>
                 </div>
@@ -190,7 +188,7 @@
          <p>Seguro que desea eliminar el registro</p>
      </div>
      <div class="ventanaConfirmar-footer pb-1 d-flex justify-content-center">
-         <asp:Button ID="btnEliminarNota" runat="server" CssClass="btn btn-ventana me-5" Text="Eliminar" OnClientClick="; return false;" />
+         <button type="button" id="confirmarEliminarBtn" class="btn btn-ventana"  data-bs-dismiss="modal">Eliminar</button>
          <button type="button" class="btn btn-ventana" data-bs-dismiss="modal">cancelar</button>
      </div>
  </div>

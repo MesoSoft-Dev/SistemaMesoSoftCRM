@@ -159,15 +159,6 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
 
         /// <summary>
-        /// btnEliminarNota control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarNota;
-
-        /// <summary>
         /// txtEditarNombres control.
         /// </summary>
         /// <remarks>
@@ -213,76 +204,40 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.TextBox txtEditarFechaNacimiento;
 
         /// <summary>
-        /// ddlEditarSexo control.
+        /// EditarSexo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditarSexo;
+        protected global::System.Web.UI.WebControls.DropDownList EditarSexo;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// EditarComEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.DropDownList EditarComEmail;
 
         /// <summary>
-        /// ddlEditarComEmail control.
+        /// EditarComWhatsapp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditarComEmail;
+        protected global::System.Web.UI.WebControls.DropDownList EditarComWhatsapp;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// EditarTipoContacto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
-        /// <summary>
-        /// ddlEditarComWhatsapp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditarComWhatsapp;
-
-        /// <summary>
-        /// RequiredFieldValidator3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-
-        /// <summary>
-        /// ddlEditarTipoContacto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditarTipoContacto;
-
-        /// <summary>
-        /// RequiredFieldValidator4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+        protected global::System.Web.UI.WebControls.DropDownList EditarTipoContacto;
 
         /// <summary>
         /// txtEditarOrigen control.
