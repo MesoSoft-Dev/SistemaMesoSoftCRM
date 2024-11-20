@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "correo": "juan.perez@example.com",
+    "telefono": "123-456-7890",
+    "fechaCreacion": "2023-10-01",
+    "fechaOtro": "2024-11-19"
+  },
+  {
+    "nombre": "María",
+    "apellido": "Gómez",
+    "correo": "maria.gomez@example.com",
+    "telefono": "234-567-8901",
+    "fechaCreacion": "2023-10-02",
+    "fechaOtro": "2024-11-19"
+  },
+  {
+    "nombre": "Carlos",
+    "apellido": "López",
+    "correo": "carlos.lopez@example.com",
+    "telefono": "345-678-9012",
+    "fechaCreacion": "2023-10-03",
+    "fechaOtro": "2024-11-19"
+  },
+  {
+    "nombre": "Ana",
+    "apellido": "Martínez",
+    "correo": "ana.martinez@example.com",
+    "telefono": "456-789-0123",
+    "fechaCreacion": "2023-10-04",
+    "fechaOtro": "2024-11-19"
+  },
+  {
+    "nombre": "Luis",
+    "apellido": "Fernández",
+    "correo": "luis.fernandez@example.com",
+    "telefono": "567-890-1234",
+    "fechaCreacion": "2023-10-05",
+    "fechaOtro": "2024-11-19"
+  },
+  {
+    "nombre": "Laura",
+    "apellido": "Ramírez",
+    "correo": "laura.ramirez@example.com",
+    "telefono": "678-901-2345",
+    "fechaCreacion": "2023-10-06",
+    "fechaOtro": "2024-11-19"
+  }
+]

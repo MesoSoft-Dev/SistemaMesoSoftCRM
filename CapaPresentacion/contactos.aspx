@@ -165,7 +165,7 @@
                         <div class=" d-flex container">
     
  
-   <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar"  OnClientClick="crearContacto();  return false;" />
+   <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar" OnClick="btnRegistrar_Click"  OnClientClick="crearContacto();" />
    
     
 </div>
@@ -242,13 +242,12 @@
 
         <div class="col my-3">
             <label>Sexo</label>
-            <asp:DropDownList ID="ddlEditarSexo" runat="server" CssClass="form-control w-75">
+            <asp:DropDownList ID="EditarSexo" runat="server" CssClass="form-control w-75">
                 <asp:ListItem Text="Seleccione una opcion" Value=""/>    
                 <asp:ListItem>Masculino</asp:ListItem>
                 <asp:ListItem>Femenino</asp:ListItem>
             </asp:DropDownList>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlEditarSexo" InitialValue="" ErrorMessage="Por favor seleccione una opcion valida." ForeColor="Red" />
-        </div>
+            </div>
     </div>
 
     <!-- Informacion adicional del contacto -->
@@ -257,34 +256,31 @@
         <div class="row d-flex align-items-start flex-column flex-sm-row">
             <div class="col my-3">
                 <label>Comunicacion por Email</label>
-                <asp:DropDownList ID="ddlEditarComEmail" runat="server" CssClass="form-control w-75">
+                <asp:DropDownList ID="EditarComEmail" runat="server" CssClass="form-control w-75">
                     <asp:ListItem Text="Seleccione una opcion" Value=""/>  
                     <asp:ListItem>Si</asp:ListItem>
                     <asp:ListItem>No</asp:ListItem>
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlEditarComEmail" InitialValue="" ErrorMessage="Por favor seleccione una opcion valida." ForeColor="Red" />
-            </div>
+           </div>
 
             <div class="col my-3">
                 <label>Comunicacion por Whatsapp</label>
-                <asp:DropDownList ID="ddlEditarComWhatsapp" runat="server" CssClass="form-control w-75">
+                <asp:DropDownList ID="EditarComWhatsapp" runat="server" CssClass="form-control w-75">
                     <asp:ListItem Text="Seleccione una opcion" Value=""/>  
                     <asp:ListItem>Si</asp:ListItem>
                     <asp:ListItem>No</asp:ListItem>
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlEditarComWhatsapp" InitialValue="" ErrorMessage="Por favor seleccione una opcion valida." ForeColor="Red" />
-            </div>
+         </div>
         </div>
         <div class="row d-flex align-items-start flex-column flex-sm-row">
             <div class="col my-3">
                 <label>Tipo Contacto</label>
-                <asp:DropDownList ID="ddlEditarTipoContacto" runat="server" CssClass="form-control w-75">
+                <asp:DropDownList ID="EditarTipoContacto" runat="server" CssClass="form-control w-75">
                     <asp:ListItem Text="Seleccione una opcion" Value=""/>  
                     <asp:ListItem>Interesado</asp:ListItem>
                     <asp:ListItem>Cliente</asp:ListItem>
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlEditarTipoContacto" InitialValue="" ErrorMessage="Por favor seleccione una opcion valida." ForeColor="Red" />
-            </div>
+          </div>
             <div class="col my-3">
                 <label>Origen de contacto</label>
                 <asp:TextBox ID="txtEditarOrigen" runat="server" CssClass="form-control w-75" placeholder="Ingrese el origen de contacto"></asp:TextBox>
