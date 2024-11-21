@@ -177,18 +177,34 @@ function editar() {
     const correo = document.getElementById("txtEditarCorreo").value;
     const telefono = document.getElementById("txtEditarTelefono").value;
 
-    const datos = contactoElement.querySelectorAll("p");
-    datos[0].innerText = `${nombre} ${apellido}`;
-    datos[1].innerText = telefono;
-    datos[2].innerText = correo;
+    const nuevoContenido = `
+        <div class="dropdown">
+            <button class="btn m-0 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#EditarContactoform" onclick="cargarEditar('${contactoIdActual}')">Editar</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalAdvertencia" onclick="cargarEliminar(this)">Eliminar</a></li>
+            </ul>
+        </div>
+        <div class="d-flex flex-grow-1 justify-content-between align-items-center ps-3">
+            <p class="col-2 mb-0">${nombre} ${apellido}</p>
+            <p class="col-2 mb-0">${telefono}</p>
+            <p class="col-3 mb-0">${correo}</p>
+            <p class="col-2 mb-0">${new Date().toLocaleDateString()}</p> <!-- Fecha de creación actual -->
+            <p class="col-2 mb-0">${new Date().toLocaleDateString()}</p> <!-- Última actividad actual -->
+        </div>
+    `;
+
+    // Reemplazar el contenido del contacto
+    contactoElement.innerHTML = nuevoContenido;
 
     console.log("Edición completada para:", contactoIdActual);
 
-   
     contactoIdActual = null;
 
-   
-   //  $('#EditarContactoform').modal('hide');
+    // Ocultar el modal
+   // $('#EditarContactoform').modal('hide');
 }
 
 function crearContacto() {
@@ -205,7 +221,7 @@ function crearContacto() {
     const fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
     const sexo = document.getElementById("ddlSexo").value;
     const comEmail = document.getElementById("ddlComEmail").value;
-    const comWhatsapp = document.getElementById("ddlComWhatsapp").value;
+    const comWhatsapp = document.getElementById("dllComWhatsapp").value;
     const tipoContacto = document.getElementById("ddlTipoContacto").value;
     const origen = document.getElementById("txtOrigen").value;
 
