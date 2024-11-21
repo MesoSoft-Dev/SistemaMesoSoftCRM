@@ -9,6 +9,7 @@ function validarFormulario2() {
     const telefono = document.getElementById("txtTelefono").value;
     const fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
     const origen = document.getElementById("txtOrigen").value;
+    
 
     if (nombres.trim() === "") {
         alert("Por favor, complete el campo de nombres.");
@@ -42,7 +43,6 @@ function validarFormulario2() {
     return true;
 }
 
-
 let contactoCounter = 0;
 
 async function cargarContactosDesdeArchivo() {
@@ -62,10 +62,17 @@ async function cargarContactosDesdeArchivo() {
 
 function despliegueContacto(contacto) {
     const contactoId = `contacto-${contactoCounter++}`;
-
     const contactoElement = document.createElement("div");
     contactoElement.classList.add("Contacto", "w-100", "d-flex", "align-items-center", "pb-2", "pt-1", "ps-2", "pe-5", "mb-3");
     contactoElement.id = contactoId;
+
+    // Agregar datos como atributos data-*
+    contactoElement.setAttribute("data-fecha-nacimiento", contacto.fechaNacimiento || "");
+    contactoElement.setAttribute("data-sexo", contacto.sexo || "");
+    contactoElement.setAttribute("data-com-email", contacto.comEmail || "");
+    contactoElement.setAttribute("data-com-whatsapp", contacto.comWhatsapp || "");
+    contactoElement.setAttribute("data-tipo-contacto", contacto.tipoContacto || "");
+    contactoElement.setAttribute("data-origen", contacto.origen || "");
 
     contactoElement.innerHTML = `
         <div class="dropdown">
@@ -73,7 +80,7 @@ function despliegueContacto(contacto) {
                 <i class="bi bi-three-dots-vertical"></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#EditarContactoform">Editar</a></li>
+                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#EditarContactoform" onclick="cargarEditar('${contactoId}')">Editar</a></li>
                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ModalAdvertencia" onclick="cargarEliminar(this)">Eliminar</a></li>
             </ul>
         </div>
@@ -90,9 +97,92 @@ function despliegueContacto(contacto) {
     document.getElementById("contenidoContactos").appendChild(contactoElement);
 }
 
-function crearContacto() {
-   
+let contactoIdActual = null;    
+function cargarEditar(contactoId) {
+    const contactoElement = document.getElementById(contactoId);
+    console.log("Cargando edición para:", contactoId);
+    console.log("TEST CARGAR");
+    if (!contactoElement) {
+        alert("No se encontró el contacto.");
+        return;
+    }
+    contactoIdActual = contactoId;
 
+    const txtEditarNombres = document.getElementById("txtEditarNombres");
+    const txtEditarApellidos = document.getElementById("txtEditarApellidos");
+    const txtEditarCorreo = document.getElementById("txtEditarCorreo");
+    const txtEditarTelefono = document.getElementById("txtEditarTelefono");
+    const editarContactoId = contactoId;
+
+    if (!editarContactoId) {
+        console.error("Los elementos del ID modal de edición no están presentes en el DOM.");
+        return;
+    } 
+
+
+    const datos = contactoElement.querySelectorAll("p");
+    const nombreCompleto = datos[0].innerText.split(" ");
+    const nombre = nombreCompleto[0];
+    const apellido = nombreCompleto.slice(1).join(" ");
+    const telefono = datos[1].innerText;
+    const correo = datos[2].innerText;
+
+    txtEditarNombres.value = nombre;
+    txtEditarApellidos.value = apellido;
+    txtEditarCorreo.value = correo;
+    txtEditarTelefono.value = telefono;
+
+    
+    console.log("Elemento del contacto encontrado");
+
+    
+   
+}
+
+
+
+function editar() {
+    
+    if (!contactoIdActual) {
+        console.error("No se ha cargado ningún contacto para editar.");
+        return;
+    }
+
+    const contactoElement = document.getElementById(contactoIdActual);
+
+    if (!contactoElement) {
+        alert("No se encontró el contacto.");
+        return;
+    }
+
+    const nombre = document.getElementById("txtEditarNombres").value;
+    const apellido = document.getElementById("txtEditarApellidos").value;
+    const correo = document.getElementById("txtEditarCorreo").value;
+    const telefono = document.getElementById("txtEditarTelefono").value;
+
+    const datos = contactoElement.querySelectorAll("p");
+    datos[0].innerText = `${nombre} ${apellido}`;
+    datos[1].innerText = telefono;
+    datos[2].innerText = correo;
+
+    console.log("Edición completada para:", contactoIdActual);
+
+   
+    contactoIdActual = null;
+
+   
+   //  $('#EditarContactoform').modal('hide');
+}
+
+
+
+
+
+
+
+
+
+function crearContacto() {
     if (validarFormulario2() == false) {
         return;
     }

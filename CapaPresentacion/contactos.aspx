@@ -240,7 +240,7 @@
 
         <div class="col my-3">
             <label>Sexo</label>
-            <asp:DropDownList ID="EditarSexo" runat="server" CssClass="form-control w-75">
+            <asp:DropDownList ID="ddlEditarSexo" runat="server" CssClass="form-control w-75">
                 <asp:ListItem Text="Seleccione una opcion" Value=""/>    
                 <asp:ListItem>Masculino</asp:ListItem>
                 <asp:ListItem>Femenino</asp:ListItem>
@@ -254,7 +254,7 @@
         <div class="row d-flex align-items-start flex-column flex-sm-row">
             <div class="col my-3">
                 <label>Comunicacion por Email</label>
-                <asp:DropDownList ID="EditarComEmail" runat="server" CssClass="form-control w-75">
+                <asp:DropDownList ID="ddlEditarComEmail" runat="server" CssClass="form-control w-75">
                     <asp:ListItem Text="Seleccione una opcion" Value=""/>  
                     <asp:ListItem>Si</asp:ListItem>
                     <asp:ListItem>No</asp:ListItem>
@@ -263,7 +263,7 @@
 
             <div class="col my-3">
                 <label>Comunicacion por Whatsapp</label>
-                <asp:DropDownList ID="EditarComWhatsapp" runat="server" CssClass="form-control w-75">
+                <asp:DropDownList ID="ddlEditarComWhatsapp" runat="server" CssClass="form-control w-75">
                     <asp:ListItem Text="Seleccione una opcion" Value=""/>  
                     <asp:ListItem>Si</asp:ListItem>
                     <asp:ListItem>No</asp:ListItem>
@@ -273,7 +273,7 @@
         <div class="row d-flex align-items-start flex-column flex-sm-row">
             <div class="col my-3">
                 <label>Tipo Contacto</label>
-                <asp:DropDownList ID="EditarTipoContacto" runat="server" CssClass="form-control w-75">
+                <asp:DropDownList ID="ddlEditarTipoContacto" runat="server" CssClass="form-control w-75">
                     <asp:ListItem Text="Seleccione una opcion" Value=""/>  
                     <asp:ListItem>Interesado</asp:ListItem>
                     <asp:ListItem>Cliente</asp:ListItem>
@@ -291,7 +291,7 @@
             <button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
         </div>
         <div class="d-flex container">
-            <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Editar" />
+  <button type="button" class="btn btn-primary" onclick="editar()">Guardar cambios</button>
         </div>
     </div>
 </div>

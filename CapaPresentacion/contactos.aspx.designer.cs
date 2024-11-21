@@ -204,40 +204,40 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.TextBox txtEditarFechaNacimiento;
 
         /// <summary>
-        /// EditarSexo control.
+        /// ddlEditarSexo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditarSexo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarSexo;
 
         /// <summary>
-        /// EditarComEmail control.
+        /// ddlEditarComEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditarComEmail;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarComEmail;
 
         /// <summary>
-        /// EditarComWhatsapp control.
+        /// ddlEditarComWhatsapp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditarComWhatsapp;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarComWhatsapp;
 
         /// <summary>
-        /// EditarTipoContacto control.
+        /// ddlEditarTipoContacto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditarTipoContacto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarTipoContacto;
 
         /// <summary>
         /// txtEditarOrigen control.
@@ -247,14 +247,5 @@ namespace CapaPresentacion
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEditarOrigen;
-
-        /// <summary>
-        /// btnEditar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditar;
     }
 }
