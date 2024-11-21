@@ -66,13 +66,15 @@ function despliegueContacto(contacto) {
     contactoElement.classList.add("Contacto", "w-100", "d-flex", "align-items-center", "pb-2", "pt-1", "ps-2", "pe-5", "mb-3");
     contactoElement.id = contactoId;
 
-    // Agregar datos como atributos data-*
     contactoElement.setAttribute("data-fecha-nacimiento", contacto.fechaNacimiento || "");
     contactoElement.setAttribute("data-sexo", contacto.sexo || "");
     contactoElement.setAttribute("data-com-email", contacto.comEmail || "");
     contactoElement.setAttribute("data-com-whatsapp", contacto.comWhatsapp || "");
     contactoElement.setAttribute("data-tipo-contacto", contacto.tipoContacto || "");
     contactoElement.setAttribute("data-origen", contacto.origen || "");
+
+    // Agregar datos como atributos data-*
+   
 
     contactoElement.innerHTML = `
         <div class="dropdown">
@@ -112,7 +114,17 @@ function cargarEditar(contactoId) {
     const txtEditarApellidos = document.getElementById("txtEditarApellidos");
     const txtEditarCorreo = document.getElementById("txtEditarCorreo");
     const txtEditarTelefono = document.getElementById("txtEditarTelefono");
+
+    const txtEditarFechaNacimiento = document.getElementById("txtEditarFechaNacimiento");
+    const ddlEditarSexo = document.getElementById("ddlEditarSexo");
+    const ddlEditarComEmail = document.getElementById("ddlEditarComEmail");
+    const ddlEditarComWhatsapp = document.getElementById("ddlEditarComWhatsapp");
+    const ddlEditarTipoContacto = document.getElementById("ddlEditarTipoContacto");
+    const txtEditarOrigen = document.getElementById("txtEditarOrigen");
+
     const editarContactoId = contactoId;
+
+
 
     if (!editarContactoId) {
         console.error("Los elementos del ID modal de edición no están presentes en el DOM.");
@@ -132,14 +144,19 @@ function cargarEditar(contactoId) {
     txtEditarCorreo.value = correo;
     txtEditarTelefono.value = telefono;
 
+    txtEditarFechaNacimiento.value = contactoElement.getAttribute("data-fecha-nacimiento");
+    ddlEditarSexo.value = contactoElement.getAttribute("data-sexo");
+    ddlEditarComEmail.value = contactoElement.getAttribute("data-com-email");
+    ddlEditarComWhatsapp.value = contactoElement.getAttribute("data-com-whatsapp");
+    ddlEditarTipoContacto.value = contactoElement.getAttribute("data-tipo-contacto");
+    txtEditarOrigen.value = contactoElement.getAttribute("data-origen");
+
     
     console.log("Elemento del contacto encontrado");
 
     
    
 }
-
-
 
 function editar() {
     
@@ -174,14 +191,6 @@ function editar() {
    //  $('#EditarContactoform').modal('hide');
 }
 
-
-
-
-
-
-
-
-
 function crearContacto() {
     if (validarFormulario2() == false) {
         return;
@@ -193,13 +202,28 @@ function crearContacto() {
     const correo = document.getElementById("txtCorreo").value;
     const telefono = document.getElementById("txtTelefono").value;
 
+    const fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
+    const sexo = document.getElementById("ddlSexo").value;
+    const comEmail = document.getElementById("ddlComEmail").value;
+    const comWhatsapp = document.getElementById("ddlComWhatsapp").value;
+    const tipoContacto = document.getElementById("ddlTipoContacto").value;
+    const origen = document.getElementById("txtOrigen").value;
+
+
     const contacto = {
         nombre: nombre,
         apellido: apellido,
         correo: correo,
         telefono: telefono,
         fechaCreacion: new Date().toLocaleDateString(),
-        fechaOtro: new Date(2024, 11, 19).toLocaleDateString()
+        fechaOtro: new Date(2024, 11, 19).toLocaleDateString(),
+
+        fechaNacimiento: fechaNacimiento,
+        sexo: sexo,
+        comEmail: comEmail,
+        comWhatsapp: comWhatsapp,
+        tipoContacto: tipoContacto,
+        origen: origen,
     };
     despliegueContacto(contacto);
 }
@@ -210,7 +234,6 @@ function cargarEliminar(elemento) {
         eliminarContacto(contactoElement);
     };
 }
-
 function eliminarContacto(contactoElement) {
     contactoElement.remove();
 }
