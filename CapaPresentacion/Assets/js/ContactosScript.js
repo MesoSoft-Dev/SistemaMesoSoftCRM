@@ -56,7 +56,7 @@ async function cargarContactosDesdeArchivo() {
             despliegueContacto(contacto);
         });
     } catch (error) {
-        console.error('Error:', error);
+      
     }
 }
 
@@ -102,8 +102,7 @@ function despliegueContacto(contacto) {
 let contactoIdActual = null;    
 function cargarEditar(contactoId) {
     const contactoElement = document.getElementById(contactoId);
-    console.log("Cargando edición para:", contactoId);
-    console.log("TEST CARGAR");
+   
     if (!contactoElement) {
         alert("No se encontró el contacto.");
         return;
@@ -127,7 +126,7 @@ function cargarEditar(contactoId) {
 
 
     if (!editarContactoId) {
-        console.error("Los elementos del ID modal de edición no están presentes en el DOM.");
+  
         return;
     } 
 
@@ -152,7 +151,7 @@ function cargarEditar(contactoId) {
     txtEditarOrigen.value = contactoElement.getAttribute("data-origen");
 
     
-    console.log("Elemento del contacto encontrado");
+
 
     
    
@@ -161,7 +160,7 @@ function cargarEditar(contactoId) {
 function editar() {
     
     if (!contactoIdActual) {
-        console.error("No se ha cargado ningún contacto para editar.");
+       
         return;
     }
 
@@ -199,7 +198,7 @@ function editar() {
     // Reemplazar el contenido del contacto
     contactoElement.innerHTML = nuevoContenido;
 
-    console.log("Edición completada para:", contactoIdActual);
+   
 
     contactoIdActual = null;
 
