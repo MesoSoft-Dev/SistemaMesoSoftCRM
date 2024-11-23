@@ -165,7 +165,7 @@
                         <div class=" d-flex container">
     
  
-<asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar"  OnClientClick="crearContacto(); return false;" />    
+<asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar"  OnClientClick="crearContacto(); return false;" data-bs-dismiss="modal"/>    
 </div>
                     </div>
                 </div>
@@ -291,7 +291,7 @@
             <button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
         </div>
         <div class="d-flex container">
-  <button type="button" class="btn btn-primary" onclick="editar()">Guardar cambios</button>
+  <button type="button" class="btn btn-primary" onclick="editar()" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </div>
 </div>
