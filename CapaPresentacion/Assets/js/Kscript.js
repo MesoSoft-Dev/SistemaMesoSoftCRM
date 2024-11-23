@@ -43,13 +43,6 @@ function dragDrop() {
 
 const oportunidadesData = {};
 
-function generateUniqueId() {
-    return `oportunidad_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-}
-
-
-
-
 function limpiarCampos() {
     document.getElementById("txtNombres").value = "";
     document.getElementById("txtApellidos").value = "";
@@ -74,9 +67,8 @@ function validarFormulario() {
     const nombres = document.getElementById("txtNombres").value;
     const apellidos = document.getElementById("txtApellidos").value;
     const correo = document.getElementById("txtCorreo").value;
-    const telefono = document.getElementById("txtTelefono").value;
-    const genero = document.getElementById("ddlGenero").value;
-    const tipoContacto = document.getElementById("ddlContacto").value;
+    const telefono = document.getElementById("txtTelefono").value; txtTelefono
+    
 
 
     if (nombres.trim() === "") {
@@ -87,7 +79,7 @@ function validarFormulario() {
     if (apellidos.trim() === "") {
         alert("El campo Apellidos es obligatorio.");
         return false;
-
+    }
         if (correo.trim() === "") {
             alert("El campo Correo Electrónico es obligatorio.");
             return false;
@@ -97,21 +89,9 @@ function validarFormulario() {
             alert("El campo Teléfono es obligatorio.");
             return false;
         }
-
-        if (genero === "") {
-            alert("Debe seleccionar un Género.");
-            return false;
-        }
-
-        if (tipoContacto === "") {
-            alert("Debe seleccionar un Tipo de Contacto.");
-            return false;
-        }
-
-
-        return true;
-    }
+    return true;
 }
+let contIdOportunidad = 0;
 
 function createOportunidad() {
     if (validarFormulario() == false) {
@@ -132,7 +112,7 @@ function createOportunidad() {
         return;
     }
 
-    const oportunidadId = generateUniqueId();
+    const oportunidadId = `oportunidad_${contIdOportunidad++}`;
     oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 
     const oportunidad_button = document.createElement("button");
@@ -149,9 +129,9 @@ function createOportunidad() {
 
     limpiarCampos();
 
-   // const modalElement = document.getElementById('oportunidad_form');
-   // const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-   // modalInstance.hide(); ahora da problemas el cerrar modales desde javascript
+    const modalElement = document.getElementById('oportunidad_form');
+    const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+    //modalInstance.hide(); //ahora da problemas el cerrar modales desde javascript
 }
     // Despliege del modal de edicion, citas, tareas y notas.
 function openModal(event) {
@@ -292,12 +272,13 @@ function renderNotas(oportunidadId) {
     });
 }
 
+let idcontnotas = 0;
 function guardarNota() {
     const descripcionNota = document.getElementById("notaDescripcion").value.trim();
     const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
 
     if (descripcionNota !== "") {
-        const notaId = generateUniqueId();
+        const notaId = `nota_${idcontnotas++}`;
         oportunidadesData[oportunidadId].notas.push({ id: notaId, descripcion: descripcionNota });
 
         document.getElementById("notaDescripcion").value = "";
@@ -437,6 +418,7 @@ function renderTareas(oportunidadId) {
     });
 }
 
+
 function guardarTarea() {
     const descripcionTarea = document.getElementById("tareaDescripcion").value.trim();
     const tituloTarea = document.getElementById("tareaTitulo").value.trim();
@@ -445,7 +427,8 @@ function guardarTarea() {
     const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
 
     if (descripcionTarea !== "" && tituloTarea !== "" && fechaTarea !== "") {
-        const tareaId = generateUniqueId();
+        const tareaId = `tarea_${tareaIdCounter++}`;
+
         oportunidadesData[oportunidadId].tareas.push({ id: tareaId, titulo: tituloTarea, descripcion: descripcionTarea, fecha: fechaTarea });
 
         document.getElementById("tareaDescripcion").value = "";
