@@ -174,15 +174,15 @@
                 <div class="row mb-3">
             <div class="col-md-4">
                 <label class="form-label">Nombres</label>
-                <asp:TextBox ID="txtEditNombres" runat="server" CssClass="form-control" placeholder="Ingrese nombres del contacto"></asp:TextBox>
+                <asp:TextBox ID="txtEditarNombres" runat="server" CssClass="form-control" placeholder="Ingrese nombres del contacto"></asp:TextBox>
             </div>
             <div class="col-md-4">
                 <label class="form-label">Apellidos</label>
-                <asp:TextBox ID="txtEditApellidos" runat="server" CssClass="form-control" placeholder="Ingrese apellidos del contacto"></asp:TextBox>
+                <asp:TextBox ID="txtEditarApellidos" runat="server" CssClass="form-control" placeholder="Ingrese apellidos del contacto"></asp:TextBox>
             </div>
             <div class="col-md-4">
                 <label class="form-label">Género</label>
-                <asp:DropDownList ID="EditGenero" runat="server" CssClass="form-control form-select w-75"> 
+                <asp:DropDownList ID="ddlEditarGenero" runat="server" CssClass="form-control form-select w-75"> 
                 <asp:ListItem>Femenino</asp:ListItem>
                 <asp:ListItem>Masculino</asp:ListItem>
                 </asp:DropDownList>
@@ -191,15 +191,15 @@
               <div class="row mb-3">
             <div class="col-md-4">
                 <label class="form-label">Correo Electrónico</label>
-                <asp:TextBox ID="txtCorreoE" runat="server" CssClass="form-control" Placeholder="Ingrese correo del contacto" TextMode="Email"></asp:TextBox>
+                <asp:TextBox ID="txtEditarCorreo" runat="server" CssClass="form-control" Placeholder="Ingrese correo del contacto" TextMode="Email"></asp:TextBox>
             </div>
             <div class="col-md-4">
                 <label class="form-label">Teléfono</label>
-                <asp:TextBox ID="txtEditTelefono" runat="server" CssClass="form-control" Placeholder="Ingrese teléfono del contacto"></asp:TextBox>
+                <asp:TextBox ID="txtEditarTelefono" runat="server" CssClass="form-control" Placeholder="Ingrese teléfono del contacto"></asp:TextBox>
             </div>
          <div class="col-md-4">
              <label class="form-label">Tipo Contacto</label>
-             <asp:DropDownList ID="EditTipoContacto" runat="server" CssClass="form-control form-select w-75"> 
+             <asp:DropDownList ID="EditarTipoContacto" runat="server" CssClass="form-control form-select w-75"> 
              <asp:ListItem>Interesado</asp:ListItem>
              <asp:ListItem>Cliente</asp:ListItem>
              </asp:DropDownList>
@@ -211,15 +211,15 @@
     <div class="row mb-3">
         <div class="col-md-4">
             <label class="form-label">Encargado</label>
-            <asp:TextBox ID="txtEditEncargado" runat="server" class="form-control" placeholder="Nombre encargado"></asp:TextBox>
+            <asp:TextBox ID="txtEditarEncargado" runat="server" class="form-control" placeholder="Nombre encargado"></asp:TextBox>
         </div>
         <div class="col-md-4">
             <label class="form-label">Fecha Registro</label>
-            <asp:TextBox ID="txtEditFechaRegistro" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+            <asp:TextBox ID="ddlEditarFechaRegistro" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
         </div>
         <div class="col-md-4">
            <label class="form-label">Canal</label>
-             <asp:DropDownList ID="EditCanal" runat="server" CssClass="form-control form-select w-75"> 
+             <asp:DropDownList ID="ddlEditarCanal" runat="server" CssClass="form-control form-select w-75"> 
              <asp:ListItem>Llamada</asp:ListItem>
              <asp:ListItem>Email</asp:ListItem>
              </asp:DropDownList>
@@ -228,15 +228,15 @@
     <div class="row mb-3">
         <div class="col-md-4">
             <label class="form-label">Nombre Negocio</label>
-            <asp:TextBox ID="txtEditNombreNegocio" runat="server" CssClass="form-control" Placeholder="Ingrese nombre negocio"></asp:TextBox>
+            <asp:TextBox ID="txtEditarNombreNegocio" runat="server" CssClass="form-control" Placeholder="Ingrese nombre negocio"></asp:TextBox>
         </div>
         <div class="col-md-4">
             <label class="form-label">Valor de Oportunidad</label>
-            <asp:TextBox ID="txtEditOportunidad" runat="server" CssClass="form-control" Placeholder="Ingrese valor de oportunidad" TextMode="Number"></asp:TextBox>
+            <asp:TextBox ID="txtEditarOportunidad" runat="server" CssClass="form-control" Placeholder="Ingrese valor de oportunidad" TextMode="Number"></asp:TextBox>
         </div>
         <div class="col-md-4">
             <label class="form-label">Fase</label>
-            <asp:DropDownList ID="EditFase" runat="server" CssClass="form-control form-select w-75"> 
+            <asp:DropDownList ID="ddlEditarFase" runat="server" CssClass="form-control form-select w-75"> 
             <asp:ListItem>Interesado</asp:ListItem>
             <asp:ListItem>En Progreso</asp:ListItem>
             </asp:DropDownList>
@@ -245,18 +245,18 @@
     <div class="row mb-3">
         <div class="col-md-4">
             <label class="form-label">Seguidores</label>
-            <asp:TextBox ID="txtEditSeguidores" runat="server" CssClass="form-control" Placeholder="Ingrese seguidores"></asp:TextBox>
+            <asp:TextBox ID="txtEditarSeguidores" runat="server" CssClass="form-control" Placeholder="Ingrese seguidores"></asp:TextBox>
         </div>
         <div class="col-md-4">
             <label class="form-label">Etiqueta</label>
-             <asp:DropDownList ID="EditEtiqueta" runat="server" CssClass="form-control form-select w-100"> 
+             <asp:DropDownList ID="ddlEditarEtiqueta" runat="server" CssClass="form-control form-select w-100"> 
              <asp:ListItem>Etiqueta 1</asp:ListItem>
              <asp:ListItem>Etiqueta 2</asp:ListItem>
              </asp:DropDownList>
         </div> 
         <div class="col-md-4">
             <label class="form-label">Estado</label>
-              <asp:DropDownList ID="EditEstado" runat="server" CssClass="form-control form-select w-75"> 
+              <asp:DropDownList ID="ddlEditarEstado" runat="server" CssClass="form-control form-select w-75"> 
               <asp:ListItem>Abierto</asp:ListItem>
               <asp:ListItem>Cerrado</asp:ListItem>
               </asp:DropDownList>
@@ -264,13 +264,15 @@
        </div>
    </div>
               <div class="d-flex justify-content-end">
-    <div class="d-flex"> 
-<asp:Button ID="btnEditarOportunidad" runat="server" Text="Aceptar" CssClass="btn fondo4 me-2 fw-bold flex-fill" OnClick="btnEditarOportunidad_Click" /> 
+    <div class="d-flex"> <!-- OnClick="btnEditarOportunidad_Click"-->                                       <!--   editarOportunidad()     -->            
+<button type="button" id="btnEditarOportunidad" class="btn fondo4 me-2 fw-bold flex-fill" onclick="editarOportunidad();">Aceptar</button>
+<button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
 
     </div>
 </div>
 
 </div>
+
             <!--Fin de otras opciones, editar oportunidad-->
 
 <!--Formulario de crear citas-->    
@@ -355,7 +357,7 @@
     </div>
 </div>
         <div class="d-flex justify-content-end">
-            <asp:Button ID="ButtonEdit" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Tarea" />
+            <asp:Button ID="ButtonEdit" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Tarea" OnClientClick="editartarea(); return false;" />
             <button type="button" class="btn border-custom2" onclick=" ocultarFormularioEditTarea()">Cancelar</button>
         </div>
     </div>
@@ -417,9 +419,9 @@
     </div>
     <div class="mb-3">
         <asp:TextBox ID="EditnotaDescripcion" runat="server" CssClass="form-control text-start " TextMode="MultiLine" placeholder="Ingresa descripcion de nota." Rows="5" Columns="50"></asp:TextBox>
-    </div>
+    </div> 
      <div class="d-flex justify-content-end">
-        <asp:Button ID="Button1" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Nota" />
+        <asp:Button ID="Button1" runat="server" type="button" CssClass="btn fondo3 me-2" Text="Guardar Nota" OnClientClick="editarnota(); return false;" />
         <button type="button" class="btn border-custom2" onclick="ocultarFormularioEditNota()">Cancelar</button>
     </div>
 </div>
