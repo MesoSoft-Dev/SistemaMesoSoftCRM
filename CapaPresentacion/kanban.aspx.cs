@@ -15,7 +15,7 @@ namespace CapaPresentacion
         }
         protected void btnEditarOportunidad_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtEditNombres.Text) || string.IsNullOrWhiteSpace(txtEditApellidos.Text) ||
+          /*  if (string.IsNullOrWhiteSpace(txtEditNombres.Text) || string.IsNullOrWhiteSpace(txtEditApellidos.Text) ||
                 string.IsNullOrWhiteSpace(txtCorreoE.Text) || string.IsNullOrWhiteSpace(txtEditTelefono.Text) ||
                 string.IsNullOrWhiteSpace(txtEditEncargado.Text) || string.IsNullOrWhiteSpace(txtEditFechaRegistro.Text) ||
                 string.IsNullOrWhiteSpace(txtEditNombreNegocio.Text) || string.IsNullOrWhiteSpace(txtEditOportunidad.Text) ||
@@ -39,7 +39,7 @@ namespace CapaPresentacion
             string fase = EditFase.SelectedValue;
             string seguidores = txtEditSeguidores.Text;
             string etiqueta = EditEtiqueta.SelectedValue;
-            string estado = EditEstado.SelectedValue;
+            string estado = EditEstado.SelectedValue; */
         }
     }
 }
