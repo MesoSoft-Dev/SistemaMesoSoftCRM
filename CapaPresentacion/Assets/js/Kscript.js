@@ -1,4 +1,7 @@
-﻿//funciones de drag and drop============================================
+﻿document.addEventListener("DOMContentLoaded", function () {
+    cargarOportunidadesDesdeArchivo(); // Llama a la función al cargar la página
+});
+//funciones de drag and drop============================================
 const oportunidades = document.querySelectorAll(".oportunidad");
 const all_status = document.querySelectorAll(".status");
 let draggableOportunidad = null;
@@ -62,6 +65,39 @@ function limpiarCampos() {
     document.getElementById("existsCheckbox").checked = false;
 }
 
+async function cargarOportunidadesDesdeArchivo() {
+    try {
+        const response = await fetch("Assets/js/oportunidades.json");
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        } const oportunidades = await response.json();
+        oportunidades.forEach(oportunidad => {
+            despliegueOportunidad(oportunidad);
+        });
+    } catch (error) {
+    }
+}
+
+function despliegueOportunidad(oportunidad) {
+    const oportunidadId = `oportunidad-${contIdOportunidad++}`; 
+    const oportunidadElement = document.createElement("button");
+    oportunidadElement.classList.add("oportunidad", "border-0");
+    oportunidadElement.setAttribute("draggable", "true");
+    oportunidadElement.setAttribute("data-id", oportunidadId);
+
+   
+    const input_val = `${oportunidad.nombre} ${oportunidad.apellido}`.trim();
+    oportunidadElement.textContent = input_val;
+
+    // Agregar eventos de arrastre y clic
+    oportunidadElement.addEventListener("dragstart", dragStart);
+    oportunidadElement.addEventListener("dragend", dragEnd);
+    oportunidadElement.addEventListener("click", openModal);
+
+    // Agregar el botón al contenedor correspondiente
+    document.getElementById("no_status").appendChild(oportunidadElement);
+}
+
 
 function validarFormulario() {
     const nombres = document.getElementById("txtNombres").value;
@@ -115,25 +151,25 @@ function createOportunidad() {
     const oportunidadId = `oportunidad_${contIdOportunidad++}`;
     oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 
-    const oportunidad_button = document.createElement("button");
-    oportunidad_button.textContent = input_val;
-    oportunidad_button.classList.add("oportunidad", "border-0");
-    oportunidad_button.setAttribute("draggable", "true");
-    oportunidad_button.setAttribute("data-id", oportunidadId);
+    // Crear un objeto oportunidad
+    const oportunidad = {
+        id: oportunidadId,
+        nombre: nombre,
+        apellido: apellido,
+        fechaRegistro: fechaRegistro
+    };
 
-    document.getElementById("no_status").appendChild(oportunidad_button);
-
-    oportunidad_button.addEventListener("dragstart", dragStart);
-    oportunidad_button.addEventListener("dragend", dragEnd);
-    oportunidad_button.addEventListener("click", openModal);
+    // Llamar a despliegueOportunidad con el objeto oportunidad
+    despliegueOportunidad(oportunidad);
 
     limpiarCampos();
 
     const modalElement = document.getElementById('oportunidad_form');
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-    //modalInstance.hide(); //ahora da problemas el cerrar modales desde javascript
+    // modalInstance.hide(); // ahora da problemas el cerrar modales desde javascript
 }
     // Despliege del modal de edicion, citas, tareas y notas.
+
 function openModal(event) {
     event.preventDefault();
     const oportunidadId = event.currentTarget.getAttribute("data-id");
