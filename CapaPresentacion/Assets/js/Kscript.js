@@ -1,5 +1,5 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
-    cargarOportunidadesDesdeArchivo(); // Llama a la función al cargar la página
+    cargarOportunidadesDesdeArchivo(); 
 });
 //funciones de drag and drop============================================
 const oportunidades = document.querySelectorAll(".oportunidad");
@@ -152,7 +152,7 @@ function createOportunidad() {
     const oportunidadId = `oportunidad_${contIdOportunidad++}`;
     oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 
-    // Crear un objeto oportunidad
+  
     const oportunidad = {
         id: oportunidadId,
         nombre: nombre,
@@ -160,7 +160,7 @@ function createOportunidad() {
         fechaRegistro: fechaRegistro
     };
 
-    // Llamar a despliegueOportunidad con el objeto oportunidad
+   
     despliegueOportunidad(oportunidad);
 
     limpiarCampos();
@@ -291,16 +291,14 @@ function renderNotas(oportunidadId) {
     const notasContainer = document.getElementById("contenidoNotas");
     notasContainer.innerHTML = "";
 
-    // Verifica si la oportunidad existe
     if (!oportunidadesData[oportunidadId]) {
         console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
-        return; // Salir de la función si no existe
+        return; 
     }
 
-    // Verifica si hay notas
     if (!oportunidadesData[oportunidadId].notas) {
         console.error(`No se encontraron notas para la oportunidad con ID: ${oportunidadId}`);
-        return; // Salir de la función si no hay notas
+        return; 
     }
 
     oportunidadesData[oportunidadId].notas.forEach((nota) => {
