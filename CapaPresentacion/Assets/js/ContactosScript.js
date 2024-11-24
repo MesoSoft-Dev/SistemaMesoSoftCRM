@@ -1,5 +1,5 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
-    cargarContactosDesdeArchivo(); // Llama a la función al cargar la página
+    cargarContactosDesdeArchivo(); 
 });
 
 function validarFormulario2() {

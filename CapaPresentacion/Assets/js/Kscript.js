@@ -168,7 +168,9 @@ function createOportunidad() {
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
     // modalInstance.hide(); // ahora da problemas el cerrar modales desde javascript
 }
-    // Despliege del modal de edicion, citas, tareas y notas.
+// Despliege del modal de edicion, citas, tareas y notas.
+
+
 
 function openModal(event) {
     event.preventDefault();
@@ -286,6 +288,18 @@ function abrirVentanaNota(oportunidadId, notaId) {
 function renderNotas(oportunidadId) {
     const notasContainer = document.getElementById("contenidoNotas");
     notasContainer.innerHTML = "";
+
+    // Verifica si la oportunidad existe
+    if (!oportunidadesData[oportunidadId]) {
+        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
+        return; // Salir de la función si no existe
+    }
+
+    // Verifica si hay notas
+    if (!oportunidadesData[oportunidadId].notas) {
+        console.error(`No se encontraron notas para la oportunidad con ID: ${oportunidadId}`);
+        return; // Salir de la función si no hay notas
+    }
 
     oportunidadesData[oportunidadId].notas.forEach((nota) => {
         const notaElement = document.createElement("div");
@@ -433,6 +447,19 @@ function renderTareas(oportunidadId) {
     const tareasContainer = document.getElementById("contenidoTareas");
     tareasContainer.innerHTML = "";
 
+    // Verifica si la oportunidad existe
+    if (!oportunidadesData[oportunidadId]) {
+        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
+        return; // Salir de la función si no existe
+    }
+
+    // Verifica si hay tareas
+    if (!oportunidadesData[oportunidadId].tareas) {
+        console.error(`No se encontraron tareas para la oportunidad con ID: ${oportunidadId}`);
+        return; // Salir de la función si no hay tareas
+    }
+
+    // Renderiza las tareas
     oportunidadesData[oportunidadId].tareas.forEach((tarea) => {
         const tareaElement = document.createElement("div");
         tareaElement.classList.add("Tarea", "my-3", "d-flex");
