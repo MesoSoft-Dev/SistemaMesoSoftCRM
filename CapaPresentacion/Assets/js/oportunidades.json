@@ -2,31 +2,9 @@
   {
     "nombre": "Juan",
     "apellido": "Pérez"
-   
-  },
-  {
-    "nombre": "María",
-    "apellido": "Gómez"
-  
-  },
-  {
-    "nombre": "Carlos",
-    "apellido": "López"
-   
   },
   {
     "nombre": "Ana",
-    "apellido": "Martínez"
-   
-  },
-  {
-    "nombre": "Luis",
-    "apellido": "Fernández"
-   
-  },
-  {
-    "nombre": "Laura",
-    "apellido": "Ramírez"
-   
+    "apellido": "García"
   }
 ]

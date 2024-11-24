@@ -96,6 +96,7 @@ function despliegueOportunidad(oportunidad) {
 
     // Agregar el botón al contenedor correspondiente
     document.getElementById("no_status").appendChild(oportunidadElement);
+    oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 }
 
 
@@ -177,6 +178,7 @@ function openModal(event) {
     const oportunidadId = event.currentTarget.getAttribute("data-id");
     document.getElementById('oportunidadModal').setAttribute("data-id", oportunidadId);
 
+    console.log("ID de oportunidad al abrir modal:", oportunidadId);
     renderNotas(oportunidadId);
     renderTareas(oportunidadId);
 
