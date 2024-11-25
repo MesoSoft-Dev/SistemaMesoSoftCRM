@@ -89,12 +89,10 @@ function despliegueOportunidad(oportunidad) {
     const input_val = `${oportunidad.nombre} ${oportunidad.apellido}`.trim();
     oportunidadElement.textContent = input_val;
 
-    // Agregar eventos de arrastre y clic
     oportunidadElement.addEventListener("dragstart", dragStart);
     oportunidadElement.addEventListener("dragend", dragEnd);
     oportunidadElement.addEventListener("click", openModal);
 
-    // Agregar el botón al contenedor correspondiente
     document.getElementById("no_status").appendChild(oportunidadElement);
     oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 }
@@ -126,6 +124,34 @@ function validarFormulario() {
             alert("El campo Teléfono es obligatorio.");
             return false;
         }
+    return true;
+}
+function validarFormularioEditar() {
+    const nombres = document.getElementById("txtEditarNombres").value;
+    const apellidos = document.getElementById("txtEditarApellidos").value;
+    const correo = document.getElementById("txtEditarCorreo").value;
+    const telefono = document.getElementById("txtEditarTelefono").value; txtTelefono
+
+
+
+    if (nombres.trim() === "") {
+        alert("El campo Nombres es obligatorio.");
+        return false;
+    }
+
+    if (apellidos.trim() === "") {
+        alert("El campo Apellidos es obligatorio.");
+        return false;
+    }
+    if (correo.trim() === "") {
+        alert("El campo Correo Electrónico es obligatorio.");
+        return false;
+    }
+
+    if (telefono.trim() === "") {
+        alert("El campo Teléfono es obligatorio.");
+        return false;
+    }
     return true;
 }
 let contIdOportunidad = 0;
@@ -169,16 +195,57 @@ function createOportunidad() {
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
     // modalInstance.hide(); // ahora da problemas el cerrar modales desde javascript
 }
+// editar oportunidad
+function editarOportunidad() {
+    if (validarFormularioEditar() == false) {
+        return;
+    }
+
+    const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id"); 
+    const nombre = document.getElementById("txtEditarNombres").value; 
+    const apellido = document.getElementById("txtEditarApellidos").value; 
+    const input_val = `${nombre} ${apellido}`.trim();
+
+    const fechaRegistro = document.getElementById("ddlEditarFechaRegistro").value; 
+    const selectedDate = new Date(fechaRegistro);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+        alert("Por favor, ingrese una fecha válida que no sea anterior a hoy.");
+        return;
+    }
+
+ 
+    if (!oportunidadesData[oportunidadId]) {
+        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
+        return;
+    }
+
+   
+    oportunidadesData[oportunidadId].nombre = nombre;
+    oportunidadesData[oportunidadId].apellido = apellido;
+    oportunidadesData[oportunidadId].fechaRegistro = fechaRegistro; 
+
+  
+    const oportunidadButton = document.querySelector(`button[data-id='${oportunidadId}']`);
+    if (oportunidadButton) {
+        oportunidadButton.textContent = input_val;
+    }
+
+    limpiarCampos();
+
+    const modalElement = document.getElementById('oportunidad_form');
+    const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+  
+}
 // Despliege del modal de edicion, citas, tareas y notas.
-
-
 
 function openModal(event) {
     event.preventDefault();
     const oportunidadId = event.currentTarget.getAttribute("data-id");
     document.getElementById('oportunidadModal').setAttribute("data-id", oportunidadId);
 
-    console.log("ID de oportunidad al abrir modal:", oportunidadId);
     renderNotas(oportunidadId);
     renderTareas(oportunidadId);
 
