@@ -1,4 +1,7 @@
-﻿//funciones de drag and drop============================================
+﻿document.addEventListener("DOMContentLoaded", function () {
+    cargarOportunidadesDesdeArchivo(); 
+});
+//funciones de drag and drop============================================
 const oportunidades = document.querySelectorAll(".oportunidad");
 const all_status = document.querySelectorAll(".status");
 let draggableOportunidad = null;
@@ -43,13 +46,6 @@ function dragDrop() {
 
 const oportunidadesData = {};
 
-function generateUniqueId() {
-    return `oportunidad_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-}
-
-
-
-
 function limpiarCampos() {
     document.getElementById("txtNombres").value = "";
     document.getElementById("txtApellidos").value = "";
@@ -69,14 +65,45 @@ function limpiarCampos() {
     document.getElementById("existsCheckbox").checked = false;
 }
 
+async function cargarOportunidadesDesdeArchivo() {
+    try {
+        const response = await fetch("Assets/js/oportunidades.json");
+        if (!response.ok) {
+            throw new Error('Error al cargar el archivo JSON');
+        } const oportunidades = await response.json();
+        oportunidades.forEach(oportunidad => {
+            despliegueOportunidad(oportunidad);
+        });
+    } catch (error) {
+    }
+}
+
+function despliegueOportunidad(oportunidad) {
+    const oportunidadId = `oportunidad-${contIdOportunidad++}`; 
+    const oportunidadElement = document.createElement("button");
+    oportunidadElement.classList.add("oportunidad", "border-0");
+    oportunidadElement.setAttribute("draggable", "true");
+    oportunidadElement.setAttribute("data-id", oportunidadId);
+
+   
+    const input_val = `${oportunidad.nombre} ${oportunidad.apellido}`.trim();
+    oportunidadElement.textContent = input_val;
+
+    oportunidadElement.addEventListener("dragstart", dragStart);
+    oportunidadElement.addEventListener("dragend", dragEnd);
+    oportunidadElement.addEventListener("click", openModal);
+
+    document.getElementById("no_status").appendChild(oportunidadElement);
+    oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
+}
+
 
 function validarFormulario() {
     const nombres = document.getElementById("txtNombres").value;
     const apellidos = document.getElementById("txtApellidos").value;
     const correo = document.getElementById("txtCorreo").value;
-    const telefono = document.getElementById("txtTelefono").value;
-    const genero = document.getElementById("ddlGenero").value;
-    const tipoContacto = document.getElementById("ddlContacto").value;
+    const telefono = document.getElementById("txtTelefono").value; txtTelefono
+    
 
 
     if (nombres.trim() === "") {
@@ -87,7 +114,7 @@ function validarFormulario() {
     if (apellidos.trim() === "") {
         alert("El campo Apellidos es obligatorio.");
         return false;
-
+    }
         if (correo.trim() === "") {
             alert("El campo Correo Electrónico es obligatorio.");
             return false;
@@ -97,21 +124,37 @@ function validarFormulario() {
             alert("El campo Teléfono es obligatorio.");
             return false;
         }
-
-        if (genero === "") {
-            alert("Debe seleccionar un Género.");
-            return false;
-        }
-
-        if (tipoContacto === "") {
-            alert("Debe seleccionar un Tipo de Contacto.");
-            return false;
-        }
-
-
-        return true;
-    }
+    return true;
 }
+function validarFormularioEditar() {
+    const nombres = document.getElementById("txtEditarNombres").value;
+    const apellidos = document.getElementById("txtEditarApellidos").value;
+    const correo = document.getElementById("txtEditarCorreo").value;
+    const telefono = document.getElementById("txtEditarTelefono").value; txtTelefono
+
+
+
+    if (nombres.trim() === "") {
+        alert("El campo Nombres es obligatorio.");
+        return false;
+    }
+
+    if (apellidos.trim() === "") {
+        alert("El campo Apellidos es obligatorio.");
+        return false;
+    }
+    if (correo.trim() === "") {
+        alert("El campo Correo Electrónico es obligatorio.");
+        return false;
+    }
+
+    if (telefono.trim() === "") {
+        alert("El campo Teléfono es obligatorio.");
+        return false;
+    }
+    return true;
+}
+let contIdOportunidad = 0;
 
 function createOportunidad() {
     if (validarFormulario() == false) {
@@ -132,28 +175,72 @@ function createOportunidad() {
         return;
     }
 
-    const oportunidadId = generateUniqueId();
+    const oportunidadId = `oportunidad_${contIdOportunidad++}`;
     oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 
-    const oportunidad_button = document.createElement("button");
-    oportunidad_button.textContent = input_val;
-    oportunidad_button.classList.add("oportunidad", "border-0");
-    oportunidad_button.setAttribute("draggable", "true");
-    oportunidad_button.setAttribute("data-id", oportunidadId);
+  
+    const oportunidad = {
+        id: oportunidadId,
+        nombre: nombre,
+        apellido: apellido,
+        fechaRegistro: fechaRegistro
+    };
 
-    document.getElementById("no_status").appendChild(oportunidad_button);
-
-    oportunidad_button.addEventListener("dragstart", dragStart);
-    oportunidad_button.addEventListener("dragend", dragEnd);
-    oportunidad_button.addEventListener("click", openModal);
+   
+    despliegueOportunidad(oportunidad);
 
     limpiarCampos();
 
     const modalElement = document.getElementById('oportunidad_form');
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-    modalInstance.hide();
+    // modalInstance.hide(); // ahora da problemas el cerrar modales desde javascript
 }
-    // Despliege del modal de edicion, citas, tareas y notas.
+// editar oportunidad
+function editarOportunidad() {
+    if (validarFormularioEditar() == false) {
+        return;
+    }
+
+    const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id"); 
+    const nombre = document.getElementById("txtEditarNombres").value; 
+    const apellido = document.getElementById("txtEditarApellidos").value; 
+    const input_val = `${nombre} ${apellido}`.trim();
+
+    const fechaRegistro = document.getElementById("ddlEditarFechaRegistro").value; 
+    const selectedDate = new Date(fechaRegistro);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+        alert("Por favor, ingrese una fecha válida que no sea anterior a hoy.");
+        return;
+    }
+
+ 
+    if (!oportunidadesData[oportunidadId]) {
+        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
+        return;
+    }
+
+   
+    oportunidadesData[oportunidadId].nombre = nombre;
+    oportunidadesData[oportunidadId].apellido = apellido;
+    oportunidadesData[oportunidadId].fechaRegistro = fechaRegistro; 
+
+  
+    const oportunidadButton = document.querySelector(`button[data-id='${oportunidadId}']`);
+    if (oportunidadButton) {
+        oportunidadButton.textContent = input_val;
+    }
+
+    limpiarCampos();
+
+    const modalElement = document.getElementById('oportunidad_form');
+    const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+  
+}
+// Despliege del modal de edicion, citas, tareas y notas.
+
 function openModal(event) {
     event.preventDefault();
     const oportunidadId = event.currentTarget.getAttribute("data-id");
@@ -271,6 +358,16 @@ function renderNotas(oportunidadId) {
     const notasContainer = document.getElementById("contenidoNotas");
     notasContainer.innerHTML = "";
 
+    if (!oportunidadesData[oportunidadId]) {
+        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
+        return; 
+    }
+
+    if (!oportunidadesData[oportunidadId].notas) {
+        console.error(`No se encontraron notas para la oportunidad con ID: ${oportunidadId}`);
+        return; 
+    }
+
     oportunidadesData[oportunidadId].notas.forEach((nota) => {
         const notaElement = document.createElement("div");
         notaElement.classList.add("Nota", "my-3", "d-flex");
@@ -283,7 +380,7 @@ function renderNotas(oportunidadId) {
             <div class="subTarea">Ejemplo encargado</div>
         </div>
         <div class="d-flex flex-column align-items-start me-5 p-2">
-            <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="mostrarFormularioEditNota()">Editar</button>
+            <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="cargareditarNota('${oportunidadId}', '${nota.id}')">Editar</button>
             <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaNota('${oportunidadId}', '${nota.id}')">Eliminar</button>  
         </div>
     `;
@@ -292,12 +389,13 @@ function renderNotas(oportunidadId) {
     });
 }
 
+let idcontnotas = 0;
 function guardarNota() {
     const descripcionNota = document.getElementById("notaDescripcion").value.trim();
     const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
 
     if (descripcionNota !== "") {
-        const notaId = generateUniqueId();
+        const notaId = `nota_${idcontnotas++}`;
         oportunidadesData[oportunidadId].notas.push({ id: notaId, descripcion: descripcionNota });
 
         document.getElementById("notaDescripcion").value = "";
@@ -306,6 +404,49 @@ function guardarNota() {
     } else {
         alert("Por favor, completa todos los campos antes de guardar la nota.");
     }
+}
+
+let notaIdActual = null; // Variable para almacenar el ID de la nota que se está editando
+
+function cargareditarNota(oportunidadId, notaId) {
+    mostrarFormularioEditNota(); 
+
+    
+    const notaData = oportunidadesData[oportunidadId].notas.find(nota => nota.id === notaId);
+    if (!notaData) {
+        alert("No se encontró la nota para editar.");
+        return;
+    }
+
+    notaIdActual = notaId;
+
+    document.getElementById("EditnotaDescripcion").value = notaData.descripcion; 
+}
+
+function editarnota() {
+    if (!notaIdActual) {
+        alert("No se puede editar la nota. ID no válido.");
+        return;
+    }
+
+    const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
+    const nuevaDescripcion = document.getElementById("EditnotaDescripcion").value.trim(); 
+
+    if (nuevaDescripcion === "") {
+        alert("Por favor, completa el campo de descripción antes de guardar.");
+        return;
+    }
+
+    const notaIndex = oportunidadesData[oportunidadId].notas.findIndex(nota => nota.id === notaIdActual);
+    if (notaIndex !== -1) {
+        oportunidadesData[oportunidadId].notas[notaIndex].descripcion = nuevaDescripcion;
+    }
+
+    renderNotas(oportunidadId);
+
+    ocultarFormularioEditNota();
+
+    notaIdActual = null;
 }
 
 // Eliminar notas ============================================================================================
@@ -373,6 +514,19 @@ function renderTareas(oportunidadId) {
     const tareasContainer = document.getElementById("contenidoTareas");
     tareasContainer.innerHTML = "";
 
+    // Verifica si la oportunidad existe
+    if (!oportunidadesData[oportunidadId]) {
+        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
+        return; // Salir de la función si no existe
+    }
+
+    // Verifica si hay tareas
+    if (!oportunidadesData[oportunidadId].tareas) {
+        console.error(`No se encontraron tareas para la oportunidad con ID: ${oportunidadId}`);
+        return; // Salir de la función si no hay tareas
+    }
+
+    // Renderiza las tareas
     oportunidadesData[oportunidadId].tareas.forEach((tarea) => {
         const tareaElement = document.createElement("div");
         tareaElement.classList.add("Tarea", "my-3", "d-flex");
@@ -385,7 +539,7 @@ function renderTareas(oportunidadId) {
                 <div class="subTarea">${tarea.fecha}</div>
             </div>
             <div class="d-flex flex-column align-items-start me-5 p-2">
-                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="mostrarFormularioEditTarea()">Editar</button>
+                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="cargareditarTareas('${oportunidadId}', '${tarea.id}')">Editar</button>
                 <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea('${oportunidadId}', '${tarea.id}')">Eliminar</button>
             </div>
         `;
@@ -393,6 +547,7 @@ function renderTareas(oportunidadId) {
         tareasContainer.appendChild(tareaElement);
     });
 }
+
 
 function guardarTarea() {
     const descripcionTarea = document.getElementById("tareaDescripcion").value.trim();
@@ -402,7 +557,8 @@ function guardarTarea() {
     const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
 
     if (descripcionTarea !== "" && tituloTarea !== "" && fechaTarea !== "") {
-        const tareaId = generateUniqueId();
+        const tareaId = `tarea_${tareaIdCounter++}`;
+
         oportunidadesData[oportunidadId].tareas.push({ id: tareaId, titulo: tituloTarea, descripcion: descripcionTarea, fecha: fechaTarea });
 
         document.getElementById("tareaDescripcion").value = "";
@@ -415,6 +571,55 @@ function guardarTarea() {
     } else {
         alert("Por favor, completa todos los campos antes de guardar la tarea.");
     }
+}
+
+let tareaIdActual = null; // Variable para almacenar el ID de la tarea que se está editando
+// editar tareas ========================================================================
+
+function cargareditarTareas(oportunidadId, tareaId) {
+    mostrarFormularioEditTarea(); 
+
+    const tareaData = oportunidadesData[oportunidadId].tareas.find(tarea => tarea.id === tareaId);
+    if (!tareaData) {
+        alert("No se encontró la tarea para editar.");
+        return;
+    }
+
+    tareaIdActual = tareaId;
+
+    document.getElementById("tareaTituloEditar").value = tareaData.titulo; 
+    document.getElementById("tareaDescripcionEditar").value = tareaData.descripcion; 
+    document.getElementById("tareasFechaEditar").value = tareaData.fecha; 
+    
+}
+
+function editartarea() {
+    if (!tareaIdActual) {
+        alert("No se puede editar la tarea. ID no válido.");
+        return;
+    }
+
+    const oportunidadId = document.getElementById('oportunidadModal').getAttribute("data-id");
+    const nuevoTitulo = document.getElementById("tareaTituloEditar").value.trim(); 
+    const nuevaDescripcion = document.getElementById("tareaDescripcionEditar").value.trim(); 
+    const nuevaFecha = document.getElementById("tareasFechaEditar").value.trim(); 
+    if (nuevoTitulo === "" || nuevaDescripcion === "" || nuevaFecha === "") {
+        alert("Por favor, completa todos los campos antes de guardar.");
+        return;
+    }
+
+    const tareaIndex = oportunidadesData[oportunidadId].tareas.findIndex(tarea => tarea.id === tareaIdActual);
+    if (tareaIndex !== -1) {
+        oportunidadesData[oportunidadId].tareas[tareaIndex].titulo = nuevoTitulo;
+        oportunidadesData[oportunidadId].tareas[tareaIndex].descripcion = nuevaDescripcion;
+        oportunidadesData[oportunidadId].tareas[tareaIndex].fecha = nuevaFecha;
+    }
+
+    renderTareas(oportunidadId);
+
+    ocultarFormularioEditTarea();
+
+    tareaIdActual = null;
 }
 
 // Eliminar tareas ========================================================================
@@ -452,6 +657,31 @@ function eliminarTarea() {
             });
         }
     });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fechaCitaElement = document.getElementById('tareasFechaEditar');
+
+    if (fechaCitaElement) {
+        flatpickr(fechaCitaElement, {
+            enableTime: true,
+            dateFormat: "Y-m-d\\TH:i",
+            time_24hr: true,
+            onChange: function (selectedDates, dateStr, instance) {
+                const selectedDate = new Date(dateStr);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
+                    instance.clear();
+
+                }
+            }
+        });
+    }
+});
+
     //selector de fechas en citas=============================================
 
     document.addEventListener('DOMContentLoaded', () => {

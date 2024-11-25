@@ -195,148 +195,139 @@ namespace CapaPresentacion
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// txtEditNombres control.
+        /// txtEditarNombres control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditNombres;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarNombres;
 
         /// <summary>
-        /// txtEditApellidos control.
+        /// txtEditarApellidos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditApellidos;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarApellidos;
 
         /// <summary>
-        /// EditGenero control.
+        /// ddlEditarGenero control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditGenero;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarGenero;
 
         /// <summary>
-        /// txtCorreoE control.
+        /// txtEditarCorreo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorreoE;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarCorreo;
 
         /// <summary>
-        /// txtEditTelefono control.
+        /// txtEditarTelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditTelefono;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarTelefono;
 
         /// <summary>
-        /// EditTipoContacto control.
+        /// EditarTipoContacto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditTipoContacto;
+        protected global::System.Web.UI.WebControls.DropDownList EditarTipoContacto;
 
         /// <summary>
-        /// txtEditEncargado control.
+        /// txtEditarEncargado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditEncargado;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarEncargado;
 
         /// <summary>
-        /// txtEditFechaRegistro control.
+        /// ddlEditarFechaRegistro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditFechaRegistro;
+        protected global::System.Web.UI.WebControls.TextBox ddlEditarFechaRegistro;
 
         /// <summary>
-        /// EditCanal control.
+        /// ddlEditarCanal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditCanal;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarCanal;
 
         /// <summary>
-        /// txtEditNombreNegocio control.
+        /// txtEditarNombreNegocio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditNombreNegocio;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarNombreNegocio;
 
         /// <summary>
-        /// txtEditOportunidad control.
+        /// txtEditarOportunidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditOportunidad;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarOportunidad;
 
         /// <summary>
-        /// EditFase control.
+        /// ddlEditarFase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditFase;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarFase;
 
         /// <summary>
-        /// txtEditSeguidores control.
+        /// txtEditarSeguidores control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditSeguidores;
+        protected global::System.Web.UI.WebControls.TextBox txtEditarSeguidores;
 
         /// <summary>
-        /// EditEtiqueta control.
+        /// ddlEditarEtiqueta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditEtiqueta;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarEtiqueta;
 
         /// <summary>
-        /// EditEstado control.
+        /// ddlEditarEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EditEstado;
-
-        /// <summary>
-        /// btnEditarOportunidad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditarOportunidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditarEstado;
 
         /// <summary>
         /// Label4 control.

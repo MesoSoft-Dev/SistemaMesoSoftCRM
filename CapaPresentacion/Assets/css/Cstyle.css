@@ -1,0 +1,64 @@
+﻿
+.Contacto {
+    background-color: #fbe8b4;
+    border-radius: 10px;
+}
+
+.Contacto h6{
+    font-weight:600;
+}
+
+.Contacto p {
+ margin-top:6px;
+  margin-bottom: 6px;
+}
+
+
+.borderC{
+    border: solid 2px black;
+}
+
+.dropdown-menu {
+    background-color: #fbe8b4;
+    border-radius: 8px;
+    min-width: 60px;
+    padding: 3px; 
+}
+.dropdown-item {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.ventanaConfirmar-content {
+    background-color: #f6e7b9;
+    max-width: 300px;
+    margin: auto;
+}
+
+.ventanaConfirmar-header h4 {
+    color: #73302c;
+    text-align: center;
+}
+
+.ventanaConfirmar-body p {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+}
+
+.ventanaConfirmar-footer {
+    border-top: none;
+    justify-content: center;
+}
+
+.btn-ventana {
+    color: #73302c;
+    font-weight: bold;
+}
+
+btn-ventana:hover {
+    color: #73302c;
+    font-weight: bold;
+}
+

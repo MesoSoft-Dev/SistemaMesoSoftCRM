@@ -99,10 +99,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\Cstyle.css" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\css\Kstyles.css" />
     <Content Include="Assets\img\granFranciaBannerLogin.png" />
     <Content Include="Assets\img\granFranciaBannerSiteMaster.png" />
+    <Content Include="Assets\js\ContactosScript.js" />
     <Content Include="Assets\js\Kscript.js" />
     <Content Include="Assets\js\script.js" />
     <Content Include="calendario.aspx" />
@@ -159,6 +161,8 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Assets\js\contactos.json" />
+    <Content Include="Assets\js\oportunidades.json" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
