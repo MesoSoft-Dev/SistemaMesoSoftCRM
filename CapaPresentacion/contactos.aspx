@@ -4,6 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
+        <div class="container d-flex border-bottom border-dark my-4">
+    <div><h5 class="fw-bold">Contactos</h5></div>
+</div>
          <div class="mx-4 mb-5 d-flex justify-content-end">
               <button id="btnAgregarC" class="btn fondo4 rounded-5 fw-bold fondo4" data-bs-toggle="modal" data-bs-target="#crearContactoform" type="button">
                 + Agregar Contacto
@@ -79,17 +82,17 @@
                     <!-- Detalles de Contacto -->
                     <div class="border-custom3 col-md-10">
                         <h2 class="fw-bold">Datos Personales</h2>
-                        <div class="row d-flex align-items-start flex-column flex-sm-row">
-     <div class="col my-3">
-       <label>Nombres</label>
-       <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Nombre"></asp:TextBox>
-     </div>
-     <div class="col my-3">
-       <label>Apellidos</label>
-       <asp:TextBox ID="txtApellidos" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Apellido"></asp:TextBox>
+                                               <div class="row d-flex align-items-start flex-column flex-sm-row">
+    <div class="col my-3">
+      <label>Nombres</label>
+      <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Nombre"></asp:TextBox>
     </div>
- </div>
-                        <div class="row d-flex align-items-start flex-column flex-sm-row">
+    <div class="col my-3">
+      <label>Apellidos</label>
+      <asp:TextBox ID="txtApellidos" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Apellido"></asp:TextBox>
+   </div>
+</div>
+                                                <div class="row d-flex align-items-start flex-column flex-sm-row">
    <div class="col my-3">
       <label>Correo</label>
       <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Email"></asp:TextBox>
@@ -99,8 +102,7 @@
       <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Teléfono"></asp:TextBox>
    </div>
 </div>
-                    </div>
-                     <div class="row d-flex align-items-start flex-column flex-sm-row">
+                                             <div class="row d-flex align-items-start flex-column flex-sm-row">
     <div class="col my-3">
         <label>Fecha de Nacimiento</label>
         <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="form-control w-75" placeholder="Ingrese su Fecha de Nacimiento"></asp:TextBox>
@@ -117,6 +119,10 @@
 
     </div>
 </div>
+                       
+                       
+                    </div>
+                   
                     <!-- Informacion adicional del contacto -->
                     <div class="border-custom col-md-10">
                         <h2 class="border-bottom fw-bold pb-1 mt-4 mb-3">Informacion Adicional</h2>
@@ -211,42 +217,43 @@
     <!-- Detalles de Contacto -->
     <div class="border-custom3 col-md-10">
         <h2 class="fw-bold">Datos Personales</h2>
-        <div class="row d-flex align-items-start flex-column flex-sm-row">
-            <div class="col my-3">
-                <label>Nombres</label>
-                <asp:TextBox ID="txtEditarNombres" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Nombre"></asp:TextBox>
-            </div>
-            <div class="col my-3">
-                <label>Apellidos</label>
-                <asp:TextBox ID="txtEditarApellidos" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Apellido"></asp:TextBox>
-            </div>
-        </div>
-        <div class="row d-flex align-items-start flex-column flex-sm-row">
-            <div class="col my-3">
-                <label>Correo</label>
-                <asp:TextBox ID="txtEditarCorreo" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Email"></asp:TextBox>
-            </div>
-            <div class="col my-3">
-                <label>Teléfono</label>
-                <asp:TextBox ID="txtEditarTelefono" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Teléfono"></asp:TextBox>
-            </div>
-        </div>
-    </div>
-    <div class="row d-flex align-items-start flex-column flex-sm-row">
-        <div class="col my-3">
-            <label>Fecha de Naco</label>
-            <asp:TextBox ID="txtEditarFechaNacimiento" runat="server" CssClass="form-control w-75" placeholder="Ingrese su Fecha de Nacimiento"></asp:TextBox>
-        </div>
+         <div class="row d-flex align-items-start flex-column flex-sm-row">
+     <div class="col my-3">
+         <label>Nombres</label>
+         <asp:TextBox ID="txtEditarNombres" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Nombre"></asp:TextBox>
+     </div>
+     <div class="col my-3">
+         <label>Apellidos</label>
+         <asp:TextBox ID="txtEditarApellidos" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Apellido"></asp:TextBox>
+     </div>
+ </div>
+ <div class="row d-flex align-items-start flex-column flex-sm-row">
+     <div class="col my-3">
+         <label>Correo</label>
+         <asp:TextBox ID="txtEditarCorreo" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Email"></asp:TextBox>
+     </div>
+     <div class="col my-3">
+         <label>Teléfono</label>
+         <asp:TextBox ID="txtEditarTelefono" runat="server" CssClass="form-control w-75 my-auto" placeholder="Ingrese su Teléfono"></asp:TextBox>
+     </div>
+ </div>
+         <div class="row d-flex align-items-start flex-column flex-sm-row">
+     <div class="col my-3">
+         <label>Fecha de Nacimiento</label>
+         <asp:TextBox ID="txtEditarFechaNacimiento" runat="server" CssClass="form-control w-75" placeholder="Ingrese su Fecha de Nacimiento"></asp:TextBox>
+     </div>
 
-        <div class="col my-3">
-            <label>Sexo</label>
-            <asp:DropDownList ID="ddlEditarSexo" runat="server" CssClass="form-control w-75">
-                <asp:ListItem Text="Seleccione una opcion" Value=""/>    
-                <asp:ListItem>Masculino</asp:ListItem>
-                <asp:ListItem>Femenino</asp:ListItem>
-            </asp:DropDownList>
-            </div>
+     <div class="col my-3">
+         <label>Sexo</label>
+         <asp:DropDownList ID="ddlEditarSexo" runat="server" CssClass="form-control w-75">
+             <asp:ListItem Text="Seleccione una opcion" Value=""/>    
+             <asp:ListItem>Masculino</asp:ListItem>
+             <asp:ListItem>Femenino</asp:ListItem>
+         </asp:DropDownList>
+         </div>
+ </div>
     </div>
+   
 
     <!-- Informacion adicional del contacto -->
     <div class="border-custom col-md-10">
