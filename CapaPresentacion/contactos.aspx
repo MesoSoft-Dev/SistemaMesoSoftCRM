@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
          <div class="mx-4 mb-5 d-flex justify-content-end">
-              <button id="btnAgregarC" class="btn fondo4 rounded-5 fw-bold" data-bs-toggle="modal" data-bs-target="#crearContactoform" type="button">
+              <button id="btnAgregarC" class="btn fondo4 rounded-5 fw-bold fondo4" data-bs-toggle="modal" data-bs-target="#crearContactoform" type="button">
                 + Agregar Contacto
               </button>
         </div>
@@ -160,12 +160,12 @@
             </div>
                     <div class="d-flex justify-content-end">
                         <div class="d-flex">
-                            <button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn  btn-light me-2 fw-bold flex-fill border-custom2" data-bs-dismiss="modal">Cancelar</button>
                         </div>
                         <div class=" d-flex container">
     
  
-<asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Width="100px" Text="Registrar"  OnClientClick="crearContacto(); return false;" data-bs-dismiss="modal"/>    
+<asp:Button ID="btnRegistrar" runat="server" CssClass="btn fw-bold fondo4" Width="100px" Text="Registrar"  OnClientClick="crearContacto(); return false;" data-bs-dismiss="modal"/>    
 </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@
     </div>
     <div class="row d-flex align-items-start flex-column flex-sm-row">
         <div class="col my-3">
-            <label>Fecha de Nacimiento</label>
+            <label>Fecha de Naco</label>
             <asp:TextBox ID="txtEditarFechaNacimiento" runat="server" CssClass="form-control w-75" placeholder="Ingrese su Fecha de Nacimiento"></asp:TextBox>
         </div>
 
@@ -291,7 +291,7 @@
             <button type="button" class="btn btn-light me-2 fw-bold border-custom2 flex-fill" data-bs-dismiss="modal">Cancelar</button>
         </div>
         <div class="d-flex container">
-  <button type="button" class="btn btn-primary" onclick="editar()" data-bs-dismiss="modal">Guardar cambios</button>
+  <button type="button" class="btn fw-bold fondo4" onclick="editar()" data-bs-dismiss="modal">Guardar cambios</button>
         </div>
     </div>
 </div>

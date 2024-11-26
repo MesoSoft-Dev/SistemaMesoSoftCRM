@@ -13,8 +13,20 @@
   margin-bottom: 6px;
 }
 
+.fondo4 {
+    background-color: #e9d07f;
+}
 
-.borderC{
+.border-custom2 {
+    border: 2px solid #73302c;
+}
+
+    .border-custom2:hover {
+        border: 2px solid #73302c;
+    }
+
+
+.borderC {
     border: solid 2px black;
 }
 
