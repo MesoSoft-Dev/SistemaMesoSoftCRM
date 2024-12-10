@@ -97,20 +97,6 @@ function limpiarCampos() {
     document.getElementById("existsCheckbox").checked = false;
 }
 
-/*async function cargarOportunidadesDesdeArchivo() {
-    try {
-        const response = await fetch("Assets/js/oportunidades.json");
-        if (!response.ok) {
-            throw new Error('Error al cargar el archivo JSON');
-        } const oportunidades = await response.json();
-        oportunidades.forEach(oportunidad => {
-            despliegueOportunidad(oportunidad);
-        });
-    } catch (error) {
-    }
-}
-*/
-
 function despliegueOportunidad(oportunidad) {
     const oportunidadId = `oportunidad-${contIdOportunidad++}`; 
     const oportunidadElement = document.createElement("button");
@@ -129,7 +115,6 @@ function despliegueOportunidad(oportunidad) {
     document.getElementById("no_status").appendChild(oportunidadElement);
     oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
 }
-
 
 function validarFormulario() {
     const nombres = document.getElementById("txtNombres").value;

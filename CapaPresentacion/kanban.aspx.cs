@@ -35,8 +35,8 @@ namespace CapaPresentacion
                     // Inyectar el JSON y llamar a la función 'loadJsonData' en el archivo Kscript.js (probar o modificar)
                     string filePath = Server.MapPath("~/Assets/js/oportunidades.json");
 
-                    // Escribir los datos JSON en el archivo
-                    using (StreamWriter writer = new StreamWriter(filePath, false)) // 'false' sobrescribe el contenido
+                    // Escribir los datos JSON en la ruta física de la solucion
+                    using (StreamWriter writer = new StreamWriter(filePath, false)) 
                     {
                         writer.Write(jsonData);
                     }
