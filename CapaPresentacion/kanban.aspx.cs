@@ -24,23 +24,24 @@ namespace CapaPresentacion
 
                 if (response.isSuccess)
                 {
-                    // Convertir los datos en un formato JSON que pueda ser usado por JavaScript
-                    string jsonData = JsonConvert.SerializeObject(response.data);
+                    string jsonData = response.data.ToString();
+
                     // Aquí es donde les decía que se debe hacer la integración
                     // el objeto jsonData tiene todos los registros
                     // ustedes deben usarlo y obtener todos los datos que están en formato json y presentarlo 
                     // usando javascript
                     // y que funcione todo lo de presentar hasta cuando se de clic en cada oportunidad
                     // Inyectar el JSON y llamar a la función 'loadJsonData' en el archivo Kscript.js (probar o modificar)
-                    string script = $"loadJsonData({jsonData});";
 
+                    string script = $"loadJsonData({jsonData});";
                     ClientScript.RegisterStartupScript(this.GetType(), "LoadJsonData", script, true);
+
 
                 }
                 else
                 {
                     // Manejar el error si no se pudo cargar el JSON
-                    ClientScript.RegisterStartupScript(this.GetType(), "ErrorMessage",
+                     ClientScript.RegisterStartupScript(this.GetType(), "ErrorMessage",
                         $"alert('Error: {response.message}');", true);
                 }
             }
