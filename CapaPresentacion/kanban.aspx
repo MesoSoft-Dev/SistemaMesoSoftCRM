@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <script>
-            function loadJsonData(data) {
+   /*         function loadJsonData(data) {
                 // Verificar si los datos están vacíos
                 console.log("loadJsonData called");
                 if (!data || data.length === 0) {
@@ -33,7 +33,19 @@
                     document.getElementById("no_status").appendChild(oportunidadElement);
                 });
             } 
-         
+       */
+            async function cargarOportunidadesDesdeArchivo() {
+                try {
+                    const response = await fetch("Assets/js/oportunidades.json");
+                    if (!response.ok) {
+                        throw new Error('Error al cargar el archivo JSON');
+                    } const oportunidades = await response.json();
+                    oportunidades.forEach(oportunidad => {
+                        despliegueOportunidad(oportunidad);
+                    });
+                } catch (error) {
+                }
+            }
         </script>
         <div class="container d-flex border-bottom border-dark my-4">
             <div><h5 class="fw-bold">Oportunidades</h5></div>

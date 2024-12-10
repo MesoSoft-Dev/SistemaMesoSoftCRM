@@ -3,6 +3,7 @@ using CapaModelo;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -32,9 +33,16 @@ namespace CapaPresentacion
                     // usando javascript
                     // y que funcione todo lo de presentar hasta cuando se de clic en cada oportunidad
                     // Inyectar el JSON y llamar a la función 'loadJsonData' en el archivo Kscript.js (probar o modificar)
+                    string filePath = Server.MapPath("~/Assets/js/oportunidades.json");
 
-                    string script = $"loadJsonData({jsonData});";
-                    ClientScript.RegisterStartupScript(this.GetType(), "LoadJsonData", script, true);
+                    // Escribir los datos JSON en el archivo
+                    using (StreamWriter writer = new StreamWriter(filePath, false)) // 'false' sobrescribe el contenido
+                    {
+                        writer.Write(jsonData);
+                    }
+
+                    string script = $"cargarOportunidadesDesdeArchivo();";
+                    ClientScript.RegisterStartupScript(this.GetType(), "cargarOportunidadesDesdeArchivo", script, true);
 
 
                 }

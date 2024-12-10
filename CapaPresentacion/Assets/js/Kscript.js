@@ -28,9 +28,10 @@
 
 
 
-//document.addEventListener("DOMContentLoaded", function () {
-  //  cargarOportunidadesDesdeArchivo();
-//});
+/*document.addEventListener("DOMContentLoaded", function () {
+    cargarOportunidadesDesdeArchivo();
+});
+*/
 
 //funciones de drag and drop============================================
 const oportunidades = document.querySelectorAll(".oportunidad");
@@ -96,7 +97,7 @@ function limpiarCampos() {
     document.getElementById("existsCheckbox").checked = false;
 }
 
-async function cargarOportunidadesDesdeArchivo() {
+/*async function cargarOportunidadesDesdeArchivo() {
     try {
         const response = await fetch("Assets/js/oportunidades.json");
         if (!response.ok) {
@@ -108,6 +109,7 @@ async function cargarOportunidadesDesdeArchivo() {
     } catch (error) {
     }
 }
+*/
 
 function despliegueOportunidad(oportunidad) {
     const oportunidadId = `oportunidad-${contIdOportunidad++}`; 
@@ -117,7 +119,7 @@ function despliegueOportunidad(oportunidad) {
     oportunidadElement.setAttribute("data-id", oportunidadId);
 
    
-    const input_val = `${oportunidad.nombre} ${oportunidad.apellido}`.trim();
+    const input_val = `${oportunidad.PrimerContactoNombre} ${oportunidad.PrimerContactoApellido}`.trim();
     oportunidadElement.textContent = input_val;
 
     oportunidadElement.addEventListener("dragstart", dragStart);
