@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CapaLogicaNegocio;
+using CapaModelo;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +12,87 @@ namespace CapaPresentacion
 {
     public partial class kanban : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        // Llamar a la capa de lógica de negocio
+        OportunitiesServices registerContact = new OportunitiesServices();
 
+        protected async void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Llamar al método AllData() para obtener los datos del servidor
+                var response = await registerContact.AllData();
+
+                if (response.isSuccess)
+                {
+                    // Convertir los datos en un formato JSON que pueda ser usado por JavaScript
+                    string jsonData = JsonConvert.SerializeObject(response.data);
+                    // Aquí es donde les decía que se debe hacer la integración
+                    // el objeto jsonData tiene todos los registros
+                    // ustedes deben usarlo y obtener todos los datos que están en formato json y presentarlo 
+                    // usando javascript
+                    // y que funcione todo lo de presentar hasta cuando se de clic en cada oportunidad
+                    // Inyectar el JSON y llamar a la función 'loadJsonData' en el archivo Kscript.js (probar o modificar)
+                    string script = $"loadJsonData({jsonData});";
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "LoadJsonData", script, true);
+
+                }
+                else
+                {
+                    // Manejar el error si no se pudo cargar el JSON
+                    ClientScript.RegisterStartupScript(this.GetType(), "ErrorMessage",
+                        $"alert('Error: {response.message}');", true);
+                }
+            }
+
+        }
+
+        protected async void createOportunidad(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNombres.Text) || string.IsNullOrWhiteSpace(txtApellidos.Text) ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text) || string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "showModal", "alert('Por favor complete todos los campos de Detalles de contacto.');", true);
+                return;
+            }
+
+            // Recuperar los valores de los campos
+            string nombres = txtNombres.Text;
+            string apellidos = txtApellidos.Text;
+            string correo = txtCorreo.Text;
+            string telefono = txtTelefono.Text;
+            string sexo = ddlGenero.SelectedValue == "Masculino" ? "1" : "2";
+            string tipoContacto = ddlContacto.SelectedValue == "Interesado" ? "1" : "2";
+            string encargado = "1";// dllencargado.Text;
+            string fechaRegistro = dllfechaRegistro.Text;
+            string canal = ddlCanal.SelectedValue == "Llamada" ? "1" : "2";
+            string nombreNegocio = txtNombreNegocio.Text;
+            string valorOportunidad = txtValorOportunidad.Text;
+            string fase = ddlFase.SelectedValue == "Interesado" ? "1" : "2";
+            string seguidores = txtSeguidores.Text;
+            string etiqueta = dllEtiqueta.Text;
+            string estado = dllEstado.SelectedValue == "Abierto" ? "1" : "2";
+            string idContacto = "";
+            string buscarContacto = txtBuscarContacto.Text;
+            // este se debe implementar el cajón de texto no está implementadoo
+            //string buscar = existsCheckbox.Checked;
+
+
+            // Crear un objeto que contenga la información
+            var contact = new ContactModel
+            {
+                Nombres = nombres,
+                Apellidos = apellidos,
+                Correo = correo,
+                Telefono = telefono,
+                Sexo = sexo,
+                TipoContacto = tipoContacto
+            };
+            
+            var result = await registerContact.RegisterOportunities(contact, encargado, fechaRegistro, canal, nombreNegocio, valorOportunidad,idContacto, fase, seguidores, 
+                etiqueta, estado);
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "showModal", $"alert('{result.message}');", true);
         }
         protected void btnEditarOportunidad_Click(object sender, EventArgs e)
         {

@@ -74,6 +74,7 @@
     <Compile Include="ChangePasswordServices.cs" />
     <Compile Include="ForgotPasswordServices.cs" />
     <Compile Include="Login.cs" />
+    <Compile Include="OportunitiesServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterContactServices.cs" />
   </ItemGroup>

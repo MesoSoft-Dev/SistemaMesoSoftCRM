@@ -1,6 +1,33 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
-    cargarOportunidadesDesdeArchivo(); 
-});
+﻿function loadJsonData(data) {
+    // Verificar si los datos están vacíos
+    if (!data || data.length === 0) {
+        alert("No se encontraron registros.");
+        return;
+    }
+
+    // Recorrer los datos de oportunidades y mostrarlos
+    data.forEach(oportunidad => {
+        const oportunidadElement = document.createElement("button");
+        oportunidadElement.classList.add("oportunidad", "border-0");
+        oportunidadElement.setAttribute("draggable", "true");
+
+        // Crear el nombre completo de la oportunidad
+        const input_val = `${oportunidad.PrimerContactoNombre} ${oportunidad.PrimerContactoApellido}`.trim();
+        oportunidadElement.textContent = input_val;
+
+        // Agregar el evento de clic para abrir el modal
+        oportunidadElement.addEventListener("click", () => openModal(oportunidad));
+
+        // Asumiendo que el contenedor con id "no_status" existe
+        document.getElementById("no_status").appendChild(oportunidadElement);
+    });
+}
+
+
+//document.addEventListener("DOMContentLoaded", function () {
+  //  cargarOportunidadesDesdeArchivo();
+//});
+
 //funciones de drag and drop============================================
 const oportunidades = document.querySelectorAll(".oportunidad");
 const all_status = document.querySelectorAll(".status");

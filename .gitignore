@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Ignorar el archivo web.config
-web.config
+Web.config
