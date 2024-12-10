@@ -1,10 +1,12 @@
-﻿function loadJsonData(data) {
+﻿
+ /* function loadJsonData(data) {
     // Verificar si los datos están vacíos
+    console.log("loadJsonData called");
     if (!data || data.length === 0) {
         alert("No se encontraron registros.");
         return;
     }
-
+    console.log(data);
     // Recorrer los datos de oportunidades y mostrarlos
     data.forEach(oportunidad => {
         const oportunidadElement = document.createElement("button");
@@ -21,7 +23,9 @@
         // Asumiendo que el contenedor con id "no_status" existe
         document.getElementById("no_status").appendChild(oportunidadElement);
     });
-}
+}  */
+
+
 
 
 //document.addEventListener("DOMContentLoaded", function () {
