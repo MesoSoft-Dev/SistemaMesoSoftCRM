@@ -113,7 +113,7 @@ function despliegueOportunidad(oportunidad) {
     oportunidadElement.addEventListener("click", openModal);
 
     document.getElementById("no_status").appendChild(oportunidadElement);
-    oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
+    oportunidadesData[oportunidadId] = { notas: [], tareas: [], oportunidad: oportunidad };
 }
 
 function validarFormulario() {
@@ -257,8 +257,51 @@ function editarOportunidad() {
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
   
 }
-// Despliege del modal de edicion, citas, tareas y notas.
 
+function cargarDatosOportunidad(oportunidadId) {
+    // Validar si el ID de la oportunidad fue proporcionado
+    if (!oportunidadId) {
+        console.error("Error: El ID de la oportunidad no se proporcionó.");
+        return;
+    }
+
+    // Buscar la oportunidad en el objeto global `oportunidadesData`
+    const oportunidad = oportunidadesData[oportunidadId];
+    if (!oportunidad) {
+        console.error(`Error: No se encontró la oportunidad con ID: ${oportunidadId}`);
+        return;
+    }
+
+    // Depuración: Verificar si los datos de la oportunidad están correctos
+    console.log("Datos de la oportunidad:", oportunidad);
+
+    // Mostrar los datos en el formulario
+    const nombresInput = document.getElementById("txtEditarNombres");
+
+    console.log(oportunidad.PrimerContactoApellido);
+
+    if (nombresInput) {
+        nombresInput.value = oportunidad.oportunidad.PrimerContactoNombre || "";
+    } else {
+        console.warn("No se encontró el input 'txtEditarNombres' en el DOM.");
+    }
+    document.getElementById("txtEditarApellidos").value = oportunidad.oportunidad.PrimerContactoApellido || "";
+    document.getElementById("txtEditarCorreo").value = oportunidad.oportunidad.PrimerContactoCorreo || "";
+    document.getElementById("txtEditarTelefono").value = oportunidad.oportunidad.PrimerContactoTel || "";
+    document.getElementById("ddlEditarCanal").value = oportunidad.oportunidad.Canal || "";
+    document.getElementById("txtEditarEncargado").value = oportunidad.oportunidad.Encargado || "";
+    document.getElementById("ddlEditarFechaRegistro").value = oportunidad.oportunidad.FechaRegistro || "";
+    document.getElementById("txtEditarNombreNegocio").value = oportunidad.oportunidad.NombreNegocio || "";
+    document.getElementById("txtEditarOportunidad").value = oportunidad.oportunidad.Valor || "";
+    document.getElementById("txtEditarSeguidores").value = oportunidad.oportunidad.Seguidores || ""; 
+    document.getElementById("ddlEditarEtiqueta").value = oportunidad.oportunidad.Etiquetas || "";
+    document.getElementById("ddlEditarFase").value = oportunidad.oportunidad.Fase || "";
+    document.getElementById("ddlEditarEstado").value = oportunidad.oportunidad.Estatus || "";
+    console.log(`Datos de la oportunidad con ID ${oportunidadId} cargados correctamente.`);
+}
+
+
+// Despliege del modal de edicion, citas, tareas y notas.
 function openModal(event) {
     event.preventDefault();
     const oportunidadId = event.currentTarget.getAttribute("data-id");
@@ -270,6 +313,8 @@ function openModal(event) {
     const modalElement = document.getElementById('oportunidadModal');
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
     modalInstance.show();
+    cargarDatosOportunidad(oportunidadId);
+    
 }
 
 
