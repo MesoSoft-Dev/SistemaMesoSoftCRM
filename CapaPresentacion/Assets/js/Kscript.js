@@ -282,6 +282,8 @@ function cargarDatosOportunidad(oportunidadId) {
     document.getElementById("ddlEditarEtiqueta").value = oportunidad.oportunidad.Etiquetas || "";
     document.getElementById("ddlEditarFase").value = oportunidad.oportunidad.Fase || "";
     document.getElementById("ddlEditarEstado").value = oportunidad.oportunidad.Estatus || "";
+    document.getElementById("ddlEditarFase").value = oportunidad.oportunidades.Fase || "";
+
     console.log(`Datos de la oportunidad con ID ${oportunidadId} cargados correctamente.`);
 }
 

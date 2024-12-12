@@ -233,8 +233,8 @@
         <div class="col-md-4">
            <label class="form-label">Canal</label>
              <asp:DropDownList ID="ddlEditarCanal" runat="server" CssClass="form-control form-select w-75"> 
-             <asp:ListItem>Llamada</asp:ListItem>
-             <asp:ListItem>Email</asp:ListItem>
+             <asp:ListItem>LLAMADA</asp:ListItem>
+             <asp:ListItem>EMAIL</asp:ListItem>
              </asp:DropDownList>
         </div>
     </div>
@@ -250,8 +250,8 @@
         <div class="col-md-4">
             <label class="form-label">Fase</label>
             <asp:DropDownList ID="ddlEditarFase" runat="server" CssClass="form-control form-select w-75"> 
-            <asp:ListItem>Interesado</asp:ListItem>
-            <asp:ListItem>En Progreso</asp:ListItem>
+            <asp:ListItem>INTERESADO</asp:ListItem>
+            <asp:ListItem>EN PROGRESO</asp:ListItem>
             </asp:DropDownList>
         </div>
     </div>
@@ -270,8 +270,8 @@
         <div class="col-md-4">
             <label class="form-label">Estado</label>
               <asp:DropDownList ID="ddlEditarEstado" runat="server" CssClass="form-control form-select w-75"> 
-              <asp:ListItem>Abierto</asp:ListItem>
-              <asp:ListItem>Cerrado</asp:ListItem>
+              <asp:ListItem>ABIERTO</asp:ListItem>
+              <asp:ListItem>CERRADO</asp:ListItem>
               </asp:DropDownList>
            </div>
        </div>

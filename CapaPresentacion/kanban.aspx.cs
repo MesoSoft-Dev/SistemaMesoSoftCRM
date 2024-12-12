@@ -26,6 +26,7 @@ namespace CapaPresentacion
                 if (response.isSuccess)
                 {
                     string jsonData = response.data.ToString();
+                    ViewState["OportunidadesData"] = jsonData;
 
                     // Aquí es donde les decía que se debe hacer la integración
                     // el objeto jsonData tiene todos los registros
@@ -36,7 +37,7 @@ namespace CapaPresentacion
                     string filePath = Server.MapPath("~/Assets/js/oportunidades.json");
 
                     // Escribir los datos JSON en la ruta física de la solucion
-                    using (StreamWriter writer = new StreamWriter(filePath, false)) 
+                    using (StreamWriter writer = new StreamWriter(filePath, false))
                     {
                         writer.Write(jsonData);
                     }
@@ -49,9 +50,27 @@ namespace CapaPresentacion
                 else
                 {
                     // Manejar el error si no se pudo cargar el JSON
-                     ClientScript.RegisterStartupScript(this.GetType(), "ErrorMessage",
-                        $"alert('Error: {response.message}');", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "ErrorMessage",
+                       $"alert('Error: {response.message}');", true);
                 }
+            }
+            else
+            {
+                // Se Recupera los datos del ViewState si la pagina ya fue cargada
+
+                string jsonData = ViewState["OportunidadesData"] as string;
+                if (!string.IsNullOrEmpty(jsonData))
+                {
+                    string filePath = Server.MapPath("~/Assets/js/oportunidades.json");
+                    using (StreamWriter writer = new StreamWriter(filePath, false))
+                    {
+                        writer.Write(jsonData);
+                    }
+
+                    string script = $"cargarOportunidadesDesdeArchivo();";
+                    ClientScript.RegisterStartupScript(this.GetType(), "cargarOportunidadesDesdeArchivo", script, true);
+                }
+
             }
 
         }
@@ -71,16 +90,16 @@ namespace CapaPresentacion
             string correo = txtCorreo.Text;
             string telefono = txtTelefono.Text;
             string sexo = ddlGenero.SelectedValue == "Masculino" ? "1" : "2";
-            string tipoContacto = ddlContacto.SelectedValue == "Interesado" ? "1" : "2";
+            string tipoContacto = ddlContacto.SelectedValue == "INTERESADO" ? "1" : "2";
             string encargado = "1";// dllencargado.Text;
             string fechaRegistro = dllfechaRegistro.Text;
-            string canal = ddlCanal.SelectedValue == "Llamada" ? "1" : "2";
+            string canal = ddlCanal.SelectedValue == "LLAMADA" ? "1" : "2";
             string nombreNegocio = txtNombreNegocio.Text;
             string valorOportunidad = txtValorOportunidad.Text;
             string fase = ddlFase.SelectedValue == "Interesado" ? "1" : "2";
             string seguidores = txtSeguidores.Text;
             string etiqueta = dllEtiqueta.Text;
-            string estado = dllEstado.SelectedValue == "Abierto" ? "1" : "2";
+            string estado = dllEstado.SelectedValue == "ABIERTO" ? "1" : "2";
             string idContacto = "";
             string buscarContacto = txtBuscarContacto.Text;
             // este se debe implementar el cajón de texto no está implementadoo
