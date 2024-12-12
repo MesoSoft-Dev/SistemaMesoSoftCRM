@@ -259,23 +259,8 @@ function editarOportunidad() {
 }
 
 function cargarDatosOportunidad(oportunidadId) {
-    // Validar si el ID de la oportunidad fue proporcionado
-    if (!oportunidadId) {
-        console.error("Error: El ID de la oportunidad no se proporcionó.");
-        return;
-    }
-
-    // Buscar la oportunidad en el objeto global `oportunidadesData`
     const oportunidad = oportunidadesData[oportunidadId];
-    if (!oportunidad) {
-        console.error(`Error: No se encontró la oportunidad con ID: ${oportunidadId}`);
-        return;
-    }
-
-    // Depuración: Verificar si los datos de la oportunidad están correctos
-    console.log("Datos de la oportunidad:", oportunidad);
-
-    // Mostrar los datos en el formulario
+   
     const nombresInput = document.getElementById("txtEditarNombres");
 
     console.log(oportunidad.PrimerContactoApellido);
@@ -316,9 +301,6 @@ function openModal(event) {
     cargarDatosOportunidad(oportunidadId);
     
 }
-
-
-
     function showSection(sectionId) {
         const sections = document.querySelectorAll(".section-content");
         sections.forEach((section) => {
