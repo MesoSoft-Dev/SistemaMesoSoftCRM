@@ -8,32 +8,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <script>
-            function loadJsonData(data) {
-                // Verificar si los datos están vacíos
-                console.log("loadJsonData called");
-                if (!data || data.length === 0) {
-                    alert("No se encontraron registros.");
-                    return;
+            async function cargarOportunidadesDesdeArchivo() {
+                try {
+                    const response = await fetch("Assets/js/oportunidades.json");
+                    if (!response.ok) {
+                        throw new Error('Error al cargar el archivo JSON');
+                    } const oportunidades = await response.json();
+                    oportunidades.forEach(oportunidad => {
+                        despliegueOportunidad(oportunidad);
+                    });
+                } catch (error) {
                 }
-                console.log(data);
-                // Recorrer los datos de oportunidades y mostrarlos
-                data.forEach(oportunidad => {
-                    const oportunidadElement = document.createElement("button");
-                    oportunidadElement.classList.add("oportunidad", "border-0");
-                    oportunidadElement.setAttribute("draggable", "true");
-
-                    // Crear el nombre completo de la oportunidad
-                    const input_val = `${oportunidad.PrimerContactoNombre} ${oportunidad.PrimerContactoApellido}`.trim();
-                    oportunidadElement.textContent = input_val;
-
-                    // Agregar el evento de clic para abrir el modal
-                    oportunidadElement.addEventListener("click", () => openModal(oportunidad));
-
-                    // Asumiendo que el contenedor con id "no_status" existe
-                    document.getElementById("no_status").appendChild(oportunidadElement);
-                });
-            } 
-         
+            }
         </script>
         <div class="container d-flex border-bottom border-dark my-4">
             <div><h5 class="fw-bold">Oportunidades</h5></div>

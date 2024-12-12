@@ -28,9 +28,10 @@
 
 
 
-//document.addEventListener("DOMContentLoaded", function () {
-  //  cargarOportunidadesDesdeArchivo();
-//});
+/*document.addEventListener("DOMContentLoaded", function () {
+    cargarOportunidadesDesdeArchivo();
+});
+*/
 
 //funciones de drag and drop============================================
 const oportunidades = document.querySelectorAll(".oportunidad");
@@ -96,19 +97,6 @@ function limpiarCampos() {
     document.getElementById("existsCheckbox").checked = false;
 }
 
-async function cargarOportunidadesDesdeArchivo() {
-    try {
-        const response = await fetch("Assets/js/oportunidades.json");
-        if (!response.ok) {
-            throw new Error('Error al cargar el archivo JSON');
-        } const oportunidades = await response.json();
-        oportunidades.forEach(oportunidad => {
-            despliegueOportunidad(oportunidad);
-        });
-    } catch (error) {
-    }
-}
-
 function despliegueOportunidad(oportunidad) {
     const oportunidadId = `oportunidad-${contIdOportunidad++}`; 
     const oportunidadElement = document.createElement("button");
@@ -117,7 +105,7 @@ function despliegueOportunidad(oportunidad) {
     oportunidadElement.setAttribute("data-id", oportunidadId);
 
    
-    const input_val = `${oportunidad.nombre} ${oportunidad.apellido}`.trim();
+    const input_val = `${oportunidad.PrimerContactoNombre} ${oportunidad.PrimerContactoApellido}`.trim();
     oportunidadElement.textContent = input_val;
 
     oportunidadElement.addEventListener("dragstart", dragStart);
@@ -125,9 +113,8 @@ function despliegueOportunidad(oportunidad) {
     oportunidadElement.addEventListener("click", openModal);
 
     document.getElementById("no_status").appendChild(oportunidadElement);
-    oportunidadesData[oportunidadId] = { notas: [], tareas: [] };
+    oportunidadesData[oportunidadId] = { notas: [], tareas: [], oportunidad: oportunidad };
 }
-
 
 function validarFormulario() {
     const nombres = document.getElementById("txtNombres").value;
@@ -270,8 +257,36 @@ function editarOportunidad() {
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
   
 }
-// Despliege del modal de edicion, citas, tareas y notas.
 
+function cargarDatosOportunidad(oportunidadId) {
+    const oportunidad = oportunidadesData[oportunidadId];
+   
+    const nombresInput = document.getElementById("txtEditarNombres");
+
+    console.log(oportunidad.PrimerContactoApellido);
+
+    if (nombresInput) {
+        nombresInput.value = oportunidad.oportunidad.PrimerContactoNombre || "";
+    } else {
+        console.warn("No se encontró el input 'txtEditarNombres' en el DOM.");
+    }
+    document.getElementById("txtEditarApellidos").value = oportunidad.oportunidad.PrimerContactoApellido || "";
+    document.getElementById("txtEditarCorreo").value = oportunidad.oportunidad.PrimerContactoCorreo || "";
+    document.getElementById("txtEditarTelefono").value = oportunidad.oportunidad.PrimerContactoTel || "";
+    document.getElementById("ddlEditarCanal").value = oportunidad.oportunidad.Canal || "";
+    document.getElementById("txtEditarEncargado").value = oportunidad.oportunidad.Encargado || "";
+    document.getElementById("ddlEditarFechaRegistro").value = oportunidad.oportunidad.FechaRegistro || "";
+    document.getElementById("txtEditarNombreNegocio").value = oportunidad.oportunidad.NombreNegocio || "";
+    document.getElementById("txtEditarOportunidad").value = oportunidad.oportunidad.Valor || "";
+    document.getElementById("txtEditarSeguidores").value = oportunidad.oportunidad.Seguidores || ""; 
+    document.getElementById("ddlEditarEtiqueta").value = oportunidad.oportunidad.Etiquetas || "";
+    document.getElementById("ddlEditarFase").value = oportunidad.oportunidad.Fase || "";
+    document.getElementById("ddlEditarEstado").value = oportunidad.oportunidad.Estatus || "";
+    console.log(`Datos de la oportunidad con ID ${oportunidadId} cargados correctamente.`);
+}
+
+
+// Despliege del modal de edicion, citas, tareas y notas.
 function openModal(event) {
     event.preventDefault();
     const oportunidadId = event.currentTarget.getAttribute("data-id");
@@ -283,10 +298,9 @@ function openModal(event) {
     const modalElement = document.getElementById('oportunidadModal');
     const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
     modalInstance.show();
+    cargarDatosOportunidad(oportunidadId);
+    
 }
-
-
-
     function showSection(sectionId) {
         const sections = document.querySelectorAll(".section-content");
         sections.forEach((section) => {

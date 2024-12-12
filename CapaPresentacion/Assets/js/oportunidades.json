@@ -1,10 +1,125 @@
 [
   {
-    "nombre": "Juan",
-    "apellido": "Pérez"
+    "idOportunidad": "2",
+    "idContacto": "1",
+    "PrimerContactoNombre": "IVÁN JAVIER",
+    "PrimerContactoApellido": "MENDOZA NEIRA",
+    "PrimerContactoCorreo": "NEIRAMENDOZA@HOTMAIL.COM",
+    "PrimerContactoTel": "89870756",
+    "ContactosAdicionales": "N/A",
+    "OportunidadNombre": "BODAS DE PLATA",
+    "idCanal": "1",
+    "Canal": "LLAMADA",
+    "idFase": "1",
+    "Fase": "INTERESADO",
+    "idEstatus": "1",
+    "Estatus": "ABIERTO",
+    "Valor": "0.00",
+    "Encargado": "IVÁN JAVIER MENDOZA NEIRA",
+    "NombreNegocio": "N/A",
+    "Etiquetas": "N/A",
+    "FechaRegistro": "25/11/2024 06:08:01 p. m.",
+    "OportunidadCitasList": [],
+    "OportunidadTareasList": [],
+    "OportunidadNotasList": []
   },
   {
-    "nombre": "Ana",
-    "apellido": "García"
+    "idOportunidad": "3",
+    "idContacto": "1",
+    "PrimerContactoNombre": "IVÁN JAVIER",
+    "PrimerContactoApellido": "MENDOZA NEIRA",
+    "PrimerContactoCorreo": "NEIRAMENDOZA@HOTMAIL.COM",
+    "PrimerContactoTel": "89870756",
+    "ContactosAdicionales": "N/A",
+    "OportunidadNombre": "BODAS DE PLATA",
+    "idCanal": "1",
+    "Canal": "LLAMADA",
+    "idFase": "1",
+    "Fase": "INTERESADO",
+    "idEstatus": "1",
+    "Estatus": "ABIERTO",
+    "Valor": "0.00",
+    "Encargado": "IVÁN JAVIER MENDOZA NEIRA",
+    "NombreNegocio": "N/A",
+    "Etiquetas": "N/A",
+    "FechaRegistro": "25/11/2024 06:10:05 p. m.",
+    "OportunidadCitasList": [],
+    "OportunidadTareasList": [],
+    "OportunidadNotasList": []
+  },
+  {
+    "idOportunidad": "1",
+    "idContacto": "1",
+    "PrimerContactoNombre": "Iván",
+    "PrimerContactoApellido": "Mendoza",
+    "PrimerContactoCorreo": "neiramendoza@gmail.com",
+    "PrimerContactoTel": "505 89870756",
+    "ContactosAdicionales": "N/A",
+    "OportunidadNombre": "CASAMIENTO",
+    "idCanal": "1",
+    "Canal": "LLAMADA",
+    "idFase": "1",
+    "Fase": "INTERESADO",
+    "idEstatus": "1",
+    "Estatus": "ABIERTO",
+    "Valor": "7000.00",
+    "Encargado": "JOSHUA VILCHEZ",
+    "NombreNegocio": "N/A",
+    "Etiquetas": "N/A",
+    "FechaRegistro": "22/11/2024 04:24:48 p. m.",
+    "OportunidadCitasList": [
+      {
+        "idCita": "1",
+        "idOportunidad": "1",
+        "Cita": "Revisión de Menú",
+        "Fecha": "22/11/2024 12:00:00 a. m.",
+        "Hora": "14:00:00",
+        "Lugar": "LGF"
+      },
+      {
+        "idCita": "2",
+        "idOportunidad": "1",
+        "Cita": "Revisar Catálogo de Música",
+        "Fecha": "23/11/2024 12:00:00 a. m.",
+        "Hora": "16:00:00",
+        "Lugar": "ALTOS"
+      }
+    ],
+    "OportunidadTareasList": [
+      {
+        "idTarea": "1",
+        "idOportunidad": "1",
+        "Tarea": "Arreglar Salón",
+        "Descripcion": "Arreglar Salón",
+        "AsignadaA": "JOSHUA VILCHEZ",
+        "Fecha": "22/11/2024 12:00:00 a. m.",
+        "Hora": "10:00:00"
+      },
+      {
+        "idTarea": "2",
+        "idOportunidad": "1",
+        "Tarea": "Revisar Listado de Invitados",
+        "Descripcion": "Revisar Listado de Invitados",
+        "AsignadaA": "JOSHUA VILCHEZ",
+        "Fecha": "23/11/2024 12:00:00 a. m.",
+        "Hora": "12:00:00"
+      }
+    ],
+    "OportunidadNotasList": [
+      {
+        "idNota": "1",
+        "idOportunidad": "1",
+        "Nota": "La revisión del Menú se hizo en un 70%",
+        "Fecha": "22/11/2024 12:00:00 a. m.",
+        "Hora": "16:00:00"
+      },
+      {
+        "idNota": "2",
+        "idOportunidad": "1",
+        "Nota": "La revisión del salón se completó.",
+        "Fecha": "22/11/2024 12:00:00 a. m.",
+        "Hora": "17:00:00"
+      }
+    ]
   }
 ]
