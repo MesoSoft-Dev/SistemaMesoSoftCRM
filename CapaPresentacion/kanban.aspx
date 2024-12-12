@@ -228,7 +228,7 @@
         </div>
         <div class="col-md-4">
             <label class="form-label">Fecha Registro</label>
-            <asp:TextBox ID="ddlEditarFechaRegistro" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+            <asp:TextBox ID="ddlEditarFechaRegistro" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="col-md-4">
            <label class="form-label">Canal</label>

@@ -113,7 +113,7 @@ function despliegueOportunidad(oportunidad) {
     oportunidadElement.addEventListener("click", openModal);
 
     document.getElementById("no_status").appendChild(oportunidadElement);
-    oportunidadesData[oportunidadId] = { notas: [], tareas: [], oportunidad: oportunidad };
+    oportunidadesData[oportunidadId] = {oportunidad: oportunidad };
 }
 
 function validarFormulario() {
@@ -258,11 +258,33 @@ function editarOportunidad() {
   
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const fechaRegistroElement = document.getElementById('ddlEditarFechaRegistro');
+
+    if (fechaRegistroElement) {
+        flatpickr(fechaRegistroElement, {
+            enableTime: true,
+            dateFormat: "d/m/Y h:i K", 
+            time_24hr: false,
+            onChange: function (selectedDates, dateStr, instance) {
+                const selectedDate = new Date(dateStr);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
+                    instance.clear();
+                }
+            }
+        });
+    }
+});
+
 function cargarDatosOportunidad(oportunidadId) {
     const oportunidad = oportunidadesData[oportunidadId];
-   
     const nombresInput = document.getElementById("txtEditarNombres");
 
+    console.log(oportunidad)
     console.log(oportunidad.PrimerContactoApellido);
 
     if (nombresInput) {
@@ -275,17 +297,119 @@ function cargarDatosOportunidad(oportunidadId) {
     document.getElementById("txtEditarTelefono").value = oportunidad.oportunidad.PrimerContactoTel || "";
     document.getElementById("ddlEditarCanal").value = oportunidad.oportunidad.Canal || "";
     document.getElementById("txtEditarEncargado").value = oportunidad.oportunidad.Encargado || "";
-    document.getElementById("ddlEditarFechaRegistro").value = oportunidad.oportunidad.FechaRegistro || "";
+
+
+    const fechaRegistro = oportunidad.oportunidad.FechaRegistro;
+    const fecha = convertirFecha(fechaRegistro);
+    const flatpickrInstance = document.getElementById("ddlEditarFechaRegistro")._flatpickr;
+    flatpickrInstance.setDate(fecha, true);
+    
+
     document.getElementById("txtEditarNombreNegocio").value = oportunidad.oportunidad.NombreNegocio || "";
     document.getElementById("txtEditarOportunidad").value = oportunidad.oportunidad.Valor || "";
-    document.getElementById("txtEditarSeguidores").value = oportunidad.oportunidad.Seguidores || ""; 
+    document.getElementById("txtEditarSeguidores").value = oportunidad.oportunidad.Seguidores || "";
     document.getElementById("ddlEditarEtiqueta").value = oportunidad.oportunidad.Etiquetas || "";
     document.getElementById("ddlEditarFase").value = oportunidad.oportunidad.Fase || "";
     document.getElementById("ddlEditarEstado").value = oportunidad.oportunidad.Estatus || "";
-    document.getElementById("ddlEditarFase").value = oportunidad.oportunidades.Fase || "";
 
+    renderTareas(oportunidadId);
+    renderNotas(oportunidadId);
+    
     console.log(`Datos de la oportunidad con ID ${oportunidadId} cargados correctamente.`);
 }
+
+function renderTareas(oportunidadId) {
+    const tareasContainer = document.getElementById("contenidoTareas");
+    tareasContainer.innerHTML = "";
+
+    oportunidadesData[oportunidadId].oportunidad.OportunidadTareasList.forEach((tarea) => {
+        const tareaElement = document.createElement("div");
+        tareaElement.classList.add("Tarea", "my-3", "d-flex");
+        tareaElement.setAttribute("data-id", tarea.id);
+
+        const contenidoTarea = `
+            <div class="flex-grow-1 p-2">
+                <div class="DetalleTarea">${tarea.Tarea}</div>
+                <div class="subTarea">${tarea.Descripcion}</div>
+            </div>
+            <div class="d-flex flex-column align-items-start me-5 p-2">
+                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="cargareditarTareas('${oportunidadId}', '${tarea.id}')">Editar</button>
+                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea('${oportunidadId}', '${tarea.id}')">Eliminar</button>
+            </div>
+        `;
+        tareaElement.innerHTML = contenidoTarea;
+        tareasContainer.appendChild(tareaElement);
+    });
+}
+
+function renderNotas(oportunidadId) {
+    const notasContainer = document.getElementById("contenidoNotas");
+    notasContainer.innerHTML = "";
+
+ 
+
+   
+    oportunidadesData[oportunidadId].oportunidad.OportunidadNotasList.forEach((nota) => {
+        const notaElement = document.createElement("div");
+        notaElement.classList.add("Nota", "my-3", "d-flex");
+        notaElement.setAttribute("data-id", nota.id);
+
+        const contenidoNota = `
+            <div class="flex-grow-1 p-2">
+                <div class="DetalleNota">${nota.Nota}</div>
+                <div class="subTarea">${nota.Fecha} ${nota.Hora}</div>
+            </div>
+            <div class="d-flex flex-column align-items-start me-5 p-2">
+                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="cargareditarNota('${oportunidadId}', '${nota.id}')">Editar</button>
+                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaNota('${oportunidadId}', '${nota.id}')">Eliminar</button>
+            </div>
+        `;
+        notaElement.innerHTML = contenidoNota;
+        notasContainer.appendChild(notaElement);
+    });
+}
+
+
+function convertirFecha(fecha) {
+    const partes = fecha.split(" ");
+    const [dia, mes, año] = partes[0].split("/");
+    let [hora, minuto] = partes[1].split(":");
+    const ampm = partes[2];
+
+    if (ampm.toLowerCase() === "p. m." && hora !== "12") {
+        hora = parseInt(hora) + 12; 
+    } else if (ampm.toLowerCase() === "a. m." && hora === "12") {
+        hora = "0"; 
+    }
+
+    return new Date(año, mes - 1, dia, hora, minuto);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fechaRegistroElement = document.getElementById('ddlEditarFechaRegistro');
+
+    if (fechaRegistroElement) {
+        flatpickr(fechaRegistroElement, {
+            enableTime: true,
+            dateFormat: "d/m/Y h:i K",
+            time_24hr: false,
+            onChange: function (selectedDates, dateStr, instance) {
+                const selectedDate = new Date(dateStr);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
+                    instance.clear();
+                }
+            }
+        });
+    }
+});
+
+
+
+
 
 
 // Despliege del modal de edicion, citas, tareas y notas.
@@ -401,40 +525,7 @@ function abrirVentanaNota(oportunidadId, notaId) {
 
 
     //crear notas===========================================================================
-function renderNotas(oportunidadId) {
-    const notasContainer = document.getElementById("contenidoNotas");
-    notasContainer.innerHTML = "";
 
-    if (!oportunidadesData[oportunidadId]) {
-        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
-        return; 
-    }
-
-    if (!oportunidadesData[oportunidadId].notas) {
-        console.error(`No se encontraron notas para la oportunidad con ID: ${oportunidadId}`);
-        return; 
-    }
-
-    oportunidadesData[oportunidadId].notas.forEach((nota) => {
-        const notaElement = document.createElement("div");
-        notaElement.classList.add("Nota", "my-3", "d-flex");
-        notaElement.setAttribute("data-id", nota.id);
-
-        const contenidoNota = `
-        <div class="flex-grow-1 p-2">
-            <div class="DetalleNota">${nota.descripcion}</div>
-            <div class="subTarea">Ejemplo fecha</div>
-            <div class="subTarea">Ejemplo encargado</div>
-        </div>
-        <div class="d-flex flex-column align-items-start me-5 p-2">
-            <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="cargareditarNota('${oportunidadId}', '${nota.id}')">Editar</button>
-            <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaNota('${oportunidadId}', '${nota.id}')">Eliminar</button>  
-        </div>
-    `;
-        notaElement.innerHTML = contenidoNota;
-        notasContainer.appendChild(notaElement);
-    });
-}
 
 let idcontnotas = 0;
 function guardarNota() {
@@ -557,43 +648,6 @@ function abrirVentanaTarea(oportunidadId, tareaId) {
 // Crear tareas ===========================================================================
 let tareaIdCounter = 0;
 
-function renderTareas(oportunidadId) {
-    const tareasContainer = document.getElementById("contenidoTareas");
-    tareasContainer.innerHTML = "";
-
-    // Verifica si la oportunidad existe
-    if (!oportunidadesData[oportunidadId]) {
-        console.error(`No se encontró la oportunidad con ID: ${oportunidadId}`);
-        return; // Salir de la función si no existe
-    }
-
-    // Verifica si hay tareas
-    if (!oportunidadesData[oportunidadId].tareas) {
-        console.error(`No se encontraron tareas para la oportunidad con ID: ${oportunidadId}`);
-        return; // Salir de la función si no hay tareas
-    }
-
-    // Renderiza las tareas
-    oportunidadesData[oportunidadId].tareas.forEach((tarea) => {
-        const tareaElement = document.createElement("div");
-        tareaElement.classList.add("Tarea", "my-3", "d-flex");
-        tareaElement.setAttribute("data-id", tarea.id);
-
-        const contenidoTarea = `
-            <div class="flex-grow-1 p-2">
-                <div class="DetalleTarea">${tarea.titulo}</div>
-                <div class="subTarea">${tarea.descripcion}</div>
-                <div class="subTarea">${tarea.fecha}</div>
-            </div>
-            <div class="d-flex flex-column align-items-start me-5 p-2">
-                <button type="button" class="btn fondo3 mb-1 fw-bold w-100 rounded-5 py-1" onclick="cargareditarTareas('${oportunidadId}', '${tarea.id}')">Editar</button>
-                <button class="btn fondo3 fw-bold w-100 rounded-5 py-1" type="button" onclick="abrirVentanaTarea('${oportunidadId}', '${tarea.id}')">Eliminar</button>
-            </div>
-        `;
-        tareaElement.innerHTML = contenidoTarea;
-        tareasContainer.appendChild(tareaElement);
-    });
-}
 
 
 function guardarTarea() {
@@ -689,7 +743,7 @@ function eliminarTarea() {
         if (tareasFechaElement) {
             flatpickr(tareasFechaElement, {
                 enableTime: true,
-                dateFormat: "Y-m-d\\TH:i",
+                dateFormat: "d/m/Y h:i K",
                 time_24hr: true,
                 onChange: function (selectedDates, dateStr, instance) {
                     const selectedDate = new Date(dateStr);
@@ -712,7 +766,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (fechaCitaElement) {
         flatpickr(fechaCitaElement, {
             enableTime: true,
-            dateFormat: "Y-m-d\\TH:i",
+           dateFormat: "d/m/Y h:i K", 
             time_24hr: true,
             onChange: function (selectedDates, dateStr, instance) {
                 const selectedDate = new Date(dateStr);
@@ -737,7 +791,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (fechaCitaElement) {
             flatpickr(fechaCitaElement, {
                 enableTime: true,
-                dateFormat: "Y-m-d\\TH:i",
+                dateFormat: "d/m/Y h:i K", 
                 time_24hr: true,
                 onChange: function (selectedDates, dateStr, instance) {
                     const selectedDate = new Date(dateStr);
@@ -753,4 +807,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+/*
+document.addEventListener('DOMContentLoaded', () => {
+    const fechaRegistroElement = document.getElementById('ddlEditarFechaRegistro');
+
+    if (fechaRegistroElement) {
+        flatpickr(fechaRegistroElement, {
+            enableTime: true,
+            dateFormat: "d/m/Y h:i:S K", // Formato de fecha deseado
+            time_24hr: false,
+            onChange: function (selectedDates, dateStr, instance) {
+                const selectedDate = new Date(dateStr);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    alert("Por favor, seleccione una fecha válida que no sea anterior a hoy.");
+                    instance.clear();
+                }
+            }
+        });
+    }
+}); */
 
